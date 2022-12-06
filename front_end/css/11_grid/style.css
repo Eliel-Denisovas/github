@@ -1,0 +1,391 @@
+/*RESET*/
+* {
+  box-sizing: border-box;
+  border: 1px solid;
+  font-size: 40px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  border: none;
+  background-color: white;
+}
+.grid{
+  background-color: rgb(0, 183, 255);
+  margin: 10px auto;
+  width: 80%;
+  display: grid;
+}
+.grid div {
+  background-color: rgb(115, 255, 0);
+  text-align: center;
+}
+.grid div:nth-child(even){
+  background-color: rgb(87, 194, 0);
+}
+
+/*EXPERIMENTO*/
+
+/*grid-template-columns*/
+.div1{
+  grid-template-columns: 50px;
+}
+.div2{
+  grid-template-columns: 50px 75px ;
+}
+.div3{
+  grid-template-columns: 50px 75px 100px ;
+}
+.div4{
+  grid-template-columns: 50px 75px 100px 125px;
+}
+.div5{
+  grid-template-columns: 50px 75px 100px 125px 150px 175px;
+}
+
+/*grid-template-rows*/
+.div6{
+  grid-template-rows: 100px 100px;
+}
+.div7{
+  grid-template-columns: 100px 150px;
+  grid-template-rows: 50px 75px 100px 125px 150px 175px;
+}
+
+/*Repeat (Atalho)*/
+.div8{
+  grid-template-columns: repeat(2, 50px) repeat(2, 100px);
+  grid-template-rows: repeat(2, 100px) 200px;
+}
+
+/*row-gap*/
+.div9{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+  row-gap: 10px;
+}
+
+/*column-gap*/
+.div10{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+  column-gap: 10px;
+}
+
+/*grid-gap (Atalho*/
+.div11{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+  grid-gap: 5px 20px;
+}
+
+/*fr*/
+.div12{
+  height: 400px;
+  grid-template-columns: repeat(3, 100px) 1fr;
+  grid-template-rows: repeat(3, 100px);
+}
+.div12{
+  height: 400px;
+  grid-template-columns: repeat(3, 100px) 1fr;
+  grid-template-rows: repeat(2, 100px) 1fr;
+}
+.div13{
+  height: 400px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.div14{
+  height: 400px;
+  grid-template-columns: 100px 1fr 100px;
+  grid-template-rows: 1fr repeat(2, 50px) 1fr;
+}
+.div15{
+  height: 400px;
+  grid-template-columns: 50px 1fr 2fr;
+  grid-template-rows: 1fr repeat(2, 50px) 2fr;
+}
+
+/*Grid-column-start|end*/
+.div16{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+.div16 div:nth-child(1){
+  grid-column-start: 4;
+  grid-column-end: 5;
+  font-size: 100px;
+  font-weight: bolder;
+}
+.div17{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+.div17 div:nth-child(1){
+  grid-column-start: 3;
+  grid-column-end: 5;
+  font-size: 100px;
+  font-weight: bolder;
+}
+.div18{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+.div18 div:nth-child(1){
+  grid-column-start: 2;
+  grid-column-end: -1; /*"-1" significa a ultima linha*/
+  font-size: 100px;
+  font-weight: bolder;
+}
+
+/*Grid-row-start|end*/
+.div19{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+.div19 div:nth-child(1){
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-size: 100px;
+  font-weight: bolder;
+}
+.div20{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+.div20 div:nth-child(1){
+  grid-row-start: 1;
+  grid-row-end: 3;
+  font-size: 100px;
+  font-weight: bolder;
+}
+.div21{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+.div21 div:nth-child(1){
+  grid-row-start: 1;
+  grid-row-end: -1; /*"-1" significa a ultima linha*/
+  font-size: 100px;
+  font-weight: bolder;
+}
+
+/*Grid-row|column (Atalho)*/
+.div22{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+.div22 div:nth-child(1){
+  grid-column: 2 / -1;
+  grid-row: 2 / -1;
+  font-size: 100px;
+  font-weight: bolder;
+}
+
+/* Span (uma outra sintaxe de conseguir o mesmo resultado) */
+.div22{
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+.div22 div:nth-child(1){
+  grid-column: 2 / span 2;
+  grid-row: 2 / span 2;
+  font-size: 100px;
+  font-weight: bolder;
+}
+
+/*Sobreposição*/
+.div23{
+  background-color: white;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+.div23 div:nth-child(8){
+  background-color: rgb(238, 255, 0);
+  grid-row: 2 / 4;
+  grid-column: 4 / 5;
+}
+.div23 div:nth-child(11){
+  background-color: rgba(255, 0, 0, 0.486);
+  grid-row: 3 / 4;
+  grid-column: 3 / 5;
+}
+
+/*Grid-template-areas (não é possivel fazer sobreposição)*/
+.div24{
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100px 50px 1fr 50px;
+  grid-template-areas: 
+  "header header header"
+  "nav nav aside"
+  "main main aside"
+  "footer footer footer"
+  ;
+}
+.div24 div:nth-child(1){
+  grid-area: header;
+}
+.div24 div:nth-child(2){
+  grid-area: nav;
+}
+.div24 div:nth-child(3){
+  grid-area: aside;
+}
+.div24 div:nth-child(4){
+  grid-area: main;
+  min-height: 500px;
+}
+.div24 div:nth-child(5){
+  grid-area: footer;
+}
+
+/*Nomeando linhas (Desta forma é possivel fazer sobreposição)*/
+.div25{
+  grid-template-columns: [col1-start] 1fr [col1-end col2-start] 1fr [col2-end col3-start] 1fr [col3-end];
+  grid-template-rows: [header-start] 100px [header-end nav-start] 50px [nav-end main-start] 1fr [main-end footer-start] 50px [footer-end];
+}
+.div25 div:nth-child(1){
+  grid-column: col1-start / col3-end;
+  grid-row: header-start / header-end;
+}
+.div25 div:nth-child(2){
+  grid-column: col1-start / col2-end;
+  grid-row: nav-start / nav-end;
+}
+.div25 div:nth-child(3){
+  min-height: 300px;
+  grid-column: col3-start / col3-end;
+  grid-row: nav-start / main-end;
+}
+.div25 div:nth-child(4){
+  grid-column: col1-start / col2-end;
+  grid-row: main-start / main-end;
+}
+.div25 div:nth-child(5){
+  grid-column: col1-start / col3-end;
+  grid-row: footer-start / footer-end;
+}
+/*É possivel em rows de mesmo nome a simplificação*/
+/*Repare também que é possivel a sobreposição*/
+.div26{
+  background-color: white;
+  grid-template-columns: [col1-start] 1fr [col1-end col2-start] 1fr [col2-end col3-start] 1fr [col3-end];
+  grid-template-rows: [header-start] 100px [header-end nav-start] 50px [nav-end main-start] 1fr [main-end footer-start] 50px [footer-end];
+}
+.div26 div:nth-child(1){
+  grid-column: col1-start / col3-end;
+  grid-row: header;
+}
+.div26 div:nth-child(2){
+  grid-column: col1-start / col2-end;
+  grid-row: nav;
+}
+.div26 div:nth-child(3){
+  background-color: rgba(255, 0, 0, 0.582);
+  min-height: 300px;
+  grid-column: col3-start / col3-end;
+  grid-row: nav-start / foot-end;
+}
+.div26 div:nth-child(4){
+  grid-column: col1-start / col2-end;
+  grid-row: main;
+}
+.div26 div:nth-child(5){
+  background-color: rgba(255, 255, 0, 0.527);
+  grid-column: col1-start / col3-end;
+  grid-row: footer;
+}
+/*É possivel tambem utilizar simplificações com a função repeat, isto facilita a escrita de layouts com muitas colunas*/
+.div27{
+  background-color: white;
+  grid-template-columns: repeat(3, [col-start] 1fr [col-end]);
+  /*Neste caso ele cria varias colunas com o mesmo nome, porém basta indicar nas grid Itens o numero das colunas*/
+  grid-template-rows: [header-start] 100px [header-end nav-start] 50px [nav-end main-start] 1fr [main-end footer-start] 50px [footer-end];
+}
+.div27 div:nth-child(1){
+  grid-column: col-start 1 / col-end 3;
+  grid-row: header;
+}
+.div27 div:nth-child(2){
+  grid-column: col-start 1 / col-end 2;
+  grid-row: nav;
+}
+.div27 div:nth-child(3){
+  background-color: rgba(255, 0, 0, 0.582);
+  min-height: 300px;
+  grid-column: col-start 3 / col-end 3;
+  grid-row: nav-start / foot-end;
+}
+.div27 div:nth-child(4){
+  grid-column: col-start 1 / col-end 2;
+  grid-row: main;
+}
+.div27 div:nth-child(5){
+  background-color: rgba(255, 255, 0, 0.527);
+  grid-column: col-start / col-end 3; /* Como visto, a primeira linha da coluna 1 "col-start" não precisa de numeração, mas é uma boa prática enumerar*/
+  grid-row: footer;
+}
+
+/*Minmax (determina valor minimo e maximo para as colunas, porem gera overflow caso o container-grid fique de um tamanho menor que suportado pelas somas das larguras das colunas e também sobra espaço dentro do containser-grid caso este exceda a soma das larguras maximas das colunas*/
+.div28{
+  width: 80%;
+  grid-template-columns: repeat(6, minmax(100px, 150px));
+}
+/*Com o uso do "1fr" para cada coluna o valor maximo sera acrescido do valor de espaço restante, desta forma não sobrara mais  espaço caso o valor da container-grid exceda o valor minimo da coluna pois uma fração igual será redistribuida para cada coluna. Porém caso a largura do container seja menor que a soma da largura minima dos grid-Itens, haverá hoverflow*/
+.div29{
+  width: 80%;
+  grid-template-columns: repeat(6, minmax(100px, 1fr));
+}
+
+/*auto-fill(quebra as linhas  caso a largura do grid-container seja menor que a soma dos grid-itens, porem cria novas colunas caso a largura do container-grid seja maior que a soma das larguras das grid-Itens conforme largura determinada)*/
+.div30{
+  width: 80%;
+  grid-template-columns: repeat(auto-fill, 100px);
+}
+/*auto-fill | minmax (quebra as linhas caso a largura do grid-container seja menor que a soma dos grid-itens, porem cria novas colunas caso a largura do container-grid seja maior que a soma das larguras das grid-Itens conforme largura determinada. Baseia se na largura max enquanto não houver apenas uma coluna o largura menor que o valor max)*/
+.div31{
+  width: 80%;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+}
+/*auto-fill | minmax | fr (quebra as linhas caso a largura do grid-container seja menor que a soma dos grid-itens, porem cria novas colunas caso a largura do container-grid seja maior que a soma das larguras das grid-Itens conforme largura determinada. Baseia-se no valor min e expande distribuindo as larguras das colunas sem deixar espaços. Apos a grid-container atingir uma largura maior que a soma dos grid-itens, o espaço vazio não é preenchido)*/
+.div32{
+  width: 80%;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+/*auto-fit (quebra as linhas  caso a largura do grid-container seja menor que a soma dos grid-itens, tem efeito semelhante ao auto-fill)*/
+.div33{
+  width: 80%;
+  grid-template-columns: repeat(auto-fit, 100px);
+}
+/*auto-fit | minmax (quebra as linhas caso a largura do grid-container seja menor que a soma dos grid-itens. Baseia se na largura max enquanto não houver apenas uma coluna de largura menor que o valor max, tem efeito semelhanet ao auto-fill | minmax)*/
+.div34{
+  width: 80%;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
+}
+/*auto-fit | minmax | fr (quebra as linhas caso a largura do grid-container seja menor que a soma dos grid-itens. Baseia-se no valor min e expande distribuindo as larguras das colunas sem deixar espaços. Apos a grid-container atingir uma largura maior que a soma dos grid-itens, o espaço vazio continua sendo preenchido)*/
+.div35{
+  width: 80%;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+/*auto-rows (Quando as linhas quebram, elas podem ter alturas diferentes dependendo do conteudo. Para definirmos altura o numero de linhas também é limitado, causando o mesmo efeito. O exemplo abaixo demonstra exatamente isto*/
+.div36{
+  width: 80%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: repeat(2, 200px);
+}
+/*Para resolver esta situação, utilizamos o auto rows que se aplicara independentemente do numeros de linhas criadas*/
+.div37{
+  width: 80%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 100px;
+}
+/*É possivel também que um padrão seja repetido*/
+.div38{
+  width: 80%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 150px 100px 50px;
+}

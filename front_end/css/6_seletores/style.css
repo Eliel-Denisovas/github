@@ -1,0 +1,252 @@
+/*Modos de seleção*/
+
+/*Os seletores selecionan todos os elementos dentro da tag selecionadas em um efeito casacata*/
+
+/* Para selecionar todos os componentes do HTML, utilizamos "*" */
+
+/*SELETORES*/
+
+* {
+  padding: 10px;
+  border: 1px solid black;
+  margin: 10px;
+  background-color: rgba(0, 0, 0, 0.151);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.486);
+}
+
+/* Tags (seleciona todas as tags com o mesmo nome */
+body {
+  background-color: rgba(84, 89, 158, 0.349);
+}
+
+header {
+background-color: rgb(95, 179, 179);
+}
+
+nav {
+
+}
+
+ul {
+
+}
+
+li {
+
+}
+
+main {
+  background-color: rgb(161, 98, 111);
+}
+
+section {
+  background-color: rgba(184, 129, 78, 0.534);
+}
+
+article {
+  background-color: rgba(102, 93, 124, 0.788);
+}
+
+img {
+  width: 47%;
+  float: left;
+  box-sizing: border-box;
+}
+
+.div-img {
+  overflow: auto;
+}
+
+/*Classes (seleciona todas as tags que contem tais classes. Uma tag pode conter muitas classes)*/
+
+.item-2 {
+  letter-spacing: 30px;
+  font-weight: bold;
+}
+
+/*ID (Seleciona todas a tag com determinado id. Um ID só pode ser usado com o mesmo nome em apenas uma tag. Não é recomendado o uso de IDs no css para selecionar tags HTML*/
+
+#item-1 {
+  color: burlywood;
+}
+
+/*Decendência (Seleciona todas as "li's" que estão dentro de uma "ul")*/
+
+ main li {
+  color: red;
+  font-size: 15px;
+  letter-spacing: 15px;
+}
+
+main article {
+  border: 3px solid black;
+}
+
+/*Filho direto (Seleciona apenas as tags que estão DIRETAMENTE ligadas na decendencia*/
+
+main > article {
+  background-color: rgba(255, 228, 196, 0.507);
+}
+
+/*Irmão adjacente (Seleciona o PRIMEIRO irmão (Hierarquia de mesmo nivel) que segue depois de um determinado irmão conforme sequencia no HTML)*/
+
+section h2 + p {
+  font-weight: bolder;
+  color: red;
+} 
+
+article p + p {
+  color: blue;
+}
+
+/*Proximos Irmãos (Seleciona TODOS os irmãos (Hierarquia de mesmo nivel) conforme sequencia no HTML)*/
+
+article h3 ~ p {
+  font-size: 30px;
+}
+
+/*Seleção por atributo (Seleciona todas as tags que possum tais atributos*/
+
+a[title] {
+  color: green;
+}
+
+/*Seleção por atributo (Seleciona todas as tags que possum tais atributos cujo valor INICIEM com um determindo valor*/
+
+a[href^="http"] {
+  color: orangered
+}
+
+/*Seleção por atributo (Seleciona todas as tags que possum tais atributos cujo valor TERMINEM com um determindo valor*/
+
+img[src$="png"] {
+  background-color: rgb(255, 0, 0);
+}
+
+/*Varios seletores podem ser selecionados de uma vez sendo separados por virgula*/
+
+h1, h2, h3 {
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.781);
+}
+
+/*Os tipos tambem podem ser mistos em um unico seletor*/
+
+.main-section3 article:nth-child(3) h2 + p + p{
+  border-radius: 20px;
+  border: 3px solid black;
+}
+
+/*PSEUDO-CLASSES*/
+
+/*:nth-child (Seleciona conforme ordem determinada no HTML (mesma hierarquia (primeiro, segundo, terceiro...) qualquer elemento desde que seja do mesmo tipo da tag)*/
+
+section:nth-child(2) {
+  background-color: aliceblue;
+}
+
+section:nth-child(2) p{
+  background-color: rgb(208, 231, 252);
+}
+
+/*:nth-of-type (Seleciona conforme ordem determinada no HTML (mesma hierarquia (primeiro, segundo, terceiro...) apenas elementos do mesmo tipo da tag)*/
+
+.body-article1 p:nth-of-type(4) {
+  background-color: rgb(224, 127, 216);
+}
+
+/*First child (Seleciona conforme ordem determinada no HTML (mesma hierarquia o primeiro elemento desde que seja do mesmo tipo da tag)*/
+
+main article:first-child{
+  background-color: rgba(146, 224, 127, 0.466);
+}
+
+/*Last child (Seleciona conforme ordem determinada no HTML (mesma hierarquia o ultimo elemento desde que seja do mesmo tipo da tag)*/
+
+main article:last-child{
+  background-color: rgba(41, 63, 35, 0.466);
+}
+
+
+
+
+
+/*Seleção  not (seleciona todos as tags que não possui determinada tag, classe, id ou atributo*/ 
+
+img:not([alt]) {
+  background-color: darkgoldenrod;
+}
+
+/*Focus*/
+
+input[type="text"]:focus{
+  background-color: brown;
+  color: white;
+}
+
+/*Pseudo-classes mais utilizadas*/
+
+/* checked, disabled, empty, enabled, first-child, first-of-type, focus, hover, invalid, last-cild, last-of-type, link, not(), nth-child, nth-last-child, nth-last-of-type, nth-of-type, only-child, only-of-type, out-of-range, read-only, read-write, required, target, valid, visited */
+
+
+
+/*PSEUDO-ELEMENTOS*/
+
+/*Before (Insere conteudo dentro do elemento selecionado, antes do primeiro filho(O conteudo não é selecionavel na pagina e não é lido pelos motores de busca))*/
+
+section article:nth-child(1) h2::before{
+  content: "texto-before";
+  display: block;
+  background-color: brown;
+
+}
+
+/*After (Insere conteudo dentro do elemento selecionado, depois do primeiro filho(O conteudo não é selecionavel na pagina e não é lido pelos motores de busca))*/
+
+section article:nth-child(1) h2::after{
+  content: "texto-before";
+  display: block;
+  background-color: rgb(119, 96, 78);
+}
+
+/*Placeholder*/
+
+input[type="text"]::placeholder {
+
+  color: rgb(72, 255, 0);
+}
+
+/*Firt letter*/
+
+.paragrafo-first::first-letter {
+  font-size: 50px;
+  color: red;
+  float: left;
+  margin: 5px;
+}
+
+/*first line*/
+
+.paragrafo-first::first-line {
+  background-color: rgba(157, 255, 0, 0.486);
+}
+
+/*Selection (Faça o teste selecinando o texto no browser*/
+
+.paragrafo-first::selection {
+  color: red;
+}
+
+
+
+
+
+
+
+
+
+/*Pseudo-classes e pseudo-elementos podem ser usados em conjunto*/
+
+.paragrafo-vazio p:empty::before {
+  content: "Paragrafo vazio";
+  text-align: center;
+}

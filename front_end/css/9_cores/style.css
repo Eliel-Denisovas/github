@@ -1,0 +1,152 @@
+
+
+.grupo-cores{
+  padding: 15px;
+  background: url(./tile.png);
+  counter-reset: contador;
+}
+
+.grupo-cores div{
+  width: 90%;
+  height: 150px;
+  border: 10px solid rgba(0, 0, 0, 0.5);
+  margin: 20px auto;
+  padding: 15px;
+  counter-increment: contador;
+}
+
+.grupo-cores div::before{
+  content: "["counter(contador)"]";
+}
+
+/*RGB (Soma das tres cores primarias da luz)*/
+
+.grupo-cores div:nth-child(1){
+  background-color: rgb(0%, 0%, 0%); /*Exemplo (256, 15, 35)*/
+}
+.grupo-cores div:nth-child(2){
+  background-color: rgb(25%, 0%, 0%);
+}
+.grupo-cores div:nth-child(3){
+  background-color: rgb(50%, 0%, 0%);
+}
+.grupo-cores div:nth-child(4){
+  background-color: rgb(100%, 0%, 0%);
+}
+.grupo-cores div:nth-child(5){
+  background-color: rgb(100%, 25%, 25%);
+}
+.grupo-cores div:nth-child(6){
+  background-color: rgb(100%, 40%, 40%);
+}
+.grupo-cores div:nth-child(7){
+  background-color: rgb(100%, 50%, 50%);
+}
+.grupo-cores div:nth-child(8){
+  background-color: rgb(100%, 60%, 60%);
+}
+.grupo-cores div:nth-child(9){
+  background-color: rgb(100%, 75%, 75%);
+}
+.grupo-cores div:nth-child(10){
+  background-color: rgb(100%, 30%, 0%); /*Exemplo (256, 15, 35)*/
+}
+.grupo-cores div:nth-child(11){
+  background-color: rgb(100%, 30%, 10%);
+}
+.grupo-cores div:nth-child(12){
+  background-color: rgb(100%, 30%, 20%);
+}
+.grupo-cores div:nth-child(13){
+  background-color: rgb(100%, 30%, 30%);
+}
+.grupo-cores div:nth-child(14){
+  background-color: rgb(100%, 30%, 40%);
+}
+.grupo-cores div:nth-child(15){
+  background-color: rgb(100%, 30%, 50%);
+}
+.grupo-cores div:nth-child(16){
+  background-color: rgb(100%, 30%, 60%);
+}
+.grupo-cores div:nth-child(17){
+  background-color: rgb(100%, 30%, 70%);
+}
+.grupo-cores div:nth-child(18){
+  background-color: rgb(100%, 30%, 80%);
+}
+.grupo-cores div:nth-child(19){
+  background-color: rgb(100%, 30%, 90%);
+}
+
+/*RGBA*/
+.grupo-cores div:nth-child(20){
+  background-color: rgb(100%, 0%, 0%, 25%);
+}
+.grupo-cores div:nth-child(21){
+  background-color: rgb(100%, 0%, 0%, 50%);
+}
+.grupo-cores div:nth-child(22){
+  background-color: rgb(100%, 0%, 0%, 75%);
+}
+
+/*HSL (Dosagem dos tres elementos das cores do pigmento(tom, saturacao e claridade))*/
+
+/*Alterando a saturação*/
+
+.grupo-cores div:nth-child(23){
+  background-color: hsl(0deg, 100%, 50%);
+}
+.grupo-cores div:nth-child(24){
+  background-color: hsl(0deg, 75%, 50%);
+}
+.grupo-cores div:nth-child(25){
+  background-color: hsl(0deg, 50%, 50%);
+}
+.grupo-cores div:nth-child(26){
+  background-color: hsl(0deg, 25%, 50%);
+}
+/*Alterando a claridade*/
+.grupo-cores div:nth-child(27){
+  background-color: hsl(0deg, 100%, 75%);
+}
+.grupo-cores div:nth-child(28){
+  background-color: hsl(0deg, 100%, 50%);
+}
+.grupo-cores div:nth-child(29){
+  background-color: hsl(0deg, 100%, 25%);
+}
+/*Alterando o tom*/
+.grupo-cores div:nth-child(30){
+  background-color: hsl(45deg, 100%, 50%);
+}
+.grupo-cores div:nth-child(31){
+  background-color: hsl(90deg, 100%, 50%);
+}
+.grupo-cores div:nth-child(32){
+  background-color: hsl(135deg, 100%, 50%);
+}
+.grupo-cores div:nth-child(33){
+  background-color: hsl(180deg, 100%, 50%);
+}
+.grupo-cores div:nth-child(34){
+  background-color: hsl(225deg, 100%, 50%);
+}
+.grupo-cores div:nth-child(35){
+  background-color: hsl(270deg, 100%, 50%);
+}
+.grupo-cores div:nth-child(36){
+  background-color: hsl(315deg, 100%, 50%);
+}
+.grupo-cores div:nth-child(37){
+  background-color: hsl(360deg, 100%, 50%);
+}
+.grupo-cores div:nth-child(38){
+  background-color: hsl(360deg, 100%, 50%, 0.75);
+}
+.grupo-cores div:nth-child(39){
+  background-color: hsl(360deg, 100%, 50%, 0.5);
+}
+.grupo-cores div:nth-child(40){
+  background-color: hsl(360deg, 100%, 50%, 0.25);
+}

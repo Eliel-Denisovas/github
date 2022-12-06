@@ -1,0 +1,172 @@
+/*Transition faz apenas uma transição, ou seja, do estado inicial para o final. Ele depende tambem da interação do usuário (:hover, :focus, :active... */
+
+/*Animation suporta animações mais complexas e é capaz de realizar diversas transições e não dependem da interação do usuário e também prove um maior controle sobre as transições criadas*/
+
+/*Configuração geral*/
+div{
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  background-color: greenyellow;
+  font-size: 50px;
+  text-align: center;
+}
+
+/*Animação - sintaxe*/
+@keyframes animation1{
+  0%{
+    transform: translate(0);
+    background-color: red;
+  }  
+  100%{
+    transform: translate(300px);
+    background-color: blue;
+  }
+}
+/*Experimento*/
+.div2{
+  animation-name: animation1;
+  animation-duration: 3s;
+  animation-timing-function: ease-in; /* INicio - acelera, finOUT - desacelera, IN OUT acelera e desacelera*/
+}
+
+/*Iteration-count*/
+.div3{
+  animation: animation1 2s ease-in-out;
+  animation-iteration-count: 3;
+}
+.div4{
+  animation: animation1 3s ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/*Direct*/
+.div5{
+  animation: animation1 2s ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/*Direction: reverse*/
+.div6{
+  animation: animation1 2s ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+}
+/*Direction: reverse*/
+.div7{
+  animation: animation1 2s ease-in-out;
+  animation-direction: alternate-reverse;
+}
+
+/*Delay*/
+.div8{
+  animation: animation1 2s ease-in-out;
+  animation-delay: 1s;
+}
+
+/*shorthand*/
+.div9{
+  animation: animation1 1s ease-in-out 1s infinite alternate; /*name, duration, timing-function, delay, iteration-count, direction*/
+}
+
+/*fill-mode - forwards (Aplica as propriedades da animação do estagio 0% ao objeto antes de começar a animação*/
+.div10{
+  animation: animation1 2s ease-in-out;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+}
+/*fill-mode - forwards (Aplica as propriedades da animação do estagio 100% ao objeto depois de acabar a animação*/
+.div11{
+  animation: animation1 2s ease-in-out;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+/*fill-mode - forwards (Aplica as propriedades da animação do estagio 0% ao objeto antes de começar a animação e aplica as propriedades da animação do estagio 100% ao objeto depois de acabar a animação*/
+.div12{
+  animation: animation1 2s ease-in-out;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+}
+
+/*play-state (Interage de acordo com a interação do usuario)*/
+.div13{
+  animation: animation1 1s ease-in-out 1s infinite alternate; 
+}
+.div13:hover{
+  animation-play-state: paused;
+}
+
+/*Atalho: Animetion: name, duration, timing-function, delay, itaration-count, direction, fill-mode, play-state*/
+
+/*Animando multiplas propriedades*/
+@keyframes animation2 {
+  10%{
+    background-color: white;
+  }
+  20%{
+    background-color: orange;
+  }
+  40%{
+    background-color: black;
+    border-radius: 50%;
+  }
+  60%{
+    transform: translate(300px);
+  }
+  80%{
+    transform: scale(200%);
+  }
+  90%{
+    transform: skew(15deg, 15deg);
+  }
+  100%{
+    font-size: 100px;
+
+  }
+}
+
+.div14{
+  animation: animation2 3s ease-in-out 1s infinite alternate;  
+}
+/*As porcentagens não presisam necessariamente serem escritas em ordem crescente, para funções que se repetirão por varias vezes*/
+@keyframes slide{
+  0%, 22%, 100%{
+      transform: translateY(0);
+  }                
+  25%, 47%{
+      transform: translateY(-5vh);
+  }                
+  50%, 72% {
+      transform: translateY(-10vh);                    
+  }                
+  75%, 97% {
+      transform: translateY(-15vh);                    
+  }              
+}
+.div15{
+  animation: slide 3s ease-in-out 1s infinite alternate; 
+}
+/*É possivel tambem animar varias divs ao mesmo tempo*/
+@keyframes animation3{
+  0%{
+    transform: translate(0);
+    background-color: red;
+  }  
+  100%{
+    transform: translate(30px);
+    background-color: blue;
+  }
+}
+.div17, .div18, .div19, .div20, .div21{
+  height: 10%;
+  width: 10%;
+  border: 1px solid;
+  font-size: 10px;
+  background-color: red;
+  float: left;
+  animation: animation3 1s ease-in-out 1s infinite alternate; 
+}
+.div16{
+  animation: animation2 1s ease-in-out 1s infinite alternate; 
+}

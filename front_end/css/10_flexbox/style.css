@@ -1,0 +1,516 @@
+* {
+  box-sizing: border-box;
+  border: 1px solid;
+  font-size: 40px;
+}
+html,
+body {
+  border: none;
+  background-color: white;
+}
+.flexbox,
+.div0 {
+  background-color: orange;
+  margin: 10px;
+  height: 300px;
+}
+.flexbox {
+  display: flex;
+}
+.flexbox div {
+  background-color: red;
+  width: 150px;
+  text-align: center;
+}
+
+/*Abaixo, elemento sem flexbox*/
+.div0 div {
+  background-color: red;
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+}
+
+/*Abaixo todos os elementos contem flexbox */
+/*A div1 é um elemento com flexbbox Padrão */
+/*A div1 é um elemento com flexbbox Padrão */
+
+/*Flex-direction*/
+.div2 {
+  flex-direction: column;
+}
+.div3 {
+  flex-direction: row-reverse;
+}
+.div4 {
+  flex-direction: column-reverse;
+}
+
+/*Wrap*/
+.div5 {
+  flex-wrap: wrap;
+  /*Padrão nowrap*/
+}
+
+/*shortcut*/
+.div6 {
+  flex-flow: row nowrap;
+  
+}
+
+/*Justifi-content*/
+.div7 {
+  justify-content: flex-start;/*Padrão*/
+}
+.div8 {
+  justify-content: flex-end;
+}
+.div9 {
+  justify-content: center;
+}
+.div10 {
+  justify-content: space-around;
+}
+.div11 {
+  justify-content: space-between;
+}
+.div12 {
+  justify-content: space-between;
+}
+.div12 {
+  justify-content: space-evenly;
+}
+
+/*Align-itens*/
+.div13 {
+  align-items: flex-start;
+}
+.div14 {
+  align-items: center;
+}
+.div15 {
+  align-items: flex-end;
+}
+.div15 {
+  align-items: stretch;/*Padrão*/
+}
+.div16 {
+  align-items: baseline;/*Alinha na altura da font*/
+}
+.div16 .b {
+  font-size: 100px;
+}
+
+/*justify-content*/
+.div17 {
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.div18 {
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.div19 {
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+.div20 {
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+.div21 {
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.div22 {
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: stretch; /*Padrão*/
+}
+
+/*Flex-basis*/
+.div23 div{
+  flex-basis: 300px;
+}
+.div24 div:nth-child(2){
+  flex-basis: 600px;
+}
+
+/*flex-grow*/
+.div25 div:nth-child(2){
+  flex-grow: 1;
+}
+.div26 div:nth-child(2), .div25 div:nth-child(3){
+  flex-grow: 1;
+}
+.div27 div:nth-child(2){
+  flex-grow: 1;
+}
+.div27 div:nth-child(3){
+  flex-grow: 2;
+}
+.div28 div{
+  flex-grow: 1;
+}
+.div29 div:nth-child(1){
+  flex-grow: 1;
+}
+.div29 div:nth-child(2){
+  flex-grow: 2;
+}
+.div29 div:nth-child(3){
+  flex-grow: 3;
+}
+.div29 div:nth-child(4){
+  flex-grow: 4;
+}
+
+/*Flex-shrink*/
+.div30 div:nth-child(2){
+  flex-shrink: 4;
+}
+.div31 div:nth-child(2){
+  flex-shrink: 4;
+}
+.div31 div:nth-child(3){
+  flex-shrink: 3;
+}
+.div32 div:nth-child(1){
+  flex-shrink: 1;
+}
+.div32 div:nth-child(2){
+  flex-shrink: 2;
+}
+.div32 div:nth-child(3){
+  flex-shrink: 3;
+}
+.div32 div:nth-child(4){
+  flex-shrink: 4;
+}
+
+/*Flex*/
+.div33 div:nth-child(4){
+  flex: 4 4 100px; /* Atalho: grow / shrink / basis */
+}
+
+/*Order*/
+.div34 div:nth-child(2){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 1;
+}
+.div35 div:nth-child(2){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 1;
+}
+.div35 div:nth-child(3){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 1;
+}
+.div36 div:nth-child(2){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 2;
+}
+.div36 div:nth-child(1){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 1;
+}
+.div36 div:nth-child(4){
+  font-size: 50px;
+  font-weight: bolder;
+  order: -2;
+}
+.div36 div:nth-child(3){
+  font-size: 50px;
+  font-weight: bolder;
+  order: -1;
+}
+.div37 div:nth-child(1){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 3;
+}
+.div37 div:nth-child(2){
+  font-size: 50px;
+  font-weight: bolder;
+  order: -1;
+}
+.div37 div:nth-child(3){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 1;
+}
+.div37 div:nth-child(4){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 2;
+}
+
+/*Align-self*/
+.div38 div:nth-child(1){
+  align-self: flex-end;
+}
+.div38 div:nth-child(2){
+  align-self: center;
+}
+.div38 div:nth-child(3){
+  align-self: flex-start;
+}
+.div38 div:nth-child(4){
+  align-self: stretch;
+}
+
+/*Abaixo todos os exemplos na mesma ordem que acima(a partir de "justify-content), porem com "display: column"*/
+
+.column{
+  flex-direction: column;
+}
+
+/*Justifi-content*/
+.div50 {
+  justify-content: flex-start;/*Padrão*/
+}
+.div51 {
+  justify-content: flex-end;
+}
+.div52 {
+  justify-content: center;
+}
+.div53 {
+  justify-content: space-around;
+}
+.div54 {
+  justify-content: space-between;
+}
+.div55 {
+  justify-content: space-between;
+}
+.div56 {
+  justify-content: space-evenly;
+}
+
+/*Align-itens*/
+.div57 {
+  align-items: flex-start;
+}
+.div58 {
+  align-items: center;
+}
+.div59 {
+  align-items: flex-end;
+}
+.div60 {
+  align-items: stretch; /*Não funciona*/
+}
+
+.div61 {
+  align-items: baseline; /*Não funciona*/
+}
+.div61 .b {
+  font-size: 100px;
+}
+
+/*justify-content*/
+.div63 {
+  height: 120px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.div64 {
+  height: 90px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.div65 {
+  height: 120px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+.div66 {
+  height: 140px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+.div67 {
+  height: 140px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.div68 {
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: stretch; /*Não funciona*/
+}
+
+/*Flex-basis*/
+.div69 div{
+  flex-basis: 300px;
+}
+.div70 div:nth-child(2){
+  flex-basis: 600px;
+}
+
+/*flex-grow*/
+.div71 div:nth-child(2){
+  flex-grow: 1;
+}
+.div72 div:nth-child(2), .div72 div:nth-child(3){
+  flex-grow: 1;
+}
+.div73{
+  height: 500px;
+}
+.div73 div:nth-child(2){
+  flex-grow: 1;
+}
+.div73 div:nth-child(3){
+  flex-grow: 2;
+}
+.div74{
+  height: 500px;
+}
+.div74 div{
+  flex-grow: 1;
+}
+.div75{
+  height: 500px;
+}
+.div75 div:nth-child(1){
+  flex-grow: 1;
+}
+.div75 div:nth-child(2){
+  flex-grow: 2;
+}
+.div75 div:nth-child(3){
+  flex-grow: 3;
+}
+.div75 div:nth-child(4){
+  flex-grow: 4;
+}
+
+/*Flex-shrink*/
+.div76 div{
+  height: 100px;
+}
+.div76 div:nth-child(2){
+  flex-shrink: 4;
+}
+.div77 div{
+  height: 200px;
+}
+.div77 div:nth-child(2){
+  flex-shrink: 4;
+}
+.div78 div{
+  height: 200px;
+}
+.div78 div:nth-child(3){
+  flex-shrink: 3;
+}
+.div79{
+  height: 500px;
+}
+.div79 div{
+  height: 200px;
+}
+.div79 div:nth-child(1){
+  flex-shrink: 1;
+}
+.div79 div:nth-child(2){
+  flex-shrink: 2;
+}
+.div79 div:nth-child(3){
+  flex-shrink: 3;
+}
+.div79 div:nth-child(4){
+  flex-shrink: 4;
+}
+
+/*Flex*/
+.div80 div:nth-child(4){
+  flex: 4 4 100px; /* Atalho: grow / shrink / basis */
+}
+
+/*Order*/
+.div81 div:nth-child(2){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 1;
+}
+.div82 div:nth-child(2){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 1;
+}
+.div82 div:nth-child(3){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 1;
+}
+.div83 div:nth-child(2){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 2;
+}
+.div83 div:nth-child(1){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 1;
+}
+.div83 div:nth-child(4){
+  font-size: 50px;
+  font-weight: bolder;
+  order: -2;
+}
+.div83 div:nth-child(3){
+  font-size: 50px;
+  font-weight: bolder;
+  order: -1;
+}
+.div84 div:nth-child(1){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 3;
+}
+.div84 div:nth-child(2){
+  font-size: 50px;
+  font-weight: bolder;
+  order: -1;
+}
+.div84 div:nth-child(3){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 1;
+}
+.div84 div:nth-child(4){
+  font-size: 50px;
+  font-weight: bolder;
+  order: 2;
+}
+/*Align-self*/
+.div85 div:nth-child(1){
+  align-self: flex-end;
+}
+.div85 div:nth-child(2){
+  align-self: center;
+}
+.div85 div:nth-child(3){
+  align-self: flex-start;
+}
+.div85 div:nth-child(4){
+  align-self: stretch;
+}
