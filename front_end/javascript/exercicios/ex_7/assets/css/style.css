@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+:root {
+  --primary-color: rgb(17, 86, 102);
+  --primary-color-darker: rgb(13, 72, 83);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0 0 20px 0;
+}
+
+body {
+  background: var(--primary-color);
+  font-family: 'Open sans', sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  text-align: center;
+}
+.display {
+  font-size: 4em;
+  padding: 10px;
+  margin: 0.3em;
+  color: rgb(13, 72, 83);
+}
+
+.container {
+  font-family: 'Times New Roman', Times, serif;
+  max-width: 640px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 150px / 50%;
+  border: 0.4em solid var(--primary-color-darker);
+  min-width: 500px;
+  background-color: hsl(180, 19%, 84%);
+}
+
+ button {
+  font-family: 'Times New Roman', Times, serif;
+  display: block;
+  padding: 5px;
+  border-radius: 1em;
+  display: inline-block;
+  width: 25%;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background: var(--primary-color-darker);
+  color: white;
+}
+
+.iniciado {
+  color: rgb(0, 119, 255);
+}
+.pausado {
+  color: red;
+}
+.zerado {
+  color: rgb(13, 72, 83);
+}

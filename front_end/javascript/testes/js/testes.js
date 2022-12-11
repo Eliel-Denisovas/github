@@ -1,5 +1,5 @@
 const pessoa = {
-  nome: 'Eliel',
+  nomes: 'Eliel',
   sobrenome: 'Denisovas',
   idade: 37,
   endereco: {
@@ -8,8 +8,12 @@ const pessoa = {
   }
 };
 
-// Atribuição via desestruturação
+const nomes = ['Eliel', 'Fernando', 'Denisovas'];
+const nome = 'Eliel Fernando Denisovas';
 
-const {vizinho = "joao", rua = "qualquer", sobrenome, idade} = pessoa;
 
-console.log(vizinho, rua, sobrenome, idade);
+
+for (let i in pessoa) {
+  console.log(i)
+}
+
