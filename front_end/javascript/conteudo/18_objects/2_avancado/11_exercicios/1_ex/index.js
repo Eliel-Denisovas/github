@@ -3,7 +3,7 @@
   let cpf = "705.484.450-52";
 
   function somaCPF(cpf) {
-
+    
     // Set numbers
     let cpfNumbers = cpf.replace(/\D+/g, "");
     let cpfArray = Array.from(cpfNumbers);
