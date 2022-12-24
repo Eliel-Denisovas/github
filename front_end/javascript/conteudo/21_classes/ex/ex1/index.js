@@ -1,8 +1,19 @@
 class cpfCheck {
   constructor(cpf) {
-    this.onlyNumbers = cpf.replace(/\D+/g, "").slice(0, -2);
-    this.cpfCopy = cpf.replace(/\D+/g, "");
+    this.cpf = cpf;
+    this.cpfCopy = this._cpfCopy();
+    this.onlyNumbers = this._onlyNumbers()
     this.numbers_array = this.numbersArray();
+  }
+  
+  _onlyNumbers() {
+    if (this.cpf === undefined) return '11111111111';
+    return this.cpf.replace(/\D+/g, "").slice(0, -2);
+  }
+
+  _cpfCopy() {
+    if (this.cpf === undefined) return '11111111111';
+    return this.cpf.replace(/\D+/g, "");
   }
 
   cpfCheckStart() {
@@ -57,7 +68,5 @@ class cpfCheck {
   }
 }
 
-const cpf_1 = new cpfCheck("336.177.448-93");
+const cpf_1 = new cpfCheck('336.177.448-93');
 console.log(cpf_1.cpfCheckStart());
-
- 

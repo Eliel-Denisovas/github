@@ -1,28 +1,28 @@
 function f1(callback) {
   setTimeout(function() {
     console.log('Primeira função');
-    if (callback) {callback()}
+    if (callback) callback();
   }, 4000)
   
 }
 function f2(callback) {
   setTimeout(function() {
     console.log('Segunda função');
-    if (callback) {callback()}
+    if (callback) callback();
   }, 3000)
   
 }
 function f3(callback) {
   setTimeout(function() {
     console.log('terceira função');
-    if (callback) {callback()}
+    if (callback) callback();
   }, 2000)
   
 }
 function f4(callback) {
   setTimeout(function() {
     console.log('quarta função');
-    if (callback) {callback()}
+    if (callback) callback();
   }, 1000)
   
 }
