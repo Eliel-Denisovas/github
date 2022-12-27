@@ -1,9 +1,4 @@
 (function () {
-  function ramdom_(min = 0, max = 3) {
-    min *= 1000;
-    max *= 1000;
-    return Math.floor(Math.random() * (max - min) + min);
-  }
 
   function wait(msg, time) {
     return new Promise((resolve, reject) => {
@@ -17,40 +12,19 @@
     });
   }
 
-  /* 
-  wait("fase 1", ramdom_())
-  .then(valor => {
-    console.log(valor);
-    return wait('fase 2', ramdom_());
-  })
-  .then(fase => {
-    console.log(fase);
-    return wait('Fase 3', ramdom_());
-  })
-  .then(fase => {
-    console.log(fase);
-    return fase;
-  })
-  .then(fase => {
-    console.log('Terminamos na fase', fase);
-  })
-  .catch(e => console.log(e));
- */
-
   async function executa() {
 
     try {
-      const fase1 = await wait("fase 1", ramdom_());
-      console.log(fase1);
+      console.log(await wait("fase 1", 3000));
 
-      const fase2 = await wait("fase 2", ramdom_());
-      console.log(fase2);
+      console.log(await wait("fase 2", 2000));
 
-      const fase3 = await wait("fase 3", ramdom_());
-      console.log(fase3);
+      console.log(await wait("fase 3", 1000));
 
-      console.log('Terminamos na fase', fase3);
-    } catch (e) {
+      console.log('Terminamos na fase');
+    } 
+    
+    catch (e) {
       console.log(e);
     }
   }

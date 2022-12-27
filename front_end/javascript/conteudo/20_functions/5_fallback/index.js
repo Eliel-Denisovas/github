@@ -27,13 +27,13 @@ function f4(callback) {
   
 }
 
-/* f1(function() {
-  f2(function() {
+ f1(function() {
+   f2(function() {
     f3(function() {
       f4();
     });
   });
-});  */
+}); 
 
 f1(f1callback);
 
