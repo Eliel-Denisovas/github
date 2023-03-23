@@ -1,0 +1,181 @@
+:root {
+  --corFundo: rgb(4, 36, 41);
+  --space1: 1vh;
+  --space2: 2vh;
+  --space3: 3vh;
+  --space4: 4vh;
+  --space5: 5vh;
+}
+
+/* Paterns */
+
+* {
+  color: rgba(245, 245, 245, 0.2);
+  text-align: center;
+}
+
+.displayFlex {
+  display: flex;
+}
+
+.marginZero {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.flexIten {
+  flex: 1;
+}
+
+/* Elements */
+
+.fundo {
+  background-color: var(--corFundo);
+  height: 98vh;
+  padding: 1vh;
+}
+
+.page {
+  width: 100vh;
+  height: 100%;
+  margin: auto;
+}
+
+header {
+  height: 5vh;
+  margin: 0 0 var(--space2) 0;
+}
+
+nav {
+  height: 100%;
+  width: 100%;
+  justify-content: space-around ;
+}
+
+
+nav img {
+  height: 100%;
+}
+
+.status {
+  justify-content: space-between;
+}
+
+.status div {
+  flex: 1;  
+  margin: var(--space2);
+}
+
+.table1 {
+  padding: var(--space2);
+}
+
+.table1 .flexItem {
+  flex-direction: column;
+}
+
+.table1 .display {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: var(--space1);
+}
+
+.table1 .display div {
+  flex: 1;
+  min-width: 0.5vh;
+  min-height: 0.5vh;
+  border-radius: 1vh;
+  margin: 0.2vh;
+}
+
+.numerator {
+  font-size: 10vh;
+  color: white;
+  margin: 0;
+}
+
+.luckNumber {
+  font-size: 10vh;
+  text-align: right;
+}
+
+.luckContainer item {
+  flex: 1;
+}
+
+.moneyStatus {
+  font-size: 10vh;
+  color: white;
+}
+
+.moneyStatus, .previousStatus {
+  flex: 1;
+}
+
+.divisor, .previousStatus, .luckWord {
+  font-size: 5vh;
+}
+
+.playerStatus {
+  border-radius: 1vh;
+}
+
+.moneyStatus {
+  text-shadow: 1px 1px 2px rgb(255, 255, 255), 0 0 25px rgba(208, 255, 0), 0 0 5px rgb(113, 139, 0),1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  color: yellow;
+}
+
+
+
+/* Efects */
+
+.shadowText {
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue, 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+}
+
+.shadowElement, .playerStatus {
+  box-shadow: 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+}
+
+.redShadow {
+  box-shadow: 1px 1px 2px black, 0 0 25px rgb(255, 0, 0), 0 0 5px rgb(139, 0, 0), 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  background-color: rgb(255, 68, 21);
+}
+.greenShadow {
+  box-shadow: 1px 1px 2px black, 0 0 25px rgb(0, 204, 255), 0 0 5px rgb(0, 139, 46), 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  background-color: rgb(0, 255, 170);
+}
+.greenTextShadow {
+  text-shadow: 1px 1px 2px black, 0 0 25px rgb(0, 204, 255), 0 0 5px rgb(0, 139, 46), 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  color: rgb(0, 255, 170);
+}
+
+.glass {
+  background-image: linear-gradient(135deg, hsla(207, 100%, 50%, 0.1), hsla(0, 0%, 0%, 0.281));  border-radius: 1vh;
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+
+.shadowBox {
+  box-shadow: 1px 1px 2px black, 0 0 25px rgb(0, 162, 255), 0 0 5px rgb(0, 111, 139), 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+}
+
+
+
+/* Outros */
+
+.automaticFontParent {
+  display: flex; /* Usado para centralizar verticalmente o texto */
+  align-items: center; /* Centraliza verticalmente o texto */
+  justify-content: center; /* Centraliza horizontalmente o texto */
+} 
+.automaticFontChild {
+  font-size: 5vw; /* Tamanho inicial da fonte */
+  max-width: 100%; /* Largura máxima do texto */
+  max-height: 100%; /* Altura máxima do texto */
+  overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites da div */
+  text-align: center; /* Centraliza horizontalmente o texto */
+  word-wrap: break-word; /* Evita que o texto quebre a linha */
+} 
