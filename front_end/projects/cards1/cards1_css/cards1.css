@@ -4,7 +4,8 @@
   --space2: 2vh;
   --space3: 3vh;
   --space4: 4vh;
-  --space5: 5vh;
+  --space5: 9vh;
+  --maxFontSize1: 5vh
 }
 
 /* Paterns */
@@ -14,20 +15,36 @@
   text-align: center;
 }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
 .displayFlex {
   display: flex;
 }
 
 .marginZero {
-  display: inline-block;
   margin: 0;
   padding: 0;
   width: 100%;
+  height: 100%;
 }
 
 .flexIten {
   flex: 1;
 }
+
+.automaticFontParent {
+  display: flex; /* Usado para centralizar verticalmente o texto */
+  align-items: center; /* Centraliza verticalmente o texto */
+  justify-content: center; /* Centraliza horizontalmente o texto */
+} 
+.automaticFontChild {
+  overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites da div */
+  text-align: center; /* Centraliza horizontalmente o texto */
+  word-wrap:break-word; /* Evita que o texto quebre a linha */
+} 
 
 /* Elements */
 
@@ -60,16 +77,16 @@ nav img {
 }
 
 .status {
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .status div {
   flex: 1;  
-  margin: var(--space2);
+  margin: var(--space1);
 }
 
 .table1 {
-  padding: var(--space2);
+  padding: var(--space1);
 }
 
 .table1 .flexItem {
@@ -91,44 +108,20 @@ nav img {
   margin: 0.2vh;
 }
 
-.numerator {
-  font-size: 10vh;
-  color: white;
-  margin: 0;
+#containerCards {
+  flex-direction: row;
+  width: 100%;height: 100%;
 }
-
-.luckNumber {
-  font-size: 10vh;
-  text-align: right;
+#containerCards div {
+  width: 100%;
+  height: 100%;
+  margin: var(--space1);
+  padding: var(--space5);
 }
-
-.luckContainer item {
-  flex: 1;
+#containerCards div img {
+  width: 100%;
+  height: 100%;
 }
-
-.moneyStatus {
-  font-size: 10vh;
-  color: white;
-}
-
-.moneyStatus, .previousStatus {
-  flex: 1;
-}
-
-.divisor, .previousStatus, .luckWord {
-  font-size: 5vh;
-}
-
-.playerStatus {
-  border-radius: 1vh;
-}
-
-.moneyStatus {
-  text-shadow: 1px 1px 2px rgb(255, 255, 255), 0 0 25px rgba(208, 255, 0), 0 0 5px rgb(113, 139, 0),1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
-  color: yellow;
-}
-
-
 
 /* Efects */
 
@@ -154,7 +147,7 @@ nav img {
 }
 
 .glass {
-  background-image: linear-gradient(135deg, hsla(207, 100%, 50%, 0.1), hsla(0, 0%, 0%, 0.281));  border-radius: 1vh;
+  background-image: linear-gradient(135deg, hsla(207, 100%, 50%, 0.1), hsla(0, 0%, 0%, 0.281));  border-radius: var(--space2);
   border: 1px solid hsla(0, 0%, 100%, 0.1);
 }
 
@@ -162,20 +155,29 @@ nav img {
   box-shadow: 1px 1px 2px black, 0 0 25px rgb(0, 162, 255), 0 0 5px rgb(0, 111, 139), 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
 }
 
+.whiteLight {
+  color: white;
+}
 
+.yellowLight {
+  text-shadow: 1px 1px 2px rgb(255, 255, 255), 0 0 25px rgba(208, 255, 0), 0 0 5px rgb(113, 139, 0),1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  color: yellow;
+}
 
-/* Outros */
+.red {
+  background-color: red;
+}
 
-.automaticFontParent {
-  display: flex; /* Usado para centralizar verticalmente o texto */
-  align-items: center; /* Centraliza verticalmente o texto */
-  justify-content: center; /* Centraliza horizontalmente o texto */
-} 
-.automaticFontChild {
-  font-size: 5vw; /* Tamanho inicial da fonte */
+#numberFraction, #numberPercentual, #money, #luckWord {
+  font-size: 1vh;
   max-width: 100%; /* Largura máxima do texto */
   max-height: 100%; /* Altura máxima do texto */
-  overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites da div */
-  text-align: center; /* Centraliza horizontalmente o texto */
-  word-wrap: break-word; /* Evita que o texto quebre a linha */
-} 
+}
+
+#divisorFraction, #previousStatus {
+  font-size: 5vh;
+  max-width: 100%; /* Largura máxima do texto */
+  max-height: 100%; /* Altura máxima do texto */
+}
+
+
