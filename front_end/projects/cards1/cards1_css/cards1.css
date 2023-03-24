@@ -71,7 +71,6 @@ nav {
   justify-content: space-around ;
 }
 
-
 nav img {
   height: 100%;
 }
@@ -83,6 +82,8 @@ nav img {
 .status div {
   flex: 1;  
   margin: var(--space1);
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .table1 {
@@ -110,17 +111,33 @@ nav img {
 
 #containerCards {
   flex-direction: row;
-  width: 100%;height: 100%;
+  padding: 3vh;
+  margin: 2vh;
 }
+
 #containerCards div {
-  width: 100%;
-  height: 100%;
-  margin: var(--space1);
-  padding: var(--space5);
+  margin: var(--space3);
+  padding: var(--space3);
 }
 #containerCards div img {
   width: 100%;
   height: 100%;
+}
+
+#numberFraction, #numberPercentual, #money, #luckWord {
+  font-size: 10vh;
+  max-width: 100%; /* Largura máxima do texto */
+  max-height: 100%; /* Altura máxima do texto */
+}
+
+#divisorFraction, #previousStatus {
+  font-size: 5vh;
+  max-width: 100%; /* Largura máxima do texto */
+  max-height: 100%; /* Altura máxima do texto */
+}
+
+.leftDiv, .rightDiv {
+  flex-direction: row;
 }
 
 /* Efects */
@@ -167,17 +184,3 @@ nav img {
 .red {
   background-color: red;
 }
-
-#numberFraction, #numberPercentual, #money, #luckWord {
-  font-size: 1vh;
-  max-width: 100%; /* Largura máxima do texto */
-  max-height: 100%; /* Altura máxima do texto */
-}
-
-#divisorFraction, #previousStatus {
-  font-size: 5vh;
-  max-width: 100%; /* Largura máxima do texto */
-  max-height: 100%; /* Altura máxima do texto */
-}
-
-
