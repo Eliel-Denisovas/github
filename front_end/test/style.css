@@ -1,0 +1,18 @@
+* {
+  border: 1px solid red;
+}
+
+nav {
+  background-color: yellow;
+  display: flex;
+}
+
+body ul {
+  display: flex;
+  border: 5px solid green;
+}
+
+body ul li {
+  flex: 1
+}
+

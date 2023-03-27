@@ -1,5 +1,5 @@
 :root {
-  --corFundo: rgb(4, 36, 41);
+  --corFundo: rgb(0, 60, 68);
   --space1: 1vh;
   --space2: 2vh;
   --space3: 3vh;
@@ -22,13 +22,7 @@ p {
 
 .displayFlex {
   display: flex;
-}
-
-.marginZero {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+  justify-content: space-between;
 }
 
 .flexIten {
@@ -45,6 +39,17 @@ p {
   text-align: center; /* Centraliza horizontalmente o texto */
   word-wrap:break-word; /* Evita que o texto quebre a linha */
 } 
+
+.flexRow {
+  flex-direction: row
+}
+
+.marginZero {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
 
 /* Elements */
 
@@ -124,13 +129,13 @@ nav img {
   height: 100%;
 }
 
-#numberFraction, #numberPercentual, #money, #luckWord {
+#numberFraction, #numberPercentual, #money {
   font-size: 10vh;
   max-width: 100%; /* Largura máxima do texto */
   max-height: 100%; /* Altura máxima do texto */
 }
 
-#divisorFraction, #previousStatus {
+#divisorFraction, #previousStatus, #luckWord {
   font-size: 5vh;
   max-width: 100%; /* Largura máxima do texto */
   max-height: 100%; /* Altura máxima do texto */
@@ -146,8 +151,8 @@ nav img {
   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue, 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
 }
 
-.shadowElement, .playerStatus {
-  box-shadow: 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+.shadowElement {
+
 }
 
 .redShadow {
@@ -164,7 +169,8 @@ nav img {
 }
 
 .glass {
-  background-image: linear-gradient(135deg, hsla(207, 100%, 50%, 0.1), hsla(0, 0%, 0%, 0.281));  border-radius: var(--space2);
+  background-image: linear-gradient(315deg, hsla(207, 100%, 50%, 0.05), hsla(0, 0%, 0%, 0.281));  border-radius: var(--space2);
+  box-shadow: 1.5vh 1.5vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   border: 1px solid hsla(0, 0%, 100%, 0.1);
 }
 
@@ -183,4 +189,12 @@ nav img {
 
 .red {
   background-color: red;
+  border: 1px solid blue;
+  color: black;
+}
+
+.green {
+  background-color: rgb(0, 255, 0);
+  border: 1px solid rgb(255, 0, 179);
+  color: black;
 }
