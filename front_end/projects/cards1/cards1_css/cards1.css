@@ -30,15 +30,22 @@ p {
 }
 
 .automaticFontParent {
-  display: flex; /* Usado para centralizar verticalmente o texto */
-  align-items: center; /* Centraliza verticalmente o texto */
-  justify-content: center; /* Centraliza horizontalmente o texto */
-} 
+  display: flex;
+  /* Usado para centralizar verticalmente o texto */
+  align-items: center;
+  /* Centraliza verticalmente o texto */
+  justify-content: center;
+  /* Centraliza horizontalmente o texto */
+}
+
 .automaticFontChild {
-  overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites da div */
-  text-align: center; /* Centraliza horizontalmente o texto */
-  word-wrap:break-word; /* Evita que o texto quebre a linha */
-} 
+  overflow: hidden;
+  /* Esconde qualquer conteúdo que ultrapasse os limites da div */
+  text-align: center;
+  /* Centraliza horizontalmente o texto */
+  word-wrap: break-word;
+  /* Evita que o texto quebre a linha */
+}
 
 .flexRow {
   flex-direction: row
@@ -73,7 +80,7 @@ header {
 nav {
   height: 100%;
   width: 100%;
-  justify-content: space-around ;
+  justify-content: space-around;
 }
 
 nav img {
@@ -85,7 +92,7 @@ nav img {
 }
 
 .status div {
-  flex: 1;  
+  flex: 1;
   margin: var(--space1);
   flex-direction: row;
   flex-wrap: nowrap;
@@ -124,41 +131,52 @@ nav img {
   margin: var(--space3);
   padding: var(--space3);
 }
+
 #containerCards div img {
   width: 100%;
   height: 100%;
 }
 
-#numberFraction, #numberPercentual, #money {
+#numberFraction,
+#numberPercentual,
+#money {
   font-size: 10vh;
-  max-width: 100%; /* Largura máxima do texto */
-  max-height: 100%; /* Altura máxima do texto */
+  max-width: 100%;
+  /* Largura máxima do texto */
+  max-height: 100%;
+  /* Altura máxima do texto */
 }
 
-#divisorFraction, #previousStatus, #luckWord {
+#divisorFraction,
+#previousStatus,
+#luckWord {
   font-size: 5vh;
-  max-width: 100%; /* Largura máxima do texto */
-  max-height: 100%; /* Altura máxima do texto */
+  max-width: 100%;
+  /* Largura máxima do texto */
+  max-height: 100%;
+  /* Altura máxima do texto */
 }
 
-.leftDiv, .rightDiv {
+.leftDiv,
+.rightDiv {
   flex-direction: row;
 }
 
 /* Efects */
 
 .shadowText {
-  text-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue,3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  text-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue, 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   color: rgb(196, 255, 255);
 }
 
 .glass {
-  background-image: linear-gradient(315deg, hsla(182, 100%, 50%,  0.05), hsla(0, 0%, 0%, 0.25));  border-radius: var(--space2);
+  background-image: linear-gradient(315deg, hsla(182, 100%, 50%, 0.05), hsla(0, 0%, 0%, 0.25));
+  border-radius: var(--space2);
   box-shadow: 3vh 3vh 3vh hsl(0, 0%, 0%, 0.7);
   border-bottom: 0.1vh solid hsla(0, 0%, 100%, 0.2);
   border-right: 0.1vh solid hsla(0, 0%, 100%, 0.2);
   border-top: 0.1vh solid hsla(0, 0%, 0%, 0.5);
-  border-left  : 0.1vh solid hsla(0, 0%, 0%, 0.5);
+  border-left: 0.1vh solid hsla(0, 0%, 0%, 0.5);
 }
 
 .redLight {
@@ -172,13 +190,46 @@ nav img {
 }
 
 .greenLightText {
-  text-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(0, 204, 255), 0 0 3vh rgb(0, 139, 46),3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  text-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(0, 204, 255), 0 0 3vh rgb(0, 139, 46), 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   color: rgb(0, 255, 170);
 }
 
 .yellowLightText {
-  text-shadow: 0 0 0.1vh rgb(255, 255, 255), 0 0 2vh rgba(208, 255, 0), 0 0 1vh rgb(113, 139, 0),1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  text-shadow: 0 0 0.1vh rgb(255, 255, 255), 0 0 2vh rgba(208, 255, 0), 0 0 1vh rgb(113, 139, 0), 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
 }
+
+/*Hovers*/
+
+.glassHover:hover {
+  border: 0.5vh solid hsl(214, 100%, 74%, 0.8);
+  background-color: hsl(240, 100%, 50%, 0.4);
+  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue, 3vh 3vh 3vh black, 0 0 1vh;
+  transform: scale(1.1);
+}
+
+.glassHover {
+  transition: all 0.5s ease;
+}
+
+/*Efects*/
+
+.correctChoice {
+  border: 0.5vh solid rgb(0, 255, 191);
+
+  background-color: rgb(0, 255, 170, 0.15);
+  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(0, 255, 191), 0 0 3vh rgb(0, 139, 127), 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  transition: all 1.5s ease;
+}
+
+.wrongChoice {
+
+  border: 0.5vh solid rgb(255, 0, 0);
+  background-color: hsl(0, 100%, 50%, 0.3);
+  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(255, 0, 0), 0 0 3vh rgb(139, 0, 0), 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  transition: all 1.5s ease;
+}
+
+/*Tools*/
 
 .red {
   background-color: red;
@@ -191,40 +242,3 @@ nav img {
   border: 0.1vh solid rgb(255, 0, 179);
   color: black;
 }
-
-/*Hovers*/
-
-.glassHover:hover {
-  border: 0.5vh solid hsl(214, 100%, 74%, 0.8);
-  background-color: hsl(240, 100%, 50%, 0.4); 
-  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue,3vh 3vh 3vh black, 0 0 1vh;
-  transform: scale(1.15); 
-}
-.glassHover { transition: all 0.5s ease; }
-
-.glassHoverReverse:hover {
-  border: 0.5vh solid hsl(214, 100%, 74%, 0.8);
-  background-color: hsl(240, 100%, 50%, 0.4); 
-  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue,3vh 3vh 3vh black, 0 0 1vh;
-  transform: scale(1);
-}
-.glassHoverReverse { transition: all 0.5s ease; }
-
-/*Efects*/
-
-.correctChoice {
-  border: 0.5vh solid hsl(214, 100%, 74%, 0.8);
-  background-color: hsl(240, 100%, 50%, 0.15); 
-  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue,3vh 3vh 3vh black, 0 0 1vh;
-}
-
-.correctChoice {
-  transition: all 1.5s ease;
-}
-
-.wrongChoice {
-  border: 0.5vh solid hsla(0, 100%, 74%, 0.8);
-  background-color: hsla(0, 100%, 50%, 0.2); 
-  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(255, 0, 0), 0 0 3vh rgb(139, 0, 0),3vh 3vh 3vh black, 0 0 1vh;
-}
-
