@@ -1,113 +1,142 @@
-// Efects
-// Error red light
-const cardLeft = document.getElementById("cardLeft");
-const cardRight = document.getElementById("cardRight");
-const roundDisplay = document.getElementById("numberFraction");
-const luckDisplay = document.getElementById("divisorFraction");
-const moneyDisplay = document.getElementById("numberPercentual");
+(function () {
+  function activeCardLeft () {
+    alert('Olá');
 
-let userCard = undefined;
-let computerCard = undefined;
-let roundStatus = true;
+    userCard = 0;
 
-let currentRound = 1;
-let rounds = 0;
-const roundValue = currentMoney / rounds;
+    if (roundStatus) {
+      correctChoice()
+    } else {
+      wrongChoice()
+    };
 
-let luck = 0.5;
-const arrayLuck = [];
+    roundFunctions();
+    
+  };
+  const cardLeft = document.getElementById("cardLeft");
+  const cardRight = document.getElementById("cardRight");
 
-let currentMoney = 0;
+  const numberFractionDisplay = document.getElementById("numberFraction");
+  const divisorFractionDisplay = document.getElementById("divisorFraction");
+  const numberPercentualDisplay = document.getElementById("numberPercentual");
+  const moneyDisplay = document.getElementById("money");
+  const previousStatusDisplay = document.getElementById("previousStatus");
 
-fun
+ //const startButton = document.getElementById("startButton");
 
-function checkCards(userCard, computerCard) {
-  if (userCard === computerCard) {
-    roundStatus = true;
-  } else {
-    roundStatus = false;
+/* 
+  startButton.addEventListener("click", function () {
+  generateComputerCardsArray();
+  });
+   */
+
+  let computerCardsArray = [];
+  let userCard = 0;
+  let computerCard = 0;
+  let roundStatus = true;
+  let currentRound = 5;
+  let rounds = 11;
+
+  let luck = 0.75;
+  let arrayLuck = [];
+  let UserCardsArray = [];
+  let currentMoney = 530;
+  const roundValue = currentMoney / rounds;
+
+  function insertData() {
+    numberFractionDisplay.textContent = currentRound;
+    divisorFractionDisplay.textContent = rounds;
+    numberPercentualDisplay.textContent = luck;
+    moneyDisplay.textContent = currentMoney;
+    previousStatusDisplay.textContent = `${currentMoney} | ${roundValue}`;
   };
 
-};
+  insertData();
 
-function checkRound () {
-  roundValue += 1
-};
+  function generateComputerCardsArray() {
+    let i = 0;
+    while (i < rounds) {
+      computerCard = Math.floor(Math.random() * 2);
+      computerCardsArray.push(computerCard);
+      i++;
+    };
+  };
 
-/* function checkLuck () {
-  arrayLuck.filter(function(currentValue, index, arr) {
+  function checkCards(userCard, computerCard) {
+    if (userCard === computerCard) {
+      roundStatus = true;
+    } else {
+      roundStatus = false;
+    };
+  };
 
-  }
+  function checkRound() {
+    currentRound += 1;
+  };
 
+  function checkLuck() {
+    function rightChoicesNumber() {
+      let arrayRightChoices = arrayLuck.filter(function (currentValue) {
+        return currentValue === 1;
+      });
+
+      return arrayRightChoices.length;
+    };
+
+    let checkLuck = rightChoicesNumber() / arrayLuck.length;
+    return checkLuck;
+  };
+
+  function checkMoney(roundStatus) {
+    if (roundStatus) {
+      currentMoney += roundValue;
+    } else {
+      currentMoney -= roundValue;
+    };
+  };
+
+  function glassNormalSize() {
+    let element = document.getElementById("cardLeft");
+    element.classList.remove("glassHover");
+    let element2 = document.getElementById("cardRight");
+    element2.classList.remove("glassHover");
+  };
+
+  function correctChoice() {
+    let element = document.getElementById("containerCards");
+    element.classList.add("correctChoice");
+    setTimeout(glassNormalSize, 1500);
+  };
+
+  function wrongChoice() {
+    let element = document.getElementById("containerCards");
+    element.classList.add("wrongChoice");
+    setTimeout(glassNormalSize, 1500);
+  };
+
+  function roundFunctions() {
+    checkCards(userCard, computerRamdomCardNumber(0, 1));
+    checkRound();
+    checkLuck();
+    checkMoney(roundStatus);
+    checkLuck();
+    insertData();
+  };
+
+
+
+
+
+  cardRight.addEventListener("click", function () {
+    userCard = 1;
+
+    if (roundStatus) {
+      correctChoice();
+    } else {
+      wrongChoice();
+    }
+
+    roundFunctions();
+  });
   
-
-}; */
-
-function checkMoney(roundStatus) {
-  if (roundStatus) {
-    currentMoney += roundValue;
-  } else {
-    currentMoney -= roundValue;
-  };
-};
-
-function correctChoice() {
-  let element = document.getElementById("containerCards");
-  element.classList.add("correctChoice");
-  setTimeout(glassNormalSize, 0);
-};
-
-function wrongChoice() {
-  let element = document.getElementById("containerCards");
-  element.classList.add("wrongChoice");
-  setTimeout(glassNormalSize, 0);
-};
-
-function glassNormalSize() {
-  let element = document.getElementById("cardLeft");
-  element.classList.remove("glassHover");
-  let element2 = document.getElementById("cardRight");
-  element2.classList.remove("glassHover");
-};
-
-function table1Efect (){
-  if (roundStatus) {
-    correctChoice();
-    glassNormalSize();
-  } else {
-    wrongChoice();
-    glassNormalSize();
-  };
-}
-
-function insertData() {
-  roundDisplay.innerText = currentRound;
-  luckDisplay.innerText = luck;
-  moneyDisplay.innerText = currentMoney;
-};
-
-function roundFunctions () {
-  checkCards();
-  checkMoney();
-  checkLuck();
-
-};
-
-const ages = [32, 33, 12, 40];
-
-function checkAge(age) {
-  return age > document.getElementById("ageToCheck").value;
-}
-
-function myFunction() {
-  document.getElementById("demo").innerHTML = ages.filter(checkAge);
-}
-
-cardLeft.addEventListener('click', function() {
-  userCard = 0;
-
-});
-
-cardRight.addEventListener('click', function() {
-  userCard = 1;
-});
+})();
