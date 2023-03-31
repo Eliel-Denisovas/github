@@ -1,18 +1,4 @@
 (function () {
-  function activeCardLeft () {
-    alert('Olá');
-
-    userCard = 0;
-
-    if (roundStatus) {
-      correctChoice()
-    } else {
-      wrongChoice()
-    };
-
-    roundFunctions();
-    
-  };
   const cardLeft = document.getElementById("cardLeft");
   const cardRight = document.getElementById("cardRight");
 
@@ -22,9 +8,9 @@
   const moneyDisplay = document.getElementById("money");
   const previousStatusDisplay = document.getElementById("previousStatus");
 
- //const startButton = document.getElementById("startButton");
+  //const startButton = document.getElementById("startButton");
 
-/* 
+  /* 
   startButton.addEventListener("click", function () {
   generateComputerCardsArray();
   });
@@ -33,15 +19,15 @@
   let computerCardsArray = [];
   let userCard = 0;
   let computerCard = 0;
-  let roundStatus = true;
+  let roundStatus = false;
   let currentRound = 5;
   let rounds = 11;
 
   let luck = 0.75;
   let arrayLuck = [];
   let UserCardsArray = [];
-  let currentMoney = 530;
-  const roundValue = currentMoney / rounds;
+  let currentMoney = (530).toFixed(2);
+  const roundValue = (currentMoney / rounds).toFixed(2);
 
   function insertData() {
     numberFractionDisplay.textContent = currentRound;
@@ -95,23 +81,52 @@
     };
   };
 
-  function glassNormalSize() {
+  function rejectedCardLeft() {
     let element = document.getElementById("cardLeft");
-    element.classList.remove("glassHover");
+    element.classList.add("rejectedCardLeft");
+
+    let element2 = document.getElementById("cardLeft");
+    element2.classList.remove("glassHover");
+  };
+
+  function acceptCardLeft() {
+    let element = document.getElementById("cardLeft");
+    element.classList.add("acceptCardLeft");
+
+    let element2 = document.getElementById("cardLeft");
+    element2.classList.remove("glassHover");
+  };
+
+  function rejectedCardRight() {
+    let element = document.getElementById("cardRight");
+    element.classList.add("rejectedCardRight");
+
     let element2 = document.getElementById("cardRight");
     element2.classList.remove("glassHover");
+  };
+
+  function acceptedCardRight() {
+    let element = document.getElementById("cardRight");
+    element.classList.add("acceptedCardRight1");
+    element.classList.add("acceptedCardRight2");
+
+    let element2 = document.getElementById("cardRight");
+    element2.classList.remove("glassHover");
+  };
+
+  function choice() {
+    let element = document.getElementById("containerCards");
+    element.classList.add("choice");
   };
 
   function correctChoice() {
     let element = document.getElementById("containerCards");
     element.classList.add("correctChoice");
-    setTimeout(glassNormalSize, 1500);
   };
 
   function wrongChoice() {
     let element = document.getElementById("containerCards");
     element.classList.add("wrongChoice");
-    setTimeout(glassNormalSize, 1500);
   };
 
   function roundFunctions() {
@@ -123,20 +138,14 @@
     insertData();
   };
 
-
-
-
-
   cardRight.addEventListener("click", function () {
     userCard = 1;
+    choice();
+    rejectedCardLeft();
+    acceptedCardRight();
 
-    if (roundStatus) {
-      correctChoice();
-    } else {
-      wrongChoice();
-    }
+   //roundFunctions();
 
-    roundFunctions();
   });
-  
+
 })();
