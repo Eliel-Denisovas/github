@@ -13,6 +13,7 @@
 * {
   color: rgba(245, 245, 245, 0.2);
   text-align: center;
+  box-sizing: border-box;
 }
 
 p {
@@ -162,7 +163,7 @@ nav img {
   flex-direction: row;
 }
 
-/* Efects */
+/* Light Efects */
 
 .shadowText {
   text-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue, 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
@@ -214,32 +215,30 @@ nav img {
 /*Efects*/
 
 .rejectedCardLeft {
-  background-image: linear-gradient(315deg, hsla(182, 100%, 50%, 0.05), hsla(0, 0%, 0%, 0.25));
-  border-radius: var(--space2);
-  box-shadow: 3vh 3vh 3vh hsl(0, 0%, 0%, 0.7);
-  border-bottom: 0.1vh solid hsla(0, 0%, 100%, 0.2);
-  border-right: 0.1vh solid hsla(0, 0%, 100%, 0.2);
-  border-top: 0.1vh solid hsla(0, 0%, 0%, 0.5);
-  border-left: 0.1vh solid hsla(0, 0%, 0%, 0.5);
-  transform: scale(1);
-  transform:translate(-150vh);
-  transition: all 2s ease;
+  transform: translate(calc(50% + 4vh))scale(1);
+  transition: all 1s ease 0s;
 }
 
-.acceptedCardRight1 {
-  border: 0.5vh solid hsl(214, 100%, 74%, 0.8);
-  background-color: hsl(240, 100%, 50%, 0.4);
-  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue, 3vh 3vh 3vh black, 0 0 1vh;
-  transform: translate(calc(-50% + -2vh)) scale(1.5);
-  transition: all 1s ease-in-out 0s;
+.acceptedCardRight {
+  z-index: 1;
+  transform: translate(calc(-50% + -2vh)) scale(1.2);
+  transition: all 1s ease 0s;
+}
+.acceptedCardRightBack {
+  z-index: 1;
+  transform: translate(100%) scale(1);
+  transition: all 1s ease 1s;
 }
 
-.acceptedCardRight2 {
-  border: 0.5vh solid hsl(214, 100%, 74%, 0.8);
-  background-color: hsl(240, 100%, 50%, 0.4);
-  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue, 3vh 3vh 3vh black, 0 0 1vh;
-  transform: translate(-100%);
-  transition: all 1s ease 1.5s;
+.rejectedCardRight {
+  transform: translate(calc(-50% + -4vh))scale(1);
+  transition: all 1s ease 0s;
+}
+
+.acceptedCardLeft {
+  z-index: 1;
+  transform: translate(calc(50% + 2vh)) scale(1.2);
+  transition: all 1s ease 0s;
 }
 
 .choice {

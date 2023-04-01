@@ -81,6 +81,11 @@
     };
   };
 
+  function choice() {
+    let element = document.getElementById("containerCards");
+    element.classList.add("choice");
+  };
+
   function rejectedCardLeft() {
     let element = document.getElementById("cardLeft");
     element.classList.add("rejectedCardLeft");
@@ -89,14 +94,14 @@
     element2.classList.remove("glassHover");
   };
 
-  function acceptCardLeft() {
+  function acceptedCardLeft() {
     let element = document.getElementById("cardLeft");
-    element.classList.add("acceptCardLeft");
+    element.classList.add("acceptedCardLeft");
 
     let element2 = document.getElementById("cardLeft");
     element2.classList.remove("glassHover");
   };
-
+  
   function rejectedCardRight() {
     let element = document.getElementById("cardRight");
     element.classList.add("rejectedCardRight");
@@ -107,16 +112,13 @@
 
   function acceptedCardRight() {
     let element = document.getElementById("cardRight");
-    element.classList.add("acceptedCardRight1");
-    element.classList.add("acceptedCardRight2");
-
+    element.classList.add("acceptedCardRight");
+/* 
     let element2 = document.getElementById("cardRight");
-    element2.classList.remove("glassHover");
-  };
-
-  function choice() {
-    let element = document.getElementById("containerCards");
-    element.classList.add("choice");
+    element2.classList.add("acceptedCardRightBack");
+ */
+    let element3 = document.getElementById("cardRight");
+    element3.classList.remove("glassHover");
   };
 
   function correctChoice() {
@@ -143,6 +145,13 @@
     choice();
     rejectedCardLeft();
     acceptedCardRight();
+  });
+
+  cardLeft.addEventListener("click", function () {
+    userCard = 0;
+    choice();
+    rejectedCardRight();
+    acceptedCardLeft();
 
    //roundFunctions();
 
