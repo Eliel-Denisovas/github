@@ -286,16 +286,16 @@ nav img {
 
 .correctChoice {
   border: 0.5vh solid rgb(0, 255, 191);
-  background-color: rgb(0, 255, 170, 0.15);
+  background-color: rgb(0, 255, 170, 0.4);
   box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(0, 255, 191), 0 0 3vh rgb(0, 139, 127), 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
-  transition: all 1.5s ease;
+  transition: all 0.5s ease;
 }
 
 .wrongChoice {
   border: 0.5vh solid rgb(255, 0, 0);
-  background-color: hsl(0, 100%, 50%, 0.3);
+  background-color: hsl(0, 100%, 50%, 0.4);
   box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(255, 0, 0), 0 0 3vh rgb(139, 0, 0), 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
-  transition: all 1.5s ease;
+  transition: all 0.5s ease;
 }
 
 /*Tools*/
