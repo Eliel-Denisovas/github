@@ -93,15 +93,7 @@
     let element2 = document.getElementById("cardLeft");
     element2.classList.remove("glassHover");
   };
-
-  function acceptedCardLeft() {
-    let element = document.getElementById("cardLeft");
-    element.classList.add("acceptedCardLeft");
-
-    let element2 = document.getElementById("cardLeft");
-    element2.classList.remove("glassHover");
-  };
-  
+    
   function rejectedCardRight() {
     let element = document.getElementById("cardRight");
     element.classList.add("rejectedCardRight");
@@ -110,13 +102,18 @@
     element2.classList.remove("glassHover");
   };
 
+  function acceptedCardLeft() {
+    let element = document.getElementById("cardLeft");
+    element.classList.add("acceptedCardLeft");
+
+    let element2 = document.getElementById("cardLeft");
+    element2.classList.remove("glassHover");
+  };
+
   function acceptedCardRight() {
     let element = document.getElementById("cardRight");
     element.classList.add("acceptedCardRight");
-/* 
-    let element2 = document.getElementById("cardRight");
-    element2.classList.add("acceptedCardRightBack");
- */
+
     let element3 = document.getElementById("cardRight");
     element3.classList.remove("glassHover");
   };
@@ -145,6 +142,34 @@
     choice();
     rejectedCardLeft();
     acceptedCardRight();
+
+    setTimeout(() => {
+      let element = document.getElementById("cardRight");
+      element.classList.remove("acceptedCardRight")
+      element.classList.add("acceptedCardRightBack");  
+    }, 500);
+
+    setTimeout(() => {
+      let element = document.getElementById("cardLeft");
+      element.classList.remove("rejectedCardLeft")
+      document.getElementById("cardLeftImage").src="../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+      element.classList.add("rejectedCardLeftBack");  
+    }, 500);
+
+    setTimeout(() => {
+      let element = document.getElementById("cardLeft");
+     
+      element.classList.add("rejectedCardLeftTurn");  
+    }, 800);
+    
+    setTimeout(() => {
+      document.getElementById("cardLeftImage").src="../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
+
+     let element = document.getElementById("cardLeft");
+     element.classList.add("rejectedCardLeftTurn2")
+
+    }, 1350);
+
   });
 
   cardLeft.addEventListener("click", function () {
@@ -153,8 +178,33 @@
     rejectedCardRight();
     acceptedCardLeft();
 
-   //roundFunctions();
+    setTimeout(() => {
+      let element = document.getElementById("cardLeft");
+      element.classList.remove("acceptedCardLeft")
+      element.classList.add("acceptedCardLeftBack");  
+    }, 500);
 
+    setTimeout(() => {
+      let element = document.getElementById("cardRight");
+      element.classList.remove("rejectedCardRight")
+      document.getElementById("cardRightImage").src="../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+      element.classList.add("rejectedCardRightBack");  
+    }, 500);
+    
+    setTimeout(() => {
+      let element = document.getElementById("cardRight");
+     
+      element.classList.add("rejectedCardRightTurn");  
+    }, 800);
+    
+    setTimeout(() => {
+      document.getElementById("cardRightImage").src="../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
+
+     let element = document.getElementById("cardRight");
+     element.classList.add("rejectedCardRightTurn2")
+
+    }, 1350);
+    
   });
 
 })();

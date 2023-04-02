@@ -214,33 +214,6 @@ nav img {
 
 /*Efects*/
 
-.rejectedCardLeft {
-  transform: translate(calc(50% + 4vh))scale(1);
-  transition: all 1s ease 0s;
-}
-
-.acceptedCardRight {
-  z-index: 1;
-  transform: translate(calc(-50% + -2vh)) scale(1.2);
-  transition: all 1s ease 0s;
-}
-.acceptedCardRightBack {
-  z-index: 1;
-  transform: translate(100%) scale(1);
-  transition: all 1s ease 1s;
-}
-
-.rejectedCardRight {
-  transform: translate(calc(-50% + -4vh))scale(1);
-  transition: all 1s ease 0s;
-}
-
-.acceptedCardLeft {
-  z-index: 1;
-  transform: translate(calc(50% + 2vh)) scale(1.2);
-  transition: all 1s ease 0s;
-}
-
 .choice {
   border: 0.5vh solid hsl(214, 100%, 74%, 0.8);
   background-color: hsl(240, 100%, 50%, 0.4);
@@ -248,9 +221,71 @@ nav img {
   transition: all 1s ease;
 }
 
+.acceptedCardRight {
+  z-index: 1;
+  transform: translate(calc(-50% + -2vh)) scale(1.3);
+  transition: all 0.5s ease 0s;
+}
+
+.acceptedCardRightBack {
+  z-index: 1;
+  transform: translate(0%) scale(1);
+  transition: all 1s ease;
+}
+
+.acceptedCardLeft {
+  z-index: 1;
+  transform: translate(calc(50% + 2vh)) scale(1.3);
+  transition: all 0.5s ease 0s;
+}
+
+.acceptedCardLeftBack {
+  z-index: 1;
+  transform: translate(0%) scale(1);
+  transition: all 1s ease;
+}
+
+.rejectedCardRight {
+  transform: translate(calc(-50% + -5vh))scale(0.8)  perspective(30vh);
+  transition: all 0.5s ease 0s;
+}
+
+.rejectedCardRightBack {
+  transform: translate(0%) scale(1.2);
+  transition: all 1s ease;
+}
+.rejectedCardLeft {
+  transform: translate(calc(50% + 5vh))scale(0.8)  perspective(30vh);
+  transition: all 0.5s ease 0s;
+}
+
+.rejectedCardLeftBack {
+  transform: translate(0%) scale(1.2);
+  transition: all 1s ease;
+}
+
+.rejectedCardLeftTurn {
+  transform: rotateY(90deg) scale(1.3);
+  transition: all 0.5s cubic-bezier(.25,0,.3,1.01);
+}
+
+.rejectedCardLeftTurn2 {
+  transform: rotateY(180deg);
+  transition: all 0.5s cubic-bezier(1.01,.3,0,.25);
+}
+
+.rejectedCardRightTurn {
+  transform: rotateY(-90deg) scale(1.3);
+  transition: all 0.6s cubic-bezier(.25,0,.3,1.01);
+}
+
+.rejectedCardRightTurn2 {
+  transform: rotateY(-180deg);
+  transition: all 0.5s cubic-bezier(1.01,.3,0,.25);
+}
+
 .correctChoice {
   border: 0.5vh solid rgb(0, 255, 191);
-
   background-color: rgb(0, 255, 170, 0.15);
   box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(0, 255, 191), 0 0 3vh rgb(0, 139, 127), 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   transition: all 1.5s ease;
