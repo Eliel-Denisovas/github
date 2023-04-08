@@ -180,7 +180,7 @@ nav img {
   border-left: 0.1vh solid hsla(0, 0%, 0%, 0.5);
 }
 
-.redLight {
+.redLightBox{
   box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(255, 0, 0), 0 0 3vh rgb(139, 0, 0), 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   background-color: rgb(255, 68, 21);
 }
@@ -271,7 +271,7 @@ nav img {
 
 .rejectedCardLeftTurn2 {
   transform: rotateY(180deg);
-  transition: all 0.5s cubic-bezier(1.01,.3,0,.25);
+  transition: all 2s cubic-bezier(1.01,.3,0,.25);
 }
 
 .rejectedCardRightTurn {
@@ -281,7 +281,7 @@ nav img {
 
 .rejectedCardRightTurn2 {
   transform: rotateY(-180deg);
-  transition: all 0.5s cubic-bezier(1.01,.3,0,.25);
+  transition: all 2s cubic-bezier(1.01,.3,0,.25);
 }
 
 .correctChoice {
@@ -298,6 +298,14 @@ nav img {
   transition: all 0.5s ease;
 }
 
+.cancelEvent{
+  pointer-events: none;
+ }
+ 
+.disableElement {
+  display: none;
+  visibility: hidden;
+}
 /*Tools*/
 
 .red {
