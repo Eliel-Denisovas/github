@@ -1,36 +1,20 @@
 const cardLeft = document.getElementById("cardLeft");
 const cardRight = document.getElementById("cardRight");
-
 const numberFractionDisplay = document.getElementById("numberFraction");
 const divisorFractionDisplay = document.getElementById("divisorFraction");
-
 const numberPercentualDisplay = document.getElementById("numberPercentual");
-
 const moneyDisplay = document.getElementById("money");
-
 const previousStatusDisplay = document.getElementById("previousStatus");
 let PointsDisplayContainer = document.getElementById("PointsDisplayContainer");
-
-//const startButton = document.getElementById("startButton");
-
-/* 
-  startButton.addEventListener("click", function () {
-  generateComputerCardsArray();
-  });
-*/
 let currentRound = 0;
 numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
-
 let computerCardsArray = [];
-
 let startMoney = parseFloat(prompt("Type a value", ""));
 let currentMoney = parseFloat(startMoney);
 let rounds = parseInt(
   prompt("TYPE HOW MANY ROUDS YOU WANT TO PLAY IN THIS MATCH", "")
 );
-
 let roundValue = parseFloat(startMoney / rounds);
-
 let computerCard;
 let userCard;
 let userCardsArray = [];
@@ -48,7 +32,6 @@ let luck = 0.5;
 })();
 
 console.log(computerCardsArray);
-
 document.querySelector(".page").classList.remove("disableElement");
 
 function addCheckPoint() {
@@ -240,6 +223,30 @@ function setCheckPoints() {
   }
 }
 
+function createMatchButton() {
+  const macthButtonDiv = document.createElement("div");
+  const macthButtonYes = document.createElement("button");
+  const macthButtonNo = document.createElement("button");
+  const macthButtonDivText = macthButtonDiv.innerHTML = "Do you want to play a match?";
+
+  macthButtonYes.innerHTML = "Yes";
+  macthButtonNo.innerHTML = "No";
+
+  macthButtonDiv.id = "matchButtonDiv";
+  macthButtonYes.id = "yesMatchButton";
+  macthButtonNo.id = "noMatchButton";
+
+  macthButtonYes.classList.add("macthButton");
+  macthButtonNo.classList.add("macthButton");
+
+  macthButtonDiv.appendChild(macthButtonDivText);
+  macthButtonDiv.appendChild(macthButtonDivText);
+  document.appendChild(macthButtonDiv);
+
+  const currentDiv = document.getElementById("matchButtonDiv");
+  document.insertBefore(body, macthButtonDiv);
+}
+
 function roundFunctions() {
   disableCards();
   if (currentRound >= rounds - 1) {
@@ -250,6 +257,7 @@ function roundFunctions() {
     choice();
     setTimeout(() => {
       insertData();
+      createMatchButton();
     }, 3000);
     setCheckPoints();
     return;
@@ -276,7 +284,6 @@ function cardLeftEfect() {
   acceptedCardLeft();
 
   setTimeout(() => {
-    document.getElementById("cardLeft").classList.remove("acceptedCardLeft");
     document.getElementById("cardLeft").classList.add("acceptedCardLeftBack");
   }, 500);
 

@@ -312,9 +312,16 @@ nav img {
 }
 
 .textScaleUp {
-  scale: 1.8;
+  scale: 3;
   transition: all 3s ease;
 }
 
-/*Tools*/
+.macthButton {
+  position: absolute;
+  left: calc(50% - 10vh);
+  top: calc(50%-10vh);
+  width: 10vh;
+  height: 10vh;
+}
 
+/*Tools*/
