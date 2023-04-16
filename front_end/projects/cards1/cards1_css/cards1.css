@@ -166,8 +166,12 @@ nav img {
 /* Light Efects */
 
 .shadowText {
-  text-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue, 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  text-shadow: 0 0 2vh blue, 0 0 3vh darkblue, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   color: rgb(196, 255, 255);
+}
+
+.shadowText2 {
+  color: rgb(255, 255, 255);
 }
 
 .glass {
@@ -191,7 +195,7 @@ nav img {
 }
 
 .greenLightText {
-  text-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(0, 204, 255), 0 0 3vh rgb(0, 139, 46), 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  text-shadow: 0 0 2vh rgb(0, 204, 255), 0 0 3vh rgb(0, 139, 46);
   color: rgb(0, 255, 170);
 }
 
@@ -212,7 +216,7 @@ nav img {
   transition: all 0.5s ease;
 }
 
-/*Efects*/
+/*Game Efects*/
 
 .choice {
   border: 0.5vh solid hsl(214, 100%, 74%, 0.8);
@@ -256,7 +260,7 @@ nav img {
 }
 .rejectedCardLeft {
   transform: translate(calc(50% + 5vh))scale(0.8)  perspective(30vh);
-  transition: all 0.5s ease 0s;
+  transition: all 0.5s ease;
 }
 
 .rejectedCardLeftBack {
@@ -271,17 +275,17 @@ nav img {
 
 .rejectedCardLeftTurn2 {
   transform: rotateY(180deg);
-  transition: all 2s cubic-bezier(1.01,.3,0,.25);
+  transition: all 0.5s cubic-bezier(1.01,.3,0,.25);
 }
 
 .rejectedCardRightTurn {
   transform: rotateY(-90deg) scale(1.3);
-  transition: all 0.6s cubic-bezier(.25,0,.3,1.01);
+  transition: all 0.5s cubic-bezier(.25,0,.3,1.01);
 }
 
 .rejectedCardRightTurn2 {
   transform: rotateY(-180deg);
-  transition: all 2s cubic-bezier(1.01,.3,0,.25);
+  transition: all 0.5s cubic-bezier(1.01,.3,0,.25);
 }
 
 .correctChoice {
@@ -306,16 +310,11 @@ nav img {
   display: none;
   visibility: hidden;
 }
+
+.textScaleUp {
+  scale: 1.8;
+  transition: all 3s ease;
+}
+
 /*Tools*/
 
-.red {
-  background-color: red;
-  border: 0.1vh solid blue;
-  color: black;
-}
-
-.green {
-  background-color: rgb(0, 255, 0);
-  border: 0.1vh solid rgb(255, 0, 179);
-  color: black;
-}
