@@ -316,12 +316,18 @@ nav img {
   transition: all 3s ease;
 }
 
-.macthButton {
+#macthButtonDiv {
   position: absolute;
   left: calc(50% - 10vh);
   top: calc(50%-10vh);
   width: 10vh;
   height: 10vh;
+  z-index: 100;
+}
+
+.macthButton {
+  width: 10vh;
+  height: 3vh;
 }
 
 /*Tools*/

@@ -224,27 +224,35 @@ function setCheckPoints() {
 }
 
 function createMatchButton() {
-  const macthButtonDiv = document.createElement("div");
-  const macthButtonYes = document.createElement("button");
-  const macthButtonNo = document.createElement("button");
-  const macthButtonDivText = macthButtonDiv.innerHTML = "Do you want to play a match?";
 
-  macthButtonYes.innerHTML = "Yes";
-  macthButtonNo.innerHTML = "No";
+  const matchButtonDivParent = document.getElementById("fundo");
+  
+  const matchButtonDiv = document.createElement("div");
+  const matchButtonYes = document.createElement("button");
+  const matchButtonNo = document.createElement("button");
 
-  macthButtonDiv.id = "matchButtonDiv";
-  macthButtonYes.id = "yesMatchButton";
-  macthButtonNo.id = "noMatchButton";
+  const matchButtonDivText = document.createTextNode("Do you want to play a match?");
+  const matchButtonYesText = document.createTextNode("Yes");
+  const matchButtonNoText = document.createTextNode("No");
 
-  macthButtonYes.classList.add("macthButton");
-  macthButtonNo.classList.add("macthButton");
+  matchButtonNo.appendChild(matchButtonNoText);
+  matchButtonYes.appendChild(matchButtonYesText);
 
-  macthButtonDiv.appendChild(macthButtonDivText);
-  macthButtonDiv.appendChild(macthButtonDivText);
-  document.appendChild(macthButtonDiv);
+  matchButtonDiv.appendChild(matchButtonDivText);
+  
+  matchButtonDiv.appendChild(matchButtonNo);
+  matchButtonDiv.appendChild(matchButtonYes);
 
-  const currentDiv = document.getElementById("matchButtonDiv");
-  document.insertBefore(body, macthButtonDiv);
+  matchButtonDivParent.appendChild(matchButtonDiv);
+
+
+  matchButtonDiv.setAttribute("id", "matchButtonDiv");
+
+  matchButtonNo.setAttribute("id", "noMatchButton");
+  matchButtonYes.setAttribute("id", "yesMatchButton");
+
+  matchButtonYes.classList.add("matchButton");
+  matchButtonNo.classList.add("matchButton");
 }
 
 function roundFunctions() {
@@ -257,9 +265,11 @@ function roundFunctions() {
     choice();
     setTimeout(() => {
       insertData();
-      createMatchButton();
     }, 3000);
     setCheckPoints();
+    setTimeout(() => {
+      createMatchButton();
+    }, 3500);
     return;
   } else {
     computerCard = computerCardsArray[currentRound];
