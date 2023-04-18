@@ -63,6 +63,8 @@ p {
 
 .fundo {
   background-color: var(--corFundo);
+  background-image: url(../images/backgrounds/parede-texturizada-de-concreto-verde-solido.jpg);
+  background-size: 100%;
   height: 98vh;
   padding: 1vh;
 }
@@ -162,8 +164,8 @@ nav img {
 .rightDiv {
   flex-direction: row;
 }
-
 /* Light Efects */
+
 
 .shadowText {
   text-shadow: 0 0 2vh blue, 0 0 3vh darkblue, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
@@ -182,6 +184,15 @@ nav img {
   border-right: 0.1vh solid hsla(0, 0%, 100%, 0.2);
   border-top: 0.1vh solid hsla(0, 0%, 0%, 0.5);
   border-left: 0.1vh solid hsla(0, 0%, 0%, 0.5);
+}
+.glass2 {
+  background-image: linear-gradient(315deg, hsla(182, 100%, 50%, 0.50), hsla(0, 0%, 0%, 0.9));
+  border-radius: var(--space2);
+  box-shadow: 5vh 5vh 5vh hsl(0, 0%, 0%, 0.9);
+  border-bottom: 0.1vh solid hsla(0, 0%, 100%, 0.3);
+  border-right: 0.1vh solid hsla(0, 0%, 100%, 0.3);
+  border-top: 0.1vh solid hsla(0, 0%, 0%, 1);
+  border-left: 0.1vh solid hsla(0, 0%, 0%, 1);
 }
 
 .redLightBox{
@@ -318,16 +329,21 @@ nav img {
 
 #macthButtonDiv {
   position: absolute;
-  left: calc(50% - 10vh);
-  top: calc(50%-10vh);
-  width: 10vh;
-  height: 10vh;
-  z-index: 100;
+  left: calc(50% - 25vh);
+  top: calc(50% - 25vh);
+  width: 50vh;
+  height: 50vh;
+  z-index: 5;
+  margin: 1vh;
+  font-size: 6vh;
+  padding: var(--space5);
+  flex-direction: column;
 }
 
 .macthButton {
-  width: 10vh;
-  height: 3vh;
+  margin: 5vh;
+  font-size: 6vh;
+  padding: var(--space5);
 }
 
 /*Tools*/

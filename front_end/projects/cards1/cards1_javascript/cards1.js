@@ -38,7 +38,7 @@ function addCheckPoint() {
   const checkPoint = document.createElement("div");
   PointsDisplayContainer.appendChild(checkPoint);
   checkPoint.classList.add("checkPoint");
-  checkPoint.classList.add("glass");
+  checkPoint.classList.add("glass2");
 }
 
 for (let i = 0; i < rounds; i++) {
@@ -87,11 +87,15 @@ function insertData() {
       document.getElementById("numberFraction").classList.add("textScaleUp");
       document.getElementById("numberFraction").classList.add("shadowText2");
       setTimeout(() => {
-        document.getElementById("numberFraction").classList.remove("textScaleUp");
-        document.getElementById("numberFraction").classList.remove("shadowText2");
+        document
+          .getElementById("numberFraction")
+          .classList.remove("textScaleUp");
+        document
+          .getElementById("numberFraction")
+          .classList.remove("shadowText2");
       }, 1001);
 
-      document.getElementById("numberFraction").classList.add("textScaleUp")
+      document.getElementById("numberFraction").classList.add("textScaleUp");
       numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
     }, 1000);
   }
@@ -110,7 +114,7 @@ function choice() {
 
 function rejectedCardLeft() {
   document.getElementById("cardLeft").classList.add("rejectedCardLeft");
-  document.getElementById("cardLeft").classList.remove("glassHover");
+  document.getElementById("cardLeft").classList.remove("glass2Hover");
 }
 
 function rejectedCardRight() {
@@ -224,14 +228,13 @@ function setCheckPoints() {
 }
 
 function createMatchButton() {
-
   const matchButtonDivParent = document.getElementById("fundo");
-  
-  const matchButtonDiv = document.createElement("div");
-  const matchButtonYes = document.createElement("button");
-  const matchButtonNo = document.createElement("button");
 
-  const matchButtonDivText = document.createTextNode("Do you want to play a match?");
+  const matchButtonDiv = document.createElement("div");
+  const matchButtonYes = document.createElement("div");
+  const matchButtonNo = document.createElement("div");
+
+  const matchButtonDivText = document.createTextNode("Play again");
   const matchButtonYesText = document.createTextNode("Yes");
   const matchButtonNoText = document.createTextNode("No");
 
@@ -239,20 +242,84 @@ function createMatchButton() {
   matchButtonYes.appendChild(matchButtonYesText);
 
   matchButtonDiv.appendChild(matchButtonDivText);
-  
-  matchButtonDiv.appendChild(matchButtonNo);
+
   matchButtonDiv.appendChild(matchButtonYes);
+  matchButtonDiv.appendChild(matchButtonNo);
 
   matchButtonDivParent.appendChild(matchButtonDiv);
 
-
-  matchButtonDiv.setAttribute("id", "matchButtonDiv");
-
+  matchButtonDiv.setAttribute("id", "macthButtonDiv");
   matchButtonNo.setAttribute("id", "noMatchButton");
   matchButtonYes.setAttribute("id", "yesMatchButton");
 
+  matchButtonDiv.classList.add("displayFlex");
+  matchButtonDiv.classList.add("glass2");
+  matchButtonDiv.classList.add("shadowText");
+
+  matchButtonYes.classList.add("glass2");
+  matchButtonYes.classList.add("shadowText");
   matchButtonYes.classList.add("matchButton");
+  matchButtonYes.classList.add("glassHover");
+
+  matchButtonNo.classList.add("glass2");
+  matchButtonNo.classList.add("shadowText");
   matchButtonNo.classList.add("matchButton");
+  matchButtonNo.classList.add("glassHover");
+
+  matchButtonYes.addEventListener("click", function () {
+
+    matchButtonNo.removeChild(matchButtonNoText);
+    matchButtonYes.removeChild(matchButtonYesText);
+
+    matchButtonDiv.removeChild(matchButtonDivText);
+
+    matchButtonDiv.removeChild(matchButtonNo);
+    matchButtonDiv.removeChild(matchButtonYes);
+
+    matchButtonDivParent.removeChild(matchButtonDiv);
+
+    matchButtonDiv.classList.remove("displayFlex");
+    matchButtonDiv.classList.remove("glass2");
+    matchButtonDiv.classList.remove("shadowText");
+
+    matchButtonYes.classList.remove("glass2");
+    matchButtonYes.classList.remove("shadowText");
+    matchButtonYes.classList.remove("matchButton");
+    matchButtonYes.classList.remove("glassHover");
+
+    matchButtonNo.classList.remove("glass2");
+    matchButtonNo.classList.remove("shadowText");
+    matchButtonNo.classList.remove("matchButton");
+    matchButtonNo.classList.remove("glassHover");
+    window.location.reload(true);
+  });
+
+  matchButtonNo.addEventListener("click", function () {
+
+    matchButtonNo.removeChild(matchButtonNoText);
+    matchButtonYes.removeChild(matchButtonYesText);
+
+    matchButtonDiv.removeChild(matchButtonDivText);
+
+    matchButtonDiv.removeChild(matchButtonNo);
+    matchButtonDiv.removeChild(matchButtonYes);
+
+    matchButtonDivParent.removeChild(matchButtonDiv);
+
+    matchButtonDiv.classList.remove("displayFlex");
+    matchButtonDiv.classList.remove("glass2");
+    matchButtonDiv.classList.remove("shadowText");
+
+    matchButtonYes.classList.remove("glass2");
+    matchButtonYes.classList.remove("shadowText");
+    matchButtonYes.classList.remove("matchButton");
+    matchButtonYes.classList.remove("glassHover");
+
+    matchButtonNo.classList.remove("glass2");
+    matchButtonNo.classList.remove("shadowText");
+    matchButtonNo.classList.remove("matchButton");
+    matchButtonNo.classList.remove("glassHover");
+  });
 }
 
 function roundFunctions() {
@@ -269,7 +336,7 @@ function roundFunctions() {
     setCheckPoints();
     setTimeout(() => {
       createMatchButton();
-    }, 3500);
+    }, 5002);
     return;
   } else {
     computerCard = computerCardsArray[currentRound];
@@ -339,7 +406,6 @@ function cardLeftEfect() {
         document.getElementById("luckWord").classList.remove("textScaleUp");
         document.getElementById("luckWord").classList.remove("greenLightText");
       }, 3000);
-
     } else {
       document.getElementById("containerCards").classList.add("wrongChoice");
       document.getElementById("choiceSound").pause();
