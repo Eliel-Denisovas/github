@@ -101,6 +101,10 @@ nav img {
   flex-wrap: nowrap;
 }
 
+.checkPoint{
+  height: 1vh;
+}
+
 .table1 {
   padding: var(--space1);
 }
@@ -196,22 +200,26 @@ nav img {
 }
 
 .redLightBox{
-  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(255, 0, 0), 0 0 3vh rgb(139, 0, 0), 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
-  background-color: rgb(255, 68, 21);
+  border: 0.5vh solid hsla(0, 100%, 74%, 0.8);
+  background-color: hsla(0, 100%, 50%, 0.4);
+  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(255, 0, 0), 0 0 3vh rgb(139, 0, 0), 3vh 3vh 3vh black;
+  transition: all 1s ease;
 }
 
 .greenLightBox {
-  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(0, 255, 191), 0 0 3vh rgb(0, 139, 127), 3vh 3vh 3vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
-  background-color: rgb(0, 255, 170);
+  border: 0.5vh solid rgba(122, 255, 222, 0.8);
+  background-color: rgba(122, 255, 222, 0.4);
+  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgba(122, 255, 222), 0 0 3vh rgb(0, 134, 101), 3vh 3vh 3vh black;
+  transition: all 1s ease;
 }
 
 .greenLightText {
-  text-shadow: 0 0 2vh rgb(0, 204, 255), 0 0 3vh rgb(0, 139, 46);
-  color: rgb(0, 255, 170);
+  text-shadow: 0 0 2vh rgba(122, 255, 222), 0 0 3vh rgb(0, 136, 102);
+  color: rgba(122, 255, 222);
 }
 
 .yellowLightText {
-  text-shadow: 0 0 0.1vh rgb(255, 255, 255), 0 0 2vh rgba(208, 255, 0), 0 0 1vh rgb(113, 139, 0), 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  text-shadow: 0 0 0.1vh rgb(255, 255, 255), 0 0 2vh rgb(255, 255, 0), 0 0 1vh rgb(131, 131, 0), 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
 }
 
 /*Hovers*/
@@ -232,7 +240,7 @@ nav img {
 .choice {
   border: 0.5vh solid hsl(214, 100%, 74%, 0.8);
   background-color: hsl(240, 100%, 50%, 0.4);
-  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue, 3vh 3vh 3vh black, 0 0 1vh;
+  box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue, 3vh 3vh 3vh black;
   transition: all 1s ease;
 }
 

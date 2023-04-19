@@ -5,7 +5,21 @@ const divisorFractionDisplay = document.getElementById("divisorFraction");
 const numberPercentualDisplay = document.getElementById("numberPercentual");
 const moneyDisplay = document.getElementById("money");
 const previousStatusDisplay = document.getElementById("previousStatus");
-let PointsDisplayContainer = document.getElementById("PointsDisplayContainer");
+const PointsDisplayContainer = document.getElementById("PointsDisplayContainer");
+const containerCards = document.getElementById("containerCards");
+const roundSound = document.getElementById("roundSound");
+const cardLeftImage = document.getElementById("cardLeftImage");
+const cardRightImage = document.getElementById("cardRightImage");
+const choiceSound = document.getElementById("choiceSound");
+const correctChoiceSound = document.getElementById("correctChoiceSound");
+const luckWord = document.getElementById("luckWord");
+const wrongChoiceSound = document.getElementById("wrongChoiceSound");
+
+const time1 = 1000;
+const time2 = 2000;
+const time3 = 3000;
+const time4 = 4000;
+
 let currentRound = 0;
 numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
 let computerCardsArray = [];
@@ -38,7 +52,7 @@ function addCheckPoint() {
   const checkPoint = document.createElement("div");
   PointsDisplayContainer.appendChild(checkPoint);
   checkPoint.classList.add("checkPoint");
-  checkPoint.classList.add("glass2");
+  checkPoint.classList.add("glass");
 }
 
 for (let i = 0; i < rounds; i++) {
@@ -81,11 +95,11 @@ function checkMoney(roundStatus) {
 function insertData() {
   if (currentRound > 0) {
     setTimeout(() => {
-      document.getElementById("roundSound").play();
-      document.getElementById("roundSound").volume = 0.5;
+      roundSound.play();
+      roundSound.volume = 0.5;
 
-      document.getElementById("numberFraction").classList.add("textScaleUp");
-      document.getElementById("numberFraction").classList.add("shadowText2");
+      numberFractionDisplay.classList.add("textScaleUp");
+      numberFractionDisplay.classList.add("shadowText2");
       setTimeout(() => {
         document
           .getElementById("numberFraction")
@@ -95,7 +109,7 @@ function insertData() {
           .classList.remove("shadowText2");
       }, 1001);
 
-      document.getElementById("numberFraction").classList.add("textScaleUp");
+      numberFractionDisplay.classList.add("textScaleUp");
       numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
     }, 1000);
   }
@@ -109,89 +123,89 @@ function insertData() {
 insertData();
 
 function choice() {
-  document.getElementById("containerCards").classList.add("choice");
+  containerCards.classList.add("choice");
 }
 
 function rejectedCardLeft() {
-  document.getElementById("cardLeft").classList.add("rejectedCardLeft");
-  document.getElementById("cardLeft").classList.remove("glass2Hover");
+  cardLeft.classList.add("rejectedCardLeft");
+  cardLeft.classList.remove("glass2Hover");
 }
 
 function rejectedCardRight() {
-  document.getElementById("cardRight").classList.add("rejectedCardRight");
-  document.getElementById("cardRight").classList.remove("glassHover");
+  cardRight.classList.add("rejectedCardRight");
+  cardRight.classList.remove("glassHover");
 }
 
 function acceptedCardLeft() {
-  document.getElementById("cardLeft").classList.add("acceptedCardLeft");
-  document.getElementById("cardLeft").classList.remove("glassHover");
+  cardLeft.classList.add("acceptedCardLeft");
+  cardLeft.classList.remove("glassHover");
 }
 
 function acceptedCardRight() {
-  document.getElementById("cardRight").classList.add("acceptedCardRight");
-  document.getElementById("cardRight").classList.remove("glassHover");
+  cardRight.classList.add("acceptedCardRight");
+  cardRight.classList.remove("glassHover");
 }
 
 function cleanClasses() {
-  document.getElementById("containerCards").classList.remove("choice");
-  document.getElementById("containerCards").classList.remove("correctChoice");
-  document.getElementById("containerCards").classList.remove("wrongChoice");
+  containerCards.classList.remove("choice");
+  containerCards.classList.remove("correctChoice");
+  containerCards.classList.remove("wrongChoice");
 
-  document.getElementById("cardLeft").classList.remove("rejectedCardLeft");
-  document.getElementById("cardRight").classList.remove("rejectedCardRight");
+  cardLeft.classList.remove("rejectedCardLeft");
+  cardRight.classList.remove("rejectedCardRight");
 
-  document.getElementById("cardLeft").classList.remove("acceptedCardLeft");
-  document.getElementById("cardRight").classList.remove("acceptedCardRight");
+  cardLeft.classList.remove("acceptedCardLeft");
+  cardRight.classList.remove("acceptedCardRight");
 
   document
     .getElementById("cardRight")
     .classList.remove("acceptedCardRightBack");
-  document.getElementById("cardLeft").classList.remove("acceptedCardLeftBack");
+  cardLeft.classList.remove("acceptedCardLeftBack");
 
   document
     .getElementById("cardRight")
     .classList.remove("rejectedCardRightBack");
-  document.getElementById("cardLeft").classList.remove("rejectedCardLeftBack");
+  cardLeft.classList.remove("rejectedCardLeftBack");
 
-  document.getElementById("cardLeft").classList.remove("rejectedCardLeftTurn");
+  cardLeft.classList.remove("rejectedCardLeftTurn");
   document
     .getElementById("cardRight")
     .classList.remove("rejectedCardRightTurn");
 
-  document.getElementById("cardLeft").classList.remove("rejectedCardLeftTurn2");
+  cardLeft.classList.remove("rejectedCardLeftTurn2");
   document
     .getElementById("cardRight")
     .classList.remove("rejectedCardRightTurn2");
 
-  document.getElementById("containerCards").classList.add("glass");
-  document.getElementById("cardRight").classList.add("glass");
-  document.getElementById("cardLeft").classList.add("glass");
+  containerCards.classList.add("glass");
+  cardRight.classList.add("glass");
+  cardLeft.classList.add("glass");
 
   if (computerCard === undefined) {
-    document.getElementById("cardLeft").classList.remove("glassHover");
-    document.getElementById("cardRight").classList.remove("glassHover");
-    document.getElementById("cardLeftImage").src =
+    cardLeft.classList.remove("glassHover");
+    cardRight.classList.remove("glassHover");
+    cardLeftImage.src =
       "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
-    document.getElementById("cardRightImage").src =
+    cardRightImage.src =
       "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
   } else {
-    document.getElementById("cardLeftImage").src =
+    cardLeftImage.src =
       "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
-    document.getElementById("cardRightImage").src =
+    cardRightImage.src =
       "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
-    document.getElementById("cardLeft").classList.add("glassHover");
-    document.getElementById("cardRight").classList.add("glassHover");
+    cardLeft.classList.add("glassHover");
+    cardRight.classList.add("glassHover");
   }
 }
 
 function disableCards() {
-  document.getElementById("cardRight").classList.add("cancelEvent");
-  document.getElementById("cardLeft").classList.add("cancelEvent");
+  cardRight.classList.add("cancelEvent");
+  cardLeft.classList.add("cancelEvent");
 }
 
 function ableCards() {
-  document.getElementById("cardRight").classList.remove("cancelEvent");
-  document.getElementById("cardLeft").classList.remove("cancelEvent");
+  cardRight.classList.remove("cancelEvent");
+  cardLeft.classList.remove("cancelEvent");
 }
 
 function setCheckPoints() {
@@ -356,34 +370,34 @@ function roundFunctions() {
 }
 
 function cardLeftEfect() {
-  document.getElementById("choiceSound").play();
+  choiceSound.play();
   rejectedCardRight();
   acceptedCardLeft();
 
   setTimeout(() => {
-    document.getElementById("cardLeft").classList.add("acceptedCardLeftBack");
+    cardLeft.classList.add("acceptedCardLeftBack");
   }, 500);
 
   setTimeout(() => {
-    document.getElementById("cardRight").classList.remove("rejectedCardRight");
-    document.getElementById("cardRightImage").src =
+    cardRight.classList.remove("rejectedCardRight");
+    cardRightImage.src =
       "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
-    document.getElementById("cardRight").classList.add("rejectedCardRightBack");
+    cardRight.classList.add("rejectedCardRightBack");
   }, 500);
 
   setTimeout(() => {
-    document.getElementById("cardRight").classList.add("rejectedCardRightTurn");
+    cardRight.classList.add("rejectedCardRightTurn");
   }, 800);
 
   setTimeout(() => {
     if (computerCard === 0) {
-      document.getElementById("cardRightImage").src =
+      cardRightImage.src =
         "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
     } else if (computerCard === 1) {
-      document.getElementById("cardRightImage").src =
+      cardRightImage.src =
         "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
     } else {
-      document.getElementById("cardRightImage").src =
+      cardRightImage.src =
         "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
     }
 
@@ -393,82 +407,82 @@ function cardLeftEfect() {
   }, 1500);
 
   setTimeout(() => {
-    document.getElementById("containerCards").classList.remove("choice");
+    containerCards.classList.remove("choice");
 
     if (roundStatus) {
-      document.getElementById("containerCards").classList.add("correctChoice");
-      document.getElementById("choiceSound").pause();
-      document.getElementById("correctChoiceSound").play();
+      containerCards.classList.add("correctChoice");
+      choiceSound.pause();
+      correctChoiceSound.play();
 
-      document.getElementById("luckWord").classList.add("textScaleUp");
-      document.getElementById("luckWord").classList.add("greenLightText");
+      luckWord.classList.add("textScaleUp");
+      luckWord.classList.add("greenLightText");
       setTimeout(() => {
-        document.getElementById("luckWord").classList.remove("textScaleUp");
-        document.getElementById("luckWord").classList.remove("greenLightText");
+        luckWord.classList.remove("textScaleUp");
+        luckWord.classList.remove("greenLightText");
       }, 3000);
     } else {
-      document.getElementById("containerCards").classList.add("wrongChoice");
-      document.getElementById("choiceSound").pause();
-      document.getElementById("wrongChoiceSound").play();
+      containerCards.classList.add("wrongChoice");
+      choiceSound.pause();
+      wrongChoiceSound.play();
     }
   }, 1500);
 }
 
 function cardRightEfect() {
-  document.getElementById("choiceSound").play();
+  choiceSound.play();
   rejectedCardLeft();
   acceptedCardRight();
 
   setTimeout(() => {
-    document.getElementById("cardRight").classList.remove("acceptedCardRight");
-    document.getElementById("cardRight").classList.add("acceptedCardRightBack");
+    cardRight.classList.remove("acceptedCardRight");
+    cardRight.classList.add("acceptedCardRightBack");
   }, 500);
 
   setTimeout(() => {
-    document.getElementById("cardLeft").classList.remove("rejectedCardLeft");
-    document.getElementById("cardLeftImage").src =
+    cardLeft.classList.remove("rejectedCardLeft");
+    cardLeftImage.src =
       "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
-    document.getElementById("cardLeft").classList.add("rejectedCardLeftBack");
+    cardLeft.classList.add("rejectedCardLeftBack");
   }, 500);
 
   setTimeout(() => {
-    document.getElementById("cardLeft").classList.add("rejectedCardLeftTurn");
+    cardLeft.classList.add("rejectedCardLeftTurn");
   }, 800);
 
   setTimeout(() => {
     if (computerCard === 0) {
-      document.getElementById("cardLeftImage").src =
+      cardLeftImage.src =
         "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
     } else if (computerCard === 1) {
-      document.getElementById("cardLeftImage").src =
+      cardLeftImage.src =
         "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
     } else {
-      document.getElementById("cardLeftImage").src =
+      cardLeftImage.src =
         "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
-      document.getElementById("cardRightImage").src =
+      cardRightImage.src =
         "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
     }
 
-    document.getElementById("cardLeft").classList.add("rejectedCardLeftTurn2");
+    cardLeft.classList.add("rejectedCardLeftTurn2");
   }, 1500);
 
   setTimeout(() => {
-    document.getElementById("containerCards").classList.remove("choice");
+    containerCards.classList.remove("choice");
 
     if (roundStatus) {
-      document.getElementById("containerCards").classList.add("correctChoice");
-      document.getElementById("choiceSound").pause();
-      document.getElementById("correctChoiceSound").play();
-      document.getElementById("luckWord").classList.add("textScaleUp");
-      document.getElementById("luckWord").classList.add("greenLightText");
+      containerCards.classList.add("correctChoice");
+      choiceSound.pause();
+      correctChoiceSound.play();
+      luckWord.classList.add("textScaleUp");
+      luckWord.classList.add("greenLightText");
       setTimeout(() => {
-        document.getElementById("luckWord").classList.remove("textScaleUp");
-        document.getElementById("luckWord").classList.remove("greenLightText");
+        luckWord.classList.remove("textScaleUp");
+        luckWord.classList.remove("greenLightText");
       }, 1001);
     } else {
-      document.getElementById("containerCards").classList.add("wrongChoice");
-      document.getElementById("choiceSound").pause();
-      document.getElementById("wrongChoiceSound").play();
+      containerCards.classList.add("wrongChoice");
+      choiceSound.pause();
+      wrongChoiceSound.play();
     }
   }, 1500);
 }
@@ -479,7 +493,7 @@ cardLeft.addEventListener("click", function () {
   roundFunctions();
   cardLeftEfect();
   setTimeout(() => {
-    document.getElementById("choiceSound").play();
+    choiceSound.play();
   }, 2500);
   setTimeout(() => {
     cleanClasses();
@@ -492,7 +506,7 @@ cardRight.addEventListener("click", function () {
   roundFunctions();
   cardRightEfect();
   setTimeout(() => {
-    document.getElementById("choiceSound").play();
+    choiceSound.play();
   }, 2500);
   setTimeout(() => {
     cleanClasses();
