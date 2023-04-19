@@ -14,11 +14,16 @@ const choiceSound = document.getElementById("choiceSound");
 const correctChoiceSound = document.getElementById("correctChoiceSound");
 const luckWord = document.getElementById("luckWord");
 const wrongChoiceSound = document.getElementById("wrongChoiceSound");
-
+const time05 = 500;
+const time08 = 800
 const time1 = 1000;
+const time15 = 1500;
 const time2 = 2000;
+const time25 = 2500;
 const time3 = 3000;
+const time38 = 3800;
 const time4 = 4000;
+const time5 = 5000;
 
 let currentRound = 0;
 numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
@@ -107,11 +112,11 @@ function insertData() {
         document
           .getElementById("numberFraction")
           .classList.remove("shadowText2");
-      }, 1001);
+      }, time1);
 
       numberFractionDisplay.classList.add("textScaleUp");
       numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
-    }, 1000);
+    }, time1);
   }
 
   divisorFractionDisplay.textContent = rounds.toFixed(0);
@@ -210,7 +215,7 @@ function ableCards() {
 
 function setCheckPoints() {
   let checkPointsValue = currentRound;
-  let functionTime = 3800;
+  let functionTime = time38;
 
   setTimeout(() => {
     PointsDisplayContainer.getElementsByClassName("checkPoint")[
@@ -346,11 +351,11 @@ function roundFunctions() {
     choice();
     setTimeout(() => {
       insertData();
-    }, 3000);
+    }, time3);
     setCheckPoints();
     setTimeout(() => {
       createMatchButton();
-    }, 5002);
+    }, time5);
     return;
   } else {
     computerCard = computerCardsArray[currentRound];
@@ -360,11 +365,11 @@ function roundFunctions() {
     choice();
     setTimeout(() => {
       insertData();
-    }, 3000);
+    }, time3);
     setCheckPoints();
     setTimeout(() => {
       ableCards();
-    }, 5000);
+    }, time5);
     currentRound += 1;
   }
 }
@@ -376,18 +381,18 @@ function cardLeftEfect() {
 
   setTimeout(() => {
     cardLeft.classList.add("acceptedCardLeftBack");
-  }, 500);
+  }, time05);
 
   setTimeout(() => {
     cardRight.classList.remove("rejectedCardRight");
     cardRightImage.src =
       "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
     cardRight.classList.add("rejectedCardRightBack");
-  }, 500);
+  }, time05);
 
   setTimeout(() => {
     cardRight.classList.add("rejectedCardRightTurn");
-  }, 800);
+  }, time08);
 
   setTimeout(() => {
     if (computerCard === 0) {
@@ -404,7 +409,7 @@ function cardLeftEfect() {
     document
       .getElementById("cardRight")
       .classList.add("rejectedCardRightTurn2");
-  }, 1500);
+  }, time15);
 
   setTimeout(() => {
     containerCards.classList.remove("choice");
@@ -419,13 +424,13 @@ function cardLeftEfect() {
       setTimeout(() => {
         luckWord.classList.remove("textScaleUp");
         luckWord.classList.remove("greenLightText");
-      }, 3000);
+      }, time3);
     } else {
       containerCards.classList.add("wrongChoice");
       choiceSound.pause();
       wrongChoiceSound.play();
     }
-  }, 1500);
+  }, time15);
 }
 
 function cardRightEfect() {
@@ -436,18 +441,18 @@ function cardRightEfect() {
   setTimeout(() => {
     cardRight.classList.remove("acceptedCardRight");
     cardRight.classList.add("acceptedCardRightBack");
-  }, 500);
+  }, time05);
 
   setTimeout(() => {
     cardLeft.classList.remove("rejectedCardLeft");
     cardLeftImage.src =
       "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
     cardLeft.classList.add("rejectedCardLeftBack");
-  }, 500);
+  }, time05);
 
   setTimeout(() => {
     cardLeft.classList.add("rejectedCardLeftTurn");
-  }, 800);
+  }, time08);
 
   setTimeout(() => {
     if (computerCard === 0) {
@@ -464,7 +469,7 @@ function cardRightEfect() {
     }
 
     cardLeft.classList.add("rejectedCardLeftTurn2");
-  }, 1500);
+  }, time15);
 
   setTimeout(() => {
     containerCards.classList.remove("choice");
@@ -478,13 +483,13 @@ function cardRightEfect() {
       setTimeout(() => {
         luckWord.classList.remove("textScaleUp");
         luckWord.classList.remove("greenLightText");
-      }, 1001);
+      }, time1);
     } else {
       containerCards.classList.add("wrongChoice");
       choiceSound.pause();
       wrongChoiceSound.play();
     }
-  }, 1500);
+  }, time1);
 }
 
 cardLeft.addEventListener("click", function () {
@@ -494,10 +499,10 @@ cardLeft.addEventListener("click", function () {
   cardLeftEfect();
   setTimeout(() => {
     choiceSound.play();
-  }, 2500);
+  }, time25);
   setTimeout(() => {
     cleanClasses();
-  }, 3000);
+  }, time3);
 });
 
 cardRight.addEventListener("click", function () {
@@ -507,8 +512,8 @@ cardRight.addEventListener("click", function () {
   cardRightEfect();
   setTimeout(() => {
     choiceSound.play();
-  }, 2500);
+  }, time25);
   setTimeout(() => {
     cleanClasses();
-  }, 3000);
+  }, time3);
 });
