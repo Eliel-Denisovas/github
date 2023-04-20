@@ -27,11 +27,12 @@ const time5 = 5000;
 
 let currentRound = 0;
 numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
+console.log(typeof numberFractionDisplay);
 let computerCardsArray = [];
-let startMoney = parseFloat(prompt("Type a value", ""));
+let startMoney = parseFloat(prompt("Bet amount", ""));
 let currentMoney = parseFloat(startMoney);
 let rounds = parseInt(
-  prompt("TYPE HOW MANY ROUDS YOU WANT TO PLAY IN THIS MATCH", "")
+  prompt("Rounds", "")
 );
 let roundValue = parseFloat(startMoney / rounds);
 let computerCard;
@@ -343,30 +344,21 @@ function createMatchButton() {
 
 function roundFunctions() {
   disableCards();
+  computerCard = computerCardsArray[currentRound];
+  checkCards(userCard, computerCard);
+  checkLuck();
+  checkMoney(roundStatus);
+  choice();
+  setTimeout(() => {
+    insertData();
+  }, time3);
+  setCheckPoints();
   if (currentRound >= rounds - 1) {
-    computerCard = computerCardsArray[currentRound];
-    checkCards(userCard, computerCard);
-    checkLuck();
-    checkMoney(roundStatus);
-    choice();
-    setTimeout(() => {
-      insertData();
-    }, time3);
-    setCheckPoints();
     setTimeout(() => {
       createMatchButton();
     }, time5);
     return;
   } else {
-    computerCard = computerCardsArray[currentRound];
-    checkCards(userCard, computerCard);
-    checkLuck();
-    checkMoney(roundStatus);
-    choice();
-    setTimeout(() => {
-      insertData();
-    }, time3);
-    setCheckPoints();
     setTimeout(() => {
       ableCards();
     }, time5);
@@ -483,13 +475,13 @@ function cardRightEfect() {
       setTimeout(() => {
         luckWord.classList.remove("textScaleUp");
         luckWord.classList.remove("greenLightText");
-      }, time1);
+      }, time3);
     } else {
       containerCards.classList.add("wrongChoice");
       choiceSound.pause();
       wrongChoiceSound.play();
     }
-  }, time1);
+  }, time15);
 }
 
 cardLeft.addEventListener("click", function () {

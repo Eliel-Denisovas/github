@@ -269,7 +269,7 @@ nav img {
 }
 
 .rejectedCardRight {
-  transform: translate(calc(-50% + -5vh))scale(0.8)  perspective(30vh);
+  transform: translate(calc(-50% + -5vh))scale(0.8);
   transition: all 0.5s ease 0s;
 }
 
@@ -278,7 +278,7 @@ nav img {
   transition: all 1s ease;
 }
 .rejectedCardLeft {
-  transform: translate(calc(50% + 5vh))scale(0.8)  perspective(30vh);
+  transform: translate(calc(50% + 5vh))scale(0.8);
   transition: all 0.5s ease;
 }
 
@@ -289,22 +289,22 @@ nav img {
 
 .rejectedCardLeftTurn {
   transform: rotateY(90deg) scale(1.3);
-  transition: all 0.5s cubic-bezier(.25,0,.3,1.01);
+  transition: all 0.5s ease;
 }
 
 .rejectedCardLeftTurn2 {
   transform: rotateY(180deg);
-  transition: all 0.5s cubic-bezier(1.01,.3,0,.25);
+  transition: all 0.5s ease;
 }
 
 .rejectedCardRightTurn {
   transform: rotateY(-90deg) scale(1.3);
-  transition: all 0.5s cubic-bezier(.25,0,.3,1.01);
+  transition: all 0.5s ease;
 }
 
 .rejectedCardRightTurn2 {
   transform: rotateY(-180deg);
-  transition: all 0.5s cubic-bezier(1.01,.3,0,.25);
+  transition: all 0.5s ease;
 }
 
 .correctChoice {
