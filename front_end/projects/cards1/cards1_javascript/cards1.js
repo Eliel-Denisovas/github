@@ -237,7 +237,7 @@ function setCheckPoints() {
       ].classList.add("redLightBox");
     }, functionTime);
   }
-
+  
   if (checkPointsValue <= rounds - 2) {
     setTimeout(() => {
       PointsDisplayContainer.getElementsByClassName("checkPoint")[
@@ -248,33 +248,65 @@ function setCheckPoints() {
 }
 
 function createMatchButton() {
+  
   const matchButtonDivParent = document.getElementById("fundo");
-
+  
   const matchButtonDiv = document.createElement("div");
   const matchButtonYes = document.createElement("div");
   const matchButtonNo = document.createElement("div");
+  
+  const matchForm = document.createElement("form");
+  const betInput = document.createElement("input");
+  const roundInput = document.createElement("input");
+  
+  betInput.type = "text";
+  roundInput.type = "text";
+  
+  const matchButtonYesText = document.createTextNode("Play");
+  const matchButtonNoText = document.createTextNode("X");
 
-  const matchButtonDivText = document.createTextNode("Play again");
-  const matchButtonYesText = document.createTextNode("Yes");
-  const matchButtonNoText = document.createTextNode("No");
+  matchForm.appendChild(betInput);
+  matchForm.appendChild(roundInput);
 
   matchButtonNo.appendChild(matchButtonNoText);
   matchButtonYes.appendChild(matchButtonYesText);
 
-  matchButtonDiv.appendChild(matchButtonDivText);
-
+  matchButtonDiv.appendChild(matchForm);
+ 
   matchButtonDiv.appendChild(matchButtonYes);
   matchButtonDiv.appendChild(matchButtonNo);
 
   matchButtonDivParent.appendChild(matchButtonDiv);
 
   matchButtonDiv.setAttribute("id", "macthButtonDiv");
+  matchButtonDiv.setAttribute("id", "macthButtonDiv");
   matchButtonNo.setAttribute("id", "noMatchButton");
-  matchButtonYes.setAttribute("id", "yesMatchButton");
-
+  matchForm.setAttribute("id", "matchForm");
+  betInput.setAttribute("id", "betInput");
+  betInput.setAttribute("placeholder", "Enter Bet");
+  roundInput.setAttribute("id", "roundInput");
+  roundInput.setAttribute("placeholder", "Enter Rounds");
+  
   matchButtonDiv.classList.add("displayFlex");
   matchButtonDiv.classList.add("glass2");
   matchButtonDiv.classList.add("shadowText");
+  
+  matchForm.classList.add("displayFlex");
+  matchForm.classList.add("glass2");
+  matchForm.classList.add("shadowText");
+  matchForm.classList.add("matchButton");
+
+  betInput.classList.add("flexItem");
+  betInput.classList.add("shadowText");
+  betInput.classList.add("matchButton");
+  betInput.classList.add("greenLightText");
+  betInput.classList.add("glass2");
+  
+  roundInput.classList.add("flexItem");
+  roundInput.classList.add("shadowText");
+  roundInput.classList.add("matchButton");
+  roundInput.classList.add("greenLightText");
+  roundInput.classList.add("glass2");
 
   matchButtonYes.classList.add("glass2");
   matchButtonYes.classList.add("shadowText");
@@ -286,60 +318,29 @@ function createMatchButton() {
   matchButtonNo.classList.add("matchButton");
   matchButtonNo.classList.add("glassHover");
 
-  matchButtonYes.addEventListener("click", function () {
-
+  function removeMatchButton () {
+    matchForm.removeChild(betInput);
+    matchForm.removeChild(roundInput);
+    matchButtonDiv.removeChild(matchForm);
+    
     matchButtonNo.removeChild(matchButtonNoText);
     matchButtonYes.removeChild(matchButtonYesText);
-
-    matchButtonDiv.removeChild(matchButtonDivText);
-
-    matchButtonDiv.removeChild(matchButtonNo);
+    
     matchButtonDiv.removeChild(matchButtonYes);
+    matchButtonDiv.removeChild(matchButtonNo);
 
     matchButtonDivParent.removeChild(matchButtonDiv);
+  };
 
-    matchButtonDiv.classList.remove("displayFlex");
-    matchButtonDiv.classList.remove("glass2");
-    matchButtonDiv.classList.remove("shadowText");
-
-    matchButtonYes.classList.remove("glass2");
-    matchButtonYes.classList.remove("shadowText");
-    matchButtonYes.classList.remove("matchButton");
-    matchButtonYes.classList.remove("glassHover");
-
-    matchButtonNo.classList.remove("glass2");
-    matchButtonNo.classList.remove("shadowText");
-    matchButtonNo.classList.remove("matchButton");
-    matchButtonNo.classList.remove("glassHover");
+  matchButtonYes.addEventListener("click", function () {
+    removeMatchButton();
     window.location.reload(true);
   });
 
   matchButtonNo.addEventListener("click", function () {
-
-    matchButtonNo.removeChild(matchButtonNoText);
-    matchButtonYes.removeChild(matchButtonYesText);
-
-    matchButtonDiv.removeChild(matchButtonDivText);
-
-    matchButtonDiv.removeChild(matchButtonNo);
-    matchButtonDiv.removeChild(matchButtonYes);
-
-    matchButtonDivParent.removeChild(matchButtonDiv);
-
-    matchButtonDiv.classList.remove("displayFlex");
-    matchButtonDiv.classList.remove("glass2");
-    matchButtonDiv.classList.remove("shadowText");
-
-    matchButtonYes.classList.remove("glass2");
-    matchButtonYes.classList.remove("shadowText");
-    matchButtonYes.classList.remove("matchButton");
-    matchButtonYes.classList.remove("glassHover");
-
-    matchButtonNo.classList.remove("glass2");
-    matchButtonNo.classList.remove("shadowText");
-    matchButtonNo.classList.remove("matchButton");
-    matchButtonNo.classList.remove("glassHover");
+    removeMatchButton();
   });
+  
 }
 
 function roundFunctions() {
