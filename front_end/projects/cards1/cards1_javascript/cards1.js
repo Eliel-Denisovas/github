@@ -5,7 +5,9 @@ const divisorFractionDisplay = document.getElementById("divisorFraction");
 const numberPercentualDisplay = document.getElementById("numberPercentual");
 const moneyDisplay = document.getElementById("money");
 const previousStatusDisplay = document.getElementById("previousStatus");
-const PointsDisplayContainer = document.getElementById("PointsDisplayContainer");
+const PointsDisplayContainer = document.getElementById(
+  "PointsDisplayContainer"
+);
 const containerCards = document.getElementById("containerCards");
 const roundSound = document.getElementById("roundSound");
 const cardLeftImage = document.getElementById("cardLeftImage");
@@ -15,7 +17,7 @@ const correctChoiceSound = document.getElementById("correctChoiceSound");
 const luckWord = document.getElementById("luckWord");
 const wrongChoiceSound = document.getElementById("wrongChoiceSound");
 const time05 = 500;
-const time08 = 800
+const time08 = 800;
 const time1 = 1000;
 const time15 = 1500;
 const time2 = 2000;
@@ -24,16 +26,14 @@ const time3 = 3000;
 const time38 = 3800;
 const time4 = 4000;
 const time5 = 5000;
-
+let startMoney = parseFloat(prompt("Bet", ""));
+let startRounds = parseInt(prompt("Rounds", ""));
 let currentRound = 0;
 numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
-console.log(typeof numberFractionDisplay);
 let computerCardsArray = [];
-let startMoney = parseFloat(prompt("Bet amount", ""));
-let currentMoney = parseFloat(startMoney);
-let rounds = parseInt(
-  prompt("Rounds", "")
-);
+
+let currentMoney = startMoney;
+let rounds = startRounds;
 let roundValue = parseFloat(startMoney / rounds);
 let computerCard;
 let userCard;
@@ -51,7 +51,7 @@ let luck = 0.5;
   }
 })();
 
-console.log(computerCardsArray);
+// console.log(computerCardsArray);
 document.querySelector(".page").classList.remove("disableElement");
 
 function addCheckPoint() {
@@ -190,10 +190,8 @@ function cleanClasses() {
   if (computerCard === undefined) {
     cardLeft.classList.remove("glassHover");
     cardRight.classList.remove("glassHover");
-    cardLeftImage.src =
-      "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
-    cardRightImage.src =
-      "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+    cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+    cardRightImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
   } else {
     cardLeftImage.src =
       "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
@@ -237,7 +235,7 @@ function setCheckPoints() {
       ].classList.add("redLightBox");
     }, functionTime);
   }
-  
+
   if (checkPointsValue <= rounds - 2) {
     setTimeout(() => {
       PointsDisplayContainer.getElementsByClassName("checkPoint")[
@@ -246,33 +244,31 @@ function setCheckPoints() {
     }, functionTime);
   }
 }
-
 function createMatchButton() {
-  
   const matchButtonDivParent = document.getElementById("fundo");
-  
+
   const matchButtonDiv = document.createElement("div");
   const matchButtonYes = document.createElement("div");
   const matchButtonNo = document.createElement("div");
-  
-  const matchForm = document.createElement("form");
-  const betInput = document.createElement("input");
-  const roundInput = document.createElement("input");
-  
-  betInput.type = "text";
-  roundInput.type = "text";
-  
+
+  //const matchForm = document.createElement("form");
+  // const betInput = document.createElement("input");
+  //const roundInput = document.createElement("input");
+
+  // betInput.type = "text";
+  // roundInput.type = "text";
+
   const matchButtonYesText = document.createTextNode("Play");
   const matchButtonNoText = document.createTextNode("X");
 
-  matchForm.appendChild(betInput);
-  matchForm.appendChild(roundInput);
+  // matchForm.appendChild(betInput);
+  //matchForm.appendChild(roundInput);
 
   matchButtonNo.appendChild(matchButtonNoText);
   matchButtonYes.appendChild(matchButtonYesText);
 
-  matchButtonDiv.appendChild(matchForm);
- 
+  //matchButtonDiv.appendChild(matchForm);
+
   matchButtonDiv.appendChild(matchButtonYes);
   matchButtonDiv.appendChild(matchButtonNo);
 
@@ -281,32 +277,32 @@ function createMatchButton() {
   matchButtonDiv.setAttribute("id", "macthButtonDiv");
   matchButtonDiv.setAttribute("id", "macthButtonDiv");
   matchButtonNo.setAttribute("id", "noMatchButton");
-  matchForm.setAttribute("id", "matchForm");
-  betInput.setAttribute("id", "betInput");
-  betInput.setAttribute("placeholder", "Enter Bet");
-  roundInput.setAttribute("id", "roundInput");
-  roundInput.setAttribute("placeholder", "Enter Rounds");
-  
+  //matchForm.setAttribute("id", "matchForm");
+  // betInput.setAttribute("id", "betInput");
+  // betInput.setAttribute("placeholder", "Enter Bet");
+  //roundInput.setAttribute("id", "roundInput");
+  //roundInput.setAttribute("placeholder", "Enter Rounds");
+
   matchButtonDiv.classList.add("displayFlex");
   matchButtonDiv.classList.add("glass2");
   matchButtonDiv.classList.add("shadowText");
-  
-  matchForm.classList.add("displayFlex");
-  matchForm.classList.add("glass2");
-  matchForm.classList.add("shadowText");
-  matchForm.classList.add("matchButton");
 
-  betInput.classList.add("flexItem");
-  betInput.classList.add("shadowText");
-  betInput.classList.add("matchButton");
-  betInput.classList.add("greenLightText");
-  betInput.classList.add("glass2");
-  
-  roundInput.classList.add("flexItem");
-  roundInput.classList.add("shadowText");
-  roundInput.classList.add("matchButton");
-  roundInput.classList.add("greenLightText");
-  roundInput.classList.add("glass2");
+  //matchForm.classList.add("displayFlex");
+  //matchForm.classList.add("glass2");
+  //matchForm.classList.add("shadowText");
+  //matchForm.classList.add("matchButton");
+
+  //betInput.classList.add("flexItem");
+  //betInput.classList.add("shadowText");
+  //betInput.classList.add("matchButton");
+  //betInput.classList.add("greenLightText");
+  //betInput.classList.add("glass2");
+
+  //roundInput.classList.add("flexItem");
+  //roundInput.classList.add("shadowText");
+  //roundInput.classList.add("matchButton");
+  //roundInput.classList.add("greenLightText");
+  //roundInput.classList.add("glass2");
 
   matchButtonYes.classList.add("glass2");
   matchButtonYes.classList.add("shadowText");
@@ -318,19 +314,19 @@ function createMatchButton() {
   matchButtonNo.classList.add("matchButton");
   matchButtonNo.classList.add("glassHover");
 
-  function removeMatchButton () {
-    matchForm.removeChild(betInput);
-    matchForm.removeChild(roundInput);
-    matchButtonDiv.removeChild(matchForm);
-    
+  function removeMatchButton() {
+    //matchForm.removeChild(betInput);
+    // matchForm.removeChild(roundInput);
+    //matchButtonDiv.removeChild(matchForm);
+
     matchButtonNo.removeChild(matchButtonNoText);
     matchButtonYes.removeChild(matchButtonYesText);
-    
+
     matchButtonDiv.removeChild(matchButtonYes);
     matchButtonDiv.removeChild(matchButtonNo);
 
     matchButtonDivParent.removeChild(matchButtonDiv);
-  };
+  }
 
   matchButtonYes.addEventListener("click", function () {
     removeMatchButton();
@@ -340,9 +336,7 @@ function createMatchButton() {
   matchButtonNo.addEventListener("click", function () {
     removeMatchButton();
   });
-  
 }
-
 function roundFunctions() {
   disableCards();
   computerCard = computerCardsArray[currentRound];
@@ -378,8 +372,7 @@ function cardLeftEfect() {
 
   setTimeout(() => {
     cardRight.classList.remove("rejectedCardRight");
-    cardRightImage.src =
-      "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+    cardRightImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
     cardRight.classList.add("rejectedCardRightBack");
   }, time05);
 
@@ -438,8 +431,7 @@ function cardRightEfect() {
 
   setTimeout(() => {
     cardLeft.classList.remove("rejectedCardLeft");
-    cardLeftImage.src =
-      "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+    cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
     cardLeft.classList.add("rejectedCardLeftBack");
   }, time05);
 
