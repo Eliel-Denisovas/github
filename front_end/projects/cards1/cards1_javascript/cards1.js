@@ -51,8 +51,11 @@ let luck = 0.5;
   }
 })();
 
-// console.log(computerCardsArray);
+console.log(computerCardsArray);
+
 document.querySelector(".page").classList.remove("disableElement");
+
+
 
 function addCheckPoint() {
   const checkPoint = document.createElement("div");
@@ -107,13 +110,10 @@ function insertData() {
       numberFractionDisplay.classList.add("textScaleUp");
       numberFractionDisplay.classList.add("shadowText2");
       setTimeout(() => {
-        document
-          .getElementById("numberFraction")
-          .classList.remove("textScaleUp");
-        document
-          .getElementById("numberFraction")
-          .classList.remove("shadowText2");
-      }, time1);
+        numberFractionDisplay.classList.remove("textScaleUp");
+        numberFractionDisplay.classList.remove("shadowText2");
+        numberFractionDisplay.classList.add("textScaleDown");
+      }, 250);
 
       numberFractionDisplay.classList.add("textScaleUp");
       numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
@@ -186,6 +186,7 @@ function cleanClasses() {
   containerCards.classList.add("glass");
   cardRight.classList.add("glass");
   cardLeft.classList.add("glass");
+  numberFractionDisplay.classList.remove("textScaleDown");
 
   if (computerCard === undefined) {
     cardLeft.classList.remove("glassHover");
@@ -248,8 +249,21 @@ function createMatchButton() {
   const matchButtonDivParent = document.getElementById("fundo");
 
   const matchButtonDiv = document.createElement("div");
+  const matchInformationDiv = document.createElement("div");
   const matchButtonYes = document.createElement("div");
+  const matchButtonYesP = document.createElement("p");
   const matchButtonNo = document.createElement("div");
+  const earnedLostText = function () {
+    if (currentMoney < startMoney) {
+      const lost = (startMoney-currentMoney).toFixed(2);
+      return `You lost ${lost}`;
+    } else if (startMoney == currentMoney) {
+      return "You have no earns";
+    } else {
+      const earn = (currentMoney-startMoney).toFixed(2);
+      return `You earned ${earn}`;
+    }
+  }
 
   //const matchForm = document.createElement("form");
   // const betInput = document.createElement("input");
@@ -258,24 +272,28 @@ function createMatchButton() {
   // betInput.type = "text";
   // roundInput.type = "text";
 
-  const matchButtonYesText = document.createTextNode("Play");
+  const matchInformationDivText = document.createTextNode(earnedLostText());
+  const matchButtonYesText = document.createTextNode(`Play Amount: ${currentMoney.toFixed(2)}`);
   const matchButtonNoText = document.createTextNode("X");
 
   // matchForm.appendChild(betInput);
   //matchForm.appendChild(roundInput);
 
+  matchInformationDiv.appendChild(matchInformationDivText);
   matchButtonNo.appendChild(matchButtonNoText);
-  matchButtonYes.appendChild(matchButtonYesText);
+  matchButtonYes.appendChild(matchButtonYesP);
+  matchButtonYesP.appendChild(matchButtonYesText);
 
   //matchButtonDiv.appendChild(matchForm);
 
+  matchButtonDiv.appendChild(matchInformationDiv);
   matchButtonDiv.appendChild(matchButtonYes);
   matchButtonDiv.appendChild(matchButtonNo);
 
   matchButtonDivParent.appendChild(matchButtonDiv);
 
   matchButtonDiv.setAttribute("id", "macthButtonDiv");
-  matchButtonDiv.setAttribute("id", "macthButtonDiv");
+  matchButtonYes.setAttribute("id", "yesMatchButton");
   matchButtonNo.setAttribute("id", "noMatchButton");
   //matchForm.setAttribute("id", "matchForm");
   // betInput.setAttribute("id", "betInput");
@@ -286,6 +304,8 @@ function createMatchButton() {
   matchButtonDiv.classList.add("displayFlex");
   matchButtonDiv.classList.add("glass2");
   matchButtonDiv.classList.add("shadowText");
+  matchInformationDiv.classList.add("automaticFontChild");
+  matchButtonYesP.classList.add("automaticFontChild");
 
   //matchForm.classList.add("displayFlex");
   //matchForm.classList.add("glass2");
@@ -322,9 +342,10 @@ function createMatchButton() {
     matchButtonNo.removeChild(matchButtonNoText);
     matchButtonYes.removeChild(matchButtonYesText);
 
+    matchInformationDiv.appendChild(matchInformationDivText);
+    matchButtonDiv.appendChild(matchInformationDiv);
     matchButtonDiv.removeChild(matchButtonYes);
     matchButtonDiv.removeChild(matchButtonNo);
-
     matchButtonDivParent.removeChild(matchButtonDiv);
   }
 
@@ -410,7 +431,12 @@ function cardLeftEfect() {
       setTimeout(() => {
         luckWord.classList.remove("textScaleUp");
         luckWord.classList.remove("greenLightText");
-      }, time3);
+        luckWord.classList.remove("greenLightText");
+        luckWord.classList.add("textScaleDown");
+        setTimeout(() => {
+          luckWord.classList.remove("textScaleDown");
+        }, 250);
+      }, 3500);
     } else {
       containerCards.classList.add("wrongChoice");
       choiceSound.pause();
@@ -463,12 +489,18 @@ function cardRightEfect() {
       containerCards.classList.add("correctChoice");
       choiceSound.pause();
       correctChoiceSound.play();
+
       luckWord.classList.add("textScaleUp");
       luckWord.classList.add("greenLightText");
       setTimeout(() => {
         luckWord.classList.remove("textScaleUp");
         luckWord.classList.remove("greenLightText");
-      }, time3);
+        luckWord.classList.remove("greenLightText");
+        luckWord.classList.add("textScaleDown");
+        setTimeout(() => {
+          luckWord.classList.remove("textScaleDown");
+        }, 250);
+      }, 3500);
     } else {
       containerCards.classList.add("wrongChoice");
       choiceSound.pause();

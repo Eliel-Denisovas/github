@@ -30,26 +30,8 @@ p {
   flex: 1;
 }
 
-.automaticFontParent {
-  display: flex;
-  /* Usado para centralizar verticalmente o texto */
-  align-items: center;
-  /* Centraliza verticalmente o texto */
-  justify-content: center;
-  /* Centraliza horizontalmente o texto */
-}
-
-.automaticFontChild {
-  overflow: hidden;
-  /* Esconde qualquer conteúdo que ultrapasse os limites da div */
-  text-align: center;
-  /* Centraliza horizontalmente o texto */
-  word-wrap: break-word;
-  /* Evita que o texto quebre a linha */
-}
-
 .flexRow {
-  flex-direction: row
+  flex-direction: row;
 }
 
 .marginZero {
@@ -70,24 +52,36 @@ p {
 }
 
 .page {
-  width: 100vh;
+  width: calc(100vh - 12vh);
   height: 100%;
   margin: auto;
 }
 
-header {
-  height: 5vh;
-  margin: 0 0 var(--space2) 0;
+.headerSet {
+  width: calc(100vh - 12vh);
+  min-height: 5vh;
+  max-height: 1vh;
+  margin: 1vh auto;
+  justify-content: center;
+  background-image: linear-gradient(315deg, hsla(182, 100%, 50%, 0.50), hsla(0, 0%, 0%, 0.9));
+  border-radius: var(--space2);
+  box-shadow: 5vh 5vh 5vh hsl(0, 0%, 0%, 0.9);
+  border-bottom: 0.1vh solid hsla(0, 0%, 100%, 0.3);
+  border-right: 0.1vh solid hsla(0, 0%, 100%, 0.3);
+  border-top: 0.1vh solid hsla(0, 0%, 0%, 1);
+  border-left: 0.1vh solid hsla(0, 0%, 0%, 1);
 }
 
-nav {
+.navSet {
   height: 100%;
   width: 100%;
   justify-content: space-around;
+  padding: 0.5vh;
 }
 
-nav img {
-  height: 100%;
+.navSet img { 
+  height: 4vh;
+  border-radius: 2vh;
 }
 
 .status {
@@ -173,7 +167,7 @@ nav img {
 
 .shadowText {
   text-shadow: 0 0 2vh blue, 0 0 3vh darkblue, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
-  color: rgb(196, 255, 255);
+  color: rgb(196, 212, 255);
 }
 
 .shadowText2 {
@@ -200,21 +194,21 @@ nav img {
 }
 
 .redLightBox{
-  border: 0.5vh solid hsla(0, 100%, 74%, 0.8);
+  border: 0.5vh solid hsl(0, 100%, 50%);
   background-color: hsla(0, 100%, 50%, 0.4);
   box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgb(255, 0, 0), 0 0 3vh rgb(139, 0, 0), 3vh 3vh 3vh black;
   transition: all 1s ease;
 }
 
 .greenLightBox {
-  border: 0.5vh solid rgba(122, 255, 222, 0.8);
+  border: 0.5vh solid rgb(122, 255, 222);
   background-color: rgba(122, 255, 222, 0.4);
   box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh rgba(122, 255, 222), 0 0 3vh rgb(0, 134, 101), 3vh 3vh 3vh black;
   transition: all 1s ease;
 }
 
 .greenLightText {
-  text-shadow: 0 0 2vh rgba(122, 255, 222), 0 0 3vh rgb(0, 136, 102);
+  text-shadow: 0 0 2vh rgba(122, 255, 222), 0 0 3vh rgb(0, 136, 102), 5vh 5vh 5vh hsl(0, 0%, 0%, 0.9);
   color: rgba(122, 255, 222);
 }
 
@@ -332,7 +326,11 @@ nav img {
 
 .textScaleUp {
   scale: 3;
-  transition: all 3s ease;
+  transition: all 0.25s ease;
+}
+.textScaleDown {
+  scale: 1;
+  transition: all 0.25s ease;
 }
 
 #macthButtonDiv {
