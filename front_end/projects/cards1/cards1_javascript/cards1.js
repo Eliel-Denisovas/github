@@ -132,56 +132,38 @@ function choice() {
   containerCards.classList.add("choice");
 }
 
-function rejectedCardLeft() {
-  cardLeft.classList.add("rejectedCardLeft");
-  cardLeft.classList.remove("glass2Hover");
-}
-
-function rejectedCardRight() {
-  cardRight.classList.add("rejectedCardRight");
-  cardRight.classList.remove("glassHover");
-}
-
 function acceptedCardLeft() {
   cardLeft.classList.add("acceptedCardLeft");
-  cardLeft.classList.remove("glassHover");
+  setTimeout(() => {
+    cardLeft.classList.remove("acceptedCardLeft");
+  }, 5000);
 }
 
 function acceptedCardRight() {
   cardRight.classList.add("acceptedCardRight");
-  cardRight.classList.remove("glassHover");
+  setTimeout(() => {
+    cardRight.classList.remove("acceptedCardRight");
+  }, 5000);
+}
+
+function rejectedCardLeft() {
+  cardLeft.classList.add("rejectedCardLeft");
+  setTimeout(() => {
+    cardLeft.classList.remove("rejectedCardLeft");
+  }, 5000);
+}
+
+function rejectedCardRight() {
+  cardRight.classList.add("rejectedCardRight");
+  setTimeout(() => {
+    cardRight.classList.remove("rejectedCardRight");
+  }, 5000);
 }
 
 function cleanClasses() {
   containerCards.classList.remove("choice");
   containerCards.classList.remove("correctChoice");
   containerCards.classList.remove("wrongChoice");
-
-  cardLeft.classList.remove("rejectedCardLeft");
-  cardRight.classList.remove("rejectedCardRight");
-
-  cardLeft.classList.remove("acceptedCardLeft");
-  cardRight.classList.remove("acceptedCardRight");
-
-  document
-    .getElementById("cardRight")
-    .classList.remove("acceptedCardRightBack");
-  cardLeft.classList.remove("acceptedCardLeftBack");
-
-  document
-    .getElementById("cardRight")
-    .classList.remove("rejectedCardRightBack");
-  cardLeft.classList.remove("rejectedCardLeftBack");
-
-  cardLeft.classList.remove("rejectedCardLeftTurn");
-  document
-    .getElementById("cardRight")
-    .classList.remove("rejectedCardRightTurn");
-
-  cardLeft.classList.remove("rejectedCardLeftTurn2");
-  document
-    .getElementById("cardRight")
-    .classList.remove("rejectedCardRightTurn2");
 
   containerCards.classList.add("glass");
   cardRight.classList.add("glass");
@@ -381,25 +363,10 @@ function roundFunctions() {
     currentRound += 1;
   }
 }
-
 function cardLeftEfect() {
   choiceSound.play();
   rejectedCardRight();
   acceptedCardLeft();
-
-  setTimeout(() => {
-    cardLeft.classList.add("acceptedCardLeftBack");
-  }, time05);
-
-  setTimeout(() => {
-    cardRight.classList.remove("rejectedCardRight");
-    cardRightImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
-    cardRight.classList.add("rejectedCardRightBack");
-  }, time05);
-
-  setTimeout(() => {
-    cardRight.classList.add("rejectedCardRightTurn");
-  }, time08);
 
   setTimeout(() => {
     if (computerCard === 0) {
@@ -412,10 +379,6 @@ function cardLeftEfect() {
       cardRightImage.src =
         "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
     }
-
-    document
-      .getElementById("cardRight")
-      .classList.add("rejectedCardRightTurn2");
   }, time15);
 
   setTimeout(() => {
@@ -451,21 +414,6 @@ function cardRightEfect() {
   acceptedCardRight();
 
   setTimeout(() => {
-    cardRight.classList.remove("acceptedCardRight");
-    cardRight.classList.add("acceptedCardRightBack");
-  }, time05);
-
-  setTimeout(() => {
-    cardLeft.classList.remove("rejectedCardLeft");
-    cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
-    cardLeft.classList.add("rejectedCardLeftBack");
-  }, time05);
-
-  setTimeout(() => {
-    cardLeft.classList.add("rejectedCardLeftTurn");
-  }, time08);
-
-  setTimeout(() => {
     if (computerCard === 0) {
       cardLeftImage.src =
         "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
@@ -478,8 +426,6 @@ function cardRightEfect() {
       cardRightImage.src =
         "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
     }
-
-    cardLeft.classList.add("rejectedCardLeftTurn2");
   }, time15);
 
   setTimeout(() => {
