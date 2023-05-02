@@ -247,37 +247,42 @@ p {
 
 .acceptedCardRight {
   animation-name: acceptedCardRight;
-  animation-duration:  1s;
+  animation-duration:  2s;
   animation-timing-function:  ease;
 }
 
 @keyframes rejectedCardRight {
 
   0% {
+    z-index: -3;
     transform: scale(1.1);
   }
 
   25% {
    transform: translate(calc(-50% + -5vh)) scale(0.8);
-  }
+  } 
 
   50% {
-    transform: translate(0%) scale(1.2) rotateY(90deg);
+    transform: translate(0%) scale(1.2) rotateY(-360deg) perspective(800px);
   }
 
-  100% {
-   transform: scale(1) rotateY(90deg);
+  75% {
+   transform: scale(1);
+  }
+
+  100%{
+    transform: scale(1) rotateY(-360deg) perspective(800px);
+    z-index: 0;
   }
 }
 
 .rejectedCardRight {
   animation-name: rejectedCardRight;
-  animation-duration:  2s;
+  animation-duration:  4s;
   animation-timing-function:  ease;
 }
 
 @keyframes acceptedCardLeft {
-
   0% {
     z-index: 2;
     transform: scale(1.1);
@@ -292,13 +297,15 @@ p {
 }
 .acceptedCardLeft {
   animation-name: acceptedCardLeft;
-  animation-duration:  1s;
+  animation-duration:  2s;
   animation-timing-function:  ease;
 }
+
 
 @keyframes rejectedCardLeft {
 
   0% {
+    z-index: -3;
     transform: scale(1.1);
   }
 
@@ -307,17 +314,22 @@ p {
   }
 
   50% {
-    transform: translate(0%) scale(1.2) rotateY(-90deg);
+    transform: translate(0%) scale(1.2) rotateY(360deg);
   }
 
-  100% {
-   transform: scale(1) rotateY(-90deg);
+  75% {
+   transform: scale(1);
+  }
+
+  100%{
+    transform: scale(1) rotateY(360deg);
+    z-index: 0;
   }
 }
 
 .rejectedCardLeft {
   animation-name: rejectedCardLeft;
-  animation-duration:  2s;
+  animation-duration:  4s;
   animation-timing-function:  ease;
 }
 

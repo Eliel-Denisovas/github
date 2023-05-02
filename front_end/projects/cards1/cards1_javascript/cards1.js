@@ -42,14 +42,15 @@ let roundStatus;
 let arrayLuck = [];
 let luck = 0.5;
 
-(function generateComputerCardsArray() {
+function generateComputerCardsArray() {
   let i = 0;
   while (i < rounds) {
     computerCard = Math.floor(Math.random() * 2);
     computerCardsArray.push(computerCard);
     i++;
   }
-})();
+};
+generateComputerCardsArray();
 
 console.log(computerCardsArray);
 
@@ -119,11 +120,14 @@ function insertData() {
       numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
     }, time1);
   }
-
-  divisorFractionDisplay.textContent = rounds.toFixed(0);
-  numberPercentualDisplay.textContent = luck.toFixed(2);
-  moneyDisplay.textContent = currentMoney.toFixed(2);
-  previousStatusDisplay.textContent = `Round Value | ${roundValue.toFixed(2)}`;
+  setTimeout(() => {
+    divisorFractionDisplay.textContent = rounds.toFixed(0);
+    numberPercentualDisplay.textContent = luck.toFixed(2);
+    moneyDisplay.textContent = currentMoney.toFixed(2);
+    previousStatusDisplay.textContent = `Round Value | ${roundValue.toFixed(
+      2
+    )}`;
+  }, 1450);
 }
 
 insertData();
@@ -176,10 +180,6 @@ function cleanClasses() {
     cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
     cardRightImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
   } else {
-    cardLeftImage.src =
-      "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
-    cardRightImage.src =
-      "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
     cardLeft.classList.add("glassHover");
     cardRight.classList.add("glassHover");
   }
@@ -364,9 +364,28 @@ function roundFunctions() {
   }
 }
 function cardLeftEfect() {
-  choiceSound.play();
   rejectedCardRight();
   acceptedCardLeft();
+
+  setTimeout(() => {
+    cardRightImage.src =
+    "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+  }, 1000);
+
+  setTimeout(() => {
+    choiceSound.load();
+    choiceSound.play();
+  }, 900);
+
+  setTimeout(() => {
+    choiceSound.load();
+    choiceSound.play();
+  }, 2450);
+
+  setTimeout(() => {
+    choiceSound.load();
+    choiceSound.play();
+  }, 2900);
 
   setTimeout(() => {
     if (computerCard === 0) {
@@ -379,7 +398,17 @@ function cardLeftEfect() {
       cardRightImage.src =
         "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
     }
-  }, time15);
+  }, 1500);
+  
+  setTimeout(() => {
+    cardRightImage.src =
+    "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+  }, 3100);
+
+  setTimeout(() => {
+    cardRightImage.src =
+    "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
+  }, 3400);
 
   setTimeout(() => {
     containerCards.classList.remove("choice");
@@ -399,7 +428,7 @@ function cardLeftEfect() {
         setTimeout(() => {
           luckWord.classList.remove("textScaleDown");
         }, 250);
-      }, 3500);
+      }, 2750);
     } else {
       containerCards.classList.add("wrongChoice");
       choiceSound.pause();
@@ -414,6 +443,19 @@ function cardRightEfect() {
   acceptedCardRight();
 
   setTimeout(() => {
+    cardLeftImage.src =
+    "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+  }, 1000);
+
+  setTimeout(() => {
+    choiceSound.play();
+  }, 1000);
+
+  setTimeout(() => {
+    choiceSound.play();
+  }, 3200);
+
+  setTimeout(() => {
     if (computerCard === 0) {
       cardLeftImage.src =
         "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
@@ -423,10 +465,18 @@ function cardRightEfect() {
     } else {
       cardLeftImage.src =
         "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
-      cardRightImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
     }
-  }, time15);
+  }, 1500);
+  
+  setTimeout(() => {
+    cardLeftImage.src =
+    "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+  }, 3100);
+
+  setTimeout(() => {
+    cardLeftImage.src =
+    "../images/Playing Cards/PNG-cards-1.3/King_of_clubs2.png";
+  }, 3400);
 
   setTimeout(() => {
     containerCards.classList.remove("choice");
@@ -452,7 +502,7 @@ function cardRightEfect() {
       choiceSound.pause();
       wrongChoiceSound.play();
     }
-  }, time15);
+  }, 1000);
 }
 
 cardLeft.addEventListener("click", function () {
