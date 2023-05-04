@@ -116,6 +116,7 @@ p {
 }
 
 #containerCards {
+  perspective: 20cm;
   flex-direction: row;
   margin: 1vh;
   padding: 1vh;
@@ -237,7 +238,7 @@ p {
     transform: scale(1.1);
   }
   50% {
-    transform: translate(calc(-50% - 2vh)) scale(1.3);
+    transform: translate(calc(-50% - 2vh)) scale(1.2);
   }
   100% {
     transform: translate(0) scale(1);
@@ -252,18 +253,18 @@ p {
 }
 
 @keyframes rejectedCardRight {
-
+  
   0% {
     z-index: -3;
-    transform: scale(1.1);
+    transform: scale(1.1) perspective(4cm);
   }
 
   25% {
-   transform: translate(calc(-50% + -5vh)) scale(0.8);
-  } 
+   transform: translate(calc(-50% - 5vh)) scale(0.8);
+  }
 
   50% {
-    transform: translate(0%) scale(1.2) rotateY(-360deg) perspective(800px);
+    transform: translate(0%) scale(1.2) rotateY(-360deg);
   }
 
   75% {
@@ -271,9 +272,10 @@ p {
   }
 
   100%{
-    transform: scale(1) rotateY(-360deg) perspective(800px);
+    transform: scale(1) rotateY(-360deg);
     z-index: 0;
   }
+
 }
 
 .rejectedCardRight {
@@ -283,13 +285,15 @@ p {
 }
 
 @keyframes acceptedCardLeft {
+
   0% {
     z-index: 2;
     transform: scale(1.1);
   }
   50% {
-    transform: translate(calc(50% + 2vh)) scale(1.3);
+    transform: translate(calc(50% + 2vh)) scale(1.2);
   }
+
   100% {
     transform: translate(0) scale(1);
     z-index: 0;
@@ -303,10 +307,10 @@ p {
 
 
 @keyframes rejectedCardLeft {
-
+    
   0% {
     z-index: -3;
-    transform: scale(1.1);
+    transform: scale(1.1) perspective(4cm);
   }
 
   25% {

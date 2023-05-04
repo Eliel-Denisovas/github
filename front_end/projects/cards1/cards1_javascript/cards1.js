@@ -13,6 +13,8 @@ const roundSound = document.getElementById("roundSound");
 const cardLeftImage = document.getElementById("cardLeftImage");
 const cardRightImage = document.getElementById("cardRightImage");
 const choiceSound = document.getElementById("choiceSound");
+const clickSound = document.getElementById("clickSound");
+const coinSound = document.getElementById("coinSound");
 const correctChoiceSound = document.getElementById("correctChoiceSound");
 const luckWord = document.getElementById("luckWord");
 const wrongChoiceSound = document.getElementById("wrongChoiceSound");
@@ -124,6 +126,10 @@ function insertData() {
     divisorFractionDisplay.textContent = rounds.toFixed(0);
     numberPercentualDisplay.textContent = luck.toFixed(2);
     moneyDisplay.textContent = currentMoney.toFixed(2);
+    if(roundStatus){
+      coinSound.play();
+    }
+
     previousStatusDisplay.textContent = `Round Value | ${roundValue.toFixed(
       2
     )}`;
@@ -367,6 +373,8 @@ function cardLeftEfect() {
   rejectedCardRight();
   acceptedCardLeft();
 
+    clickSound.play();
+
   setTimeout(() => {
     cardRightImage.src =
     "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
@@ -438,9 +446,10 @@ function cardLeftEfect() {
 }
 
 function cardRightEfect() {
-  choiceSound.play();
   rejectedCardLeft();
   acceptedCardRight();
+
+  clickSound.play();
 
   setTimeout(() => {
     cardLeftImage.src =
