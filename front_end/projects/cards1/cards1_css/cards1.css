@@ -53,7 +53,7 @@ p {
 .page {
   width: calc(100vh - 12vh);
   height: 100%;
-  margin: 0 auto;
+  margin: 2vh auto;
 }
 
 .headerSet {
@@ -176,6 +176,7 @@ p {
   border-top: 0.1vh solid hsla(0, 0%, 0%, 0.5);
   border-left: 0.1vh solid hsla(0, 0%, 0%, 0.5);
 }
+
 .glass2 {
   background-image: linear-gradient(315deg, hsla(182, 100%, 50%, 0.50), hsla(0, 0%, 0%, 0.9));
   border-radius: var(--space2);
@@ -369,6 +370,8 @@ p {
   transition: all 0.25s ease;
 }
 
+  /*Match button*/
+
 #macthButtonDiv {
   position: absolute;
   left: calc(50% - 25vh);
@@ -404,4 +407,219 @@ p {
   font-size: 3vh;
 }
 
-/*Tools*/
+  /*Media*/
+
+@media (orientation: portrait) {
+
+  .page {
+    height: calc(100vw - 12vw);
+    width: 100%;
+    margin: 25vh 2vw;
+  }
+
+  #numberFraction,
+  #numberPercentual,
+  #money {
+    font-size: 10vw;
+  }
+
+  #divisorFraction,
+  #previousStatus,
+  #luckWord {
+    font-size: 5vw;
+  }
+
+  .headerSet {
+    width: 100%;
+    min-height: 5vw;
+    max-height: 1vw;
+    margin: 1vw auto;
+    justify-content: center;
+  }
+
+  .navSet img { 
+    height: 4vw;
+    border-radius: 2vw;
+  }
+
+  .checkPoint{
+    height: 1vw;
+  }
+
+  .table1 .display div {
+    min-width: 0.5vw;
+    min-height: 0.5vw;
+    border-radius: 1vw;
+    margin: 0.2vw;
+  }
+  
+  #containerCards {
+    margin: 1vw;
+    padding: 1vw;
+  }
+
+  .shadowText {
+    text-shadow: 0 0 2vw blue, 0 0 3vw darkblue, 0 0 1vw var(--corFundo), 0 0 1vw var(--corFundo);
+  }
+
+.glass {
+  box-shadow: 3vw 3vw 3vw hsl(0, 0%, 0%, 0.7);
+  border-bottom: 0.1vw solid hsla(0, 0%, 100%, 0.2);
+  border-right: 0.1vw solid hsla(0, 0%, 100%, 0.2);
+  border-top: 0.1vw solid hsla(0, 0%, 0%, 0.5);
+  border-left: 0.1vw solid hsla(0, 0%, 0%, 0.5);
+}
+
+.glass2 {
+  box-shadow: 5vw 5vw 5vw hsl(0, 0%, 0%, 0.9);
+  border-bottom: 0.1vw solid hsla(0, 0%, 100%, 0.3);
+  border-right: 0.1vw solid hsla(0, 0%, 100%, 0.3);
+  border-top: 0.1vw solid hsla(0, 0%, 0%, 1);
+  border-left: 0.1vw solid hsla(0, 0%, 0%, 1);
+}
+
+.redLightBox{
+  border: 0.5vw solid hsl(0, 100%, 50%);
+  box-shadow: 0 0 0.1vw rgb(0, 0, 0), 0 0 2vw rgb(255, 0, 0), 0 0 3vw rgb(139, 0, 0), 3vw 3vw 3vw black;
+}
+
+.greenLightBox {
+  border: 0.5vw solid rgb(122, 255, 222);
+  box-shadow: 0 0 0.1vw rgb(0, 0, 0), 0 0 2vw rgba(122, 255, 222), 0 0 3vw rgb(0, 134, 101), 3vw 3vw 3vw black;
+}
+
+.greenLightText {
+  text-shadow: 0 0 2vw rgba(122, 255, 222), 0 0 3vw rgb(0, 136, 102), 5vw 5vw 5vw hsl(0, 0%, 0%, 0.9);
+}
+
+.yellowLightText {
+  text-shadow: 0 0 0.1vw rgb(255, 255, 255), 0 0 2vw rgb(255, 255, 0), 0 0 1vw rgb(131, 131, 0), 1vw 1vw 1vw black, 0 0 1vw var(--corFundo), 0 0 1vw var(--corFundo);
+}
+
+/*Hovers*/
+
+.glassHover:hover {
+  box-shadow: 0 0 0.1vw rgb(0, 0, 0), 0 0 2vw blue, 0 0 3vw darkblue, 3vw 3vw 3vw black, 0 0 1vw;
+}
+
+.choice {
+  border: 0.5vw solid hsl(214, 100%, 74%, 0.8);
+  background-color: hsl(240, 100%, 50%, 0.4);
+  box-shadow: 0 0 0.1vw rgb(0, 0, 0), 0 0 2vw blue, 0 0 3vw darkblue, 3vw 3vw 3vw black;
+}
+
+@keyframes acceptedCardRight {
+
+  0% {
+    z-index: 2;
+    transform: scale(1.1);
+  }
+  50% {
+    transform: translate(calc(-50% - 2vw)) scale(1.2);
+  }
+  100% {
+    transform: translate(0) scale(1);
+    z-index: 0;
+  }
+}
+
+.acceptedCardRight {
+  animation-name: acceptedCardRight;
+  animation-duration:  2s;
+  animation-timing-function:  ease;
+}
+
+@keyframes rejectedCardRight {
+  
+  0% {
+    z-index: -3;
+    transform: scale(1.1) perspective(4cm);
+  }
+
+  25% {
+   transform: translate(calc(-50% - 5vw)) scale(0.8);
+  }
+
+  50% {
+    transform: translate(0%) scale(1.2) rotateY(-360deg);
+  }
+
+  75% {
+   transform: scale(1);
+  }
+
+  100%{
+    transform: scale(1) rotateY(-360deg);
+    z-index: 0;
+  }
+
+}
+
+.rejectedCardRight {
+  animation-name: rejectedCardRight;
+  animation-duration:  4s;
+  animation-timing-function:  ease;
+}
+
+@keyframes acceptedCardLeft {
+
+  0% {
+    z-index: 2;
+    transform: scale(1.1);
+  }
+  50% {
+    transform: translate(calc(50% + 2vw)) scale(1.2);
+  }
+
+  100% {
+    transform: translate(0) scale(1);
+    z-index: 0;
+  }
+}
+.acceptedCardLeft {
+  animation-name: acceptedCardLeft;
+  animation-duration:  2s;
+  animation-timing-function:  ease;
+}
+
+
+@keyframes rejectedCardLeft {
+    
+  0% {
+    z-index: -3;
+    transform: scale(1.1) perspective(4cm);
+  }
+
+  25% {
+   transform: translate(calc(50% + 5vw)) scale(0.8);
+  }
+
+  50% {
+    transform: translate(0%) scale(1.2) rotateY(360deg);
+  }
+
+  75% {
+   transform: scale(1);
+  }
+
+  100%{
+    transform: scale(1) rotateY(360deg);
+    z-index: 0;
+  }
+}
+
+.rejectedCardLeft {
+  animation-name: rejectedCardLeft;
+  animation-duration:  4s;
+  animation-timing-function:  ease;
+}
+
+.correctChoice {
+  box-shadow: 0 0 0.1vw rgb(0, 0, 0), 0 0 2vw rgb(0, 255, 191), 0 0 3vw rgb(0, 139, 127), 3vw 3vw 3vw black, 0 0 1vw var(--corFundo), 0 0 1vw var(--corFundo);
+}
+
+.wrongChoice {
+  box-shadow: 0 0 0.1vw rgb(0, 0, 0), 0 0 2vw rgb(22, 13, 13), 0 0 3vw rgb(139, 0, 0), 3vw 3vw 3vw black, 0 0 1vw var(--corFundo), 0 0 1vw var(--corFundo);
+}
+
+}
