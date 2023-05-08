@@ -14,6 +14,8 @@
   color: rgba(245, 245, 245, 0.2);
   text-align: center;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 p {
@@ -43,16 +45,18 @@ p {
 
 /* Elements */
 
+html {
+  overflow-y:hidden;
+  overflow-x:hidden;
+  
+}
+
 .fundo {
   background-color: var(--corFundo);
   background-image: url(../images/backgrounds/parede-texturizada-de-concreto-verde-solido.jpg);
   background-size: cover;
-
-}
-
-.page {
-  width: calc(100vh - 12vh);
-  height: 100%;
+  width: 94vh;
+  height: 94vh;
   margin: 2vh auto;
 }
 
@@ -60,7 +64,7 @@ p {
   width: 100%;
   min-height: 5vh;
   max-height: 1vh;
-  margin: 1vh auto;
+  margin: 2vh auto;
   justify-content: center;
 }
 
@@ -74,6 +78,7 @@ p {
 .navSet img { 
   height: 4vh;
   border-radius: 2vh;
+  padding: 1vh;
 }
 
 .status {
@@ -93,7 +98,6 @@ p {
 
 .table1 {
   padding: var(--space1);
-  
 }
 
 .table1 .flexItem {
@@ -104,7 +108,7 @@ p {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  margin:  0 var(--space1) var(--space1) var(--space1);
+  margin:  2vh 2vh;
 }
 
 .table1 .display div {
@@ -116,10 +120,9 @@ p {
 }
 
 #containerCards {
-  perspective: 20cm;
+  perspective: 25cm;
   flex-direction: row;
   margin: 1vh;
-  padding: 1vh;
 }
 
 #containerCards div {
@@ -129,18 +132,18 @@ p {
 
 #containerCards div img {
   width: 100%;
-  height: 100%;
+  max-height: 46vh;
   display: block;
 }
 
 #numberFraction,
 #numberPercentual,
 #money {
-  font-size: 10vh;
+  font-size: 8vh;
   max-width: 100%;
-  /* Largura máxima do texto */
   max-height: 100%;
-  /* Altura máxima do texto */
+  text-align: center;
+  margin: auto;
 }
 
 #divisorFraction,
@@ -148,9 +151,9 @@ p {
 #luckWord {
   font-size: 5vh;
   max-width: 100%;
-  /* Largura máxima do texto */
   max-height: 100%;
-  /* Altura máxima do texto */
+  text-align: center;
+  margin: auto;
 }
 
 .leftDiv,
@@ -411,10 +414,10 @@ p {
 
 @media (orientation: portrait) {
 
-  .page {
-    height: calc(100vw - 12vw);
-    width: 100%;
-    margin: 25vh 2vw;
+  .fundo {
+    width: 94vw;
+    height: 94vw;
+    margin: 25vw 2vw;
   }
 
   #numberFraction,
@@ -433,17 +436,22 @@ p {
     width: 100%;
     min-height: 5vw;
     max-height: 1vw;
-    margin: 1vw auto;
+    margin: 1vw auto 1vw;
     justify-content: center;
   }
 
   .navSet img { 
     height: 4vw;
     border-radius: 2vw;
+    padding: 1vw;
   }
 
   .checkPoint{
     height: 1vw;
+  }
+
+  .table1 .display {
+    margin:  2vw 2vw;
   }
 
   .table1 .display div {
@@ -458,8 +466,9 @@ p {
     padding: 1vw;
   }
 
-  .shadowText {
-    text-shadow: 0 0 2vw blue, 0 0 3vw darkblue, 0 0 1vw var(--corFundo), 0 0 1vw var(--corFundo);
+  #containerCards div img {
+    height: 100%;
+    max-width: 46vw;
   }
 
 .glass {

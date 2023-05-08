@@ -124,13 +124,13 @@ function insertData() {
   }
   setTimeout(() => {
     divisorFractionDisplay.textContent = rounds.toFixed(0);
-    numberPercentualDisplay.textContent = luck.toFixed(2);
-    moneyDisplay.textContent = currentMoney.toFixed(2);
+    numberPercentualDisplay.textContent = ((luck * 100)).toFixed(0)+"%";
+    moneyDisplay.innerHTML = "\u20AC"+currentMoney.toFixed(2);
     if(roundStatus){
       coinSound.play();
     }
 
-    previousStatusDisplay.textContent = `Round Value | ${roundValue.toFixed(
+    previousStatusDisplay.textContent = `Round Value \u20AC${roundValue.toFixed(
       2
     )}`;
   }, 1450);
@@ -244,12 +244,12 @@ function createMatchButton() {
   const earnedLostText = function () {
     if (currentMoney < startMoney) {
       const lost = (startMoney-currentMoney).toFixed(2);
-      return `You lost ${lost}`;
+      return `You lost \u20AC${lost}`;
     } else if (startMoney == currentMoney) {
       return "You have no earns";
     } else {
       const earn = (currentMoney-startMoney).toFixed(2);
-      return `You earned ${earn}`;
+      return `You earned \u20AC${earn}`;
     }
   }
 
@@ -263,6 +263,7 @@ function createMatchButton() {
   const matchInformationDivText = document.createTextNode(earnedLostText());
   const matchButtonYesText = document.createTextNode(`Play Amount: ${currentMoney.toFixed(2)}`);
   const matchButtonNoText = document.createTextNode("X");
+  const currentMoneyCopy = currentMoney
 
   // matchForm.appendChild(betInput);
   //matchForm.appendChild(roundInput);
@@ -292,8 +293,7 @@ function createMatchButton() {
   matchButtonDiv.classList.add("displayFlex");
   matchButtonDiv.classList.add("glass2");
   matchButtonDiv.classList.add("shadowText");
-  matchInformationDiv.classList.add("automaticFontChild");
-  matchButtonYesP.classList.add("automaticFontChild");
+
 
   //matchForm.classList.add("displayFlex");
   //matchForm.classList.add("glass2");
@@ -340,6 +340,7 @@ function createMatchButton() {
   matchButtonYes.addEventListener("click", function () {
     removeMatchButton();
     window.location.reload(true);
+    currentMoney = currentMoneyCopy;
   });
 
   matchButtonNo.addEventListener("click", function () {
@@ -374,6 +375,7 @@ function cardLeftEfect() {
   acceptedCardLeft();
 
     clickSound.play();
+    clickSound.volume = 0.3;
 
   setTimeout(() => {
     cardRightImage.src =
@@ -450,6 +452,7 @@ function cardRightEfect() {
   acceptedCardRight();
 
   clickSound.play();
+  clickSound.volume = 1;
 
   setTimeout(() => {
     cardLeftImage.src =
