@@ -238,13 +238,16 @@ function createMatchButton() {
 
   const matchButtonDiv = document.createElement("div");
   const matchInformationDiv = document.createElement("div");
+  const matchInformationDivP = document.createElement("p");
   const matchButtonYes = document.createElement("div");
   const matchButtonYesP = document.createElement("p");
   const matchButtonNo = document.createElement("div");
+  const matchButtonNoP = document.createElement("p");
+
   const earnedLostText = function () {
     if (currentMoney < startMoney) {
       const lost = (startMoney-currentMoney).toFixed(2);
-      return `You lost \u20AC${lost}`;
+      return ``;
     } else if (startMoney == currentMoney) {
       return "You have no earns";
     } else {
@@ -253,85 +256,70 @@ function createMatchButton() {
     }
   }
 
-  //const matchForm = document.createElement("form");
-  // const betInput = document.createElement("input");
-  //const roundInput = document.createElement("input");
-
-  // betInput.type = "text";
-  // roundInput.type = "text";
-
   const matchInformationDivText = document.createTextNode(earnedLostText());
-  const matchButtonYesText = document.createTextNode(`Play Amount: ${currentMoney.toFixed(2)}`);
+  const matchButtonYesText = document.createTextNode(`Play Amount: \u20AC${currentMoney.toFixed(2)}`);
   const matchButtonNoText = document.createTextNode("X");
   const currentMoneyCopy = currentMoney
 
-  // matchForm.appendChild(betInput);
-  //matchForm.appendChild(roundInput);
+  matchInformationDivP.appendChild(matchInformationDivText);
+  matchInformationDiv.appendChild(matchInformationDivP);
 
-  matchInformationDiv.appendChild(matchInformationDivText);
-  matchButtonNo.appendChild(matchButtonNoText);
-  matchButtonYes.appendChild(matchButtonYesP);
+  matchButtonNoP.appendChild(matchButtonNoText);
+  matchButtonNo.appendChild(matchButtonNoP);
+
   matchButtonYesP.appendChild(matchButtonYesText);
-
-  //matchButtonDiv.appendChild(matchForm);
-
+  matchButtonYes.appendChild(matchButtonYesP);
+  
+  if (currentMoney > startMoney) {
   matchButtonDiv.appendChild(matchInformationDiv);
+  }
+
+  if (currentMoney > 0) {
   matchButtonDiv.appendChild(matchButtonYes);
+  }
+
   matchButtonDiv.appendChild(matchButtonNo);
 
   matchButtonDivParent.appendChild(matchButtonDiv);
 
   matchButtonDiv.setAttribute("id", "macthButtonDiv");
-  matchButtonYes.setAttribute("id", "yesMatchButton");
-  matchButtonNo.setAttribute("id", "noMatchButton");
-  //matchForm.setAttribute("id", "matchForm");
-  // betInput.setAttribute("id", "betInput");
-  // betInput.setAttribute("placeholder", "Enter Bet");
-  //roundInput.setAttribute("id", "roundInput");
-  //roundInput.setAttribute("placeholder", "Enter Rounds");
 
   matchButtonDiv.classList.add("displayFlex");
   matchButtonDiv.classList.add("glass2");
-  matchButtonDiv.classList.add("shadowText");
-
-
-  //matchForm.classList.add("displayFlex");
-  //matchForm.classList.add("glass2");
-  //matchForm.classList.add("shadowText");
-  //matchForm.classList.add("matchButton");
-
-  //betInput.classList.add("flexItem");
-  //betInput.classList.add("shadowText");
-  //betInput.classList.add("matchButton");
-  //betInput.classList.add("greenLightText");
-  //betInput.classList.add("glass2");
-
-  //roundInput.classList.add("flexItem");
-  //roundInput.classList.add("shadowText");
-  //roundInput.classList.add("matchButton");
-  //roundInput.classList.add("greenLightText");
-  //roundInput.classList.add("glass2");
-
+  
+  matchButtonNo.classList.add("glass2");
+  matchButtonNo.classList.add("matchButton");
+  matchButtonNo.classList.add("glassHover");
+  
   matchButtonYes.classList.add("glass2");
-  matchButtonYes.classList.add("shadowText");
   matchButtonYes.classList.add("matchButton");
   matchButtonYes.classList.add("glassHover");
 
-  matchButtonNo.classList.add("glass2");
-  matchButtonNo.classList.add("shadowText");
-  matchButtonNo.classList.add("matchButton");
-  matchButtonNo.classList.add("glassHover");
 
+  matchButtonYesP.classList.add("shadowText")
+  matchButtonNoP.classList.add("shadowText")
+
+  matchInformationDivP.classList.add("shadowText")
+   if (currentMoney > startMoney) {
+    matchInformationDivP.classList.add("greenLightText")
+  }
+
+  matchButtonYesP.classList.add("greenLightTextHover");
+  matchButtonNoP.classList.add("redLightTextHover");
+  
+  
   function removeMatchButton() {
-    //matchForm.removeChild(betInput);
-    // matchForm.removeChild(roundInput);
-    //matchButtonDiv.removeChild(matchForm);
 
-    matchButtonNo.removeChild(matchButtonNoText);
-    matchButtonYes.removeChild(matchButtonYesText);
+    matchButtonNoP.removeChild(matchButtonNoText);
+    matchButtonNo.removeChild(matchButtonNoP);
 
-    matchInformationDiv.appendChild(matchInformationDivText);
-    matchButtonDiv.appendChild(matchInformationDiv);
+    matchButtonYesP.removeChild(matchButtonYesText);
+    matchButtonYes.removeChild(matchButtonYesP);
+
+    matchInformationDivP.removeChild(matchInformationDivText);
+    matchInformationDiv.removeChild(matchInformationDivP);
+
+    matchButtonDiv.removeChild(matchInformationDiv);
     matchButtonDiv.removeChild(matchButtonYes);
     matchButtonDiv.removeChild(matchButtonNo);
     matchButtonDivParent.removeChild(matchButtonDiv);
