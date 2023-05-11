@@ -1,3 +1,7 @@
+let startMoney = parseFloat(prompt("Bet", ""));
+
+let startRounds = parseInt(prompt("Rounds", ""));
+
 const cardLeft = document.getElementById("cardLeft");
 const cardRight = document.getElementById("cardRight");
 const numberFractionDisplay = document.getElementById("numberFraction");
@@ -7,7 +11,7 @@ const moneyDisplay = document.getElementById("money");
 const previousStatusDisplay = document.getElementById("previousStatus");
 const PointsDisplayContainer = document.getElementById(
   "PointsDisplayContainer"
-);
+);  
 const containerCards = document.getElementById("containerCards");
 const roundSound = document.getElementById("roundSound");
 const cardLeftImage = document.getElementById("cardLeftImage");
@@ -28,8 +32,7 @@ const time3 = 3000;
 const time38 = 3800;
 const time4 = 4000;
 const time5 = 5000;
-let startMoney = parseFloat(prompt("Bet", ""));
-let startRounds = parseInt(prompt("Rounds", ""));
+
 let currentRound = 0;
 numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
 let computerCardsArray = [];
@@ -259,7 +262,6 @@ function createMatchButton() {
   const matchInformationDivText = document.createTextNode(earnedLostText());
   const matchButtonYesText = document.createTextNode(`Play Amount: \u20AC${currentMoney.toFixed(2)}`);
   const matchButtonNoText = document.createTextNode("X");
-  const currentMoneyCopy = currentMoney
 
   matchInformationDivP.appendChild(matchInformationDivText);
   matchInformationDiv.appendChild(matchInformationDivP);
@@ -269,7 +271,7 @@ function createMatchButton() {
 
   matchButtonYesP.appendChild(matchButtonYesText);
   matchButtonYes.appendChild(matchButtonYesP);
-  
+
   if (currentMoney > startMoney) {
   matchButtonDiv.appendChild(matchInformationDiv);
   }
@@ -310,25 +312,28 @@ function createMatchButton() {
   
   function removeMatchButton() {
 
+    matchInformationDivP.removeChild(matchInformationDivText);
+    matchInformationDiv.removeChild(matchInformationDivP);
+
     matchButtonNoP.removeChild(matchButtonNoText);
     matchButtonNo.removeChild(matchButtonNoP);
 
     matchButtonYesP.removeChild(matchButtonYesText);
     matchButtonYes.removeChild(matchButtonYesP);
 
-    matchInformationDivP.removeChild(matchInformationDivText);
-    matchInformationDiv.removeChild(matchInformationDivP);
-
-    matchButtonDiv.removeChild(matchInformationDiv);
-    matchButtonDiv.removeChild(matchButtonYes);
+    if (currentMoney > 0) {
+      matchButtonDiv.removeChild(matchButtonYes);
+      }
     matchButtonDiv.removeChild(matchButtonNo);
+    if (currentMoney > startMoney) {
+      matchButtonDiv.removeChild(matchInformationDiv);
+      }
     matchButtonDivParent.removeChild(matchButtonDiv);
+
   }
 
   matchButtonYes.addEventListener("click", function () {
     removeMatchButton();
-    window.location.reload(true);
-    currentMoney = currentMoneyCopy;
   });
 
   matchButtonNo.addEventListener("click", function () {
@@ -530,3 +535,5 @@ cardRight.addEventListener("click", function () {
     cleanClasses();
   }, time3);
 });
+
+
