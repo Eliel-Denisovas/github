@@ -7,11 +7,11 @@ const cardRight = document.getElementById("cardRight");
 const numberFractionDisplay = document.getElementById("numberFraction");
 const divisorFractionDisplay = document.getElementById("divisorFraction");
 const numberPercentualDisplay = document.getElementById("numberPercentual");
-const moneyDisplay = document.getElementById("money");
-const previousStatusDisplay = document.getElementById("previousStatus");
-const PointsDisplayContainer = document.getElementById(
-  "PointsDisplayContainer"
-);  
+const moneyDisplay = document.getElementById("moneyDiv");
+const moneyDisplayChild = document.getElementById("moneyDivChild");
+const previousStatusDisplay = document.getElementById("previousStatusDiv");
+const previousStatusDisplayChild = document.getElementById("previousStatusDivChild");
+const PointsDisplayContainer = document.getElementById("PointsDisplayContainer");  
 const containerCards = document.getElementById("containerCards");
 const roundSound = document.getElementById("roundSound");
 const cardLeftImage = document.getElementById("cardLeftImage");
@@ -60,8 +60,6 @@ generateComputerCardsArray();
 console.log(computerCardsArray);
 
 document.querySelector(".page").classList.remove("disableElement");
-
-
 
 function addCheckPoint() {
   const checkPoint = document.createElement("div");
@@ -113,29 +111,34 @@ function insertData() {
       roundSound.play();
       roundSound.volume = 0.5;
 
-      numberFractionDisplay.classList.add("textScaleUp");
+      numberFractionDisplay.classList.add("textScaleUp2");
       numberFractionDisplay.classList.add("shadowText2");
       setTimeout(() => {
-        numberFractionDisplay.classList.remove("textScaleUp");
+        numberFractionDisplay.classList.remove("textScaleUp2");
         numberFractionDisplay.classList.remove("shadowText2");
         numberFractionDisplay.classList.add("textScaleDown");
       }, 250);
 
-      numberFractionDisplay.classList.add("textScaleUp");
       numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
     }, time1);
   }
   setTimeout(() => {
-    divisorFractionDisplay.textContent = rounds.toFixed(0);
+    divisorFractionDisplay.textContent = "/"+rounds.toFixed(0);
     numberPercentualDisplay.textContent = ((luck * 100)).toFixed(0)+"%";
-    moneyDisplay.innerHTML = "\u20AC"+currentMoney.toFixed(2);
+    setTimeout(() => {
+      moneyDisplayChild.innerHTML = "\u20AC"+currentMoney.toFixed(2);
+    }, 500);
+
+    moneyDisplayChild.classList.add("moneyMove");
+
+    setTimeout(() => {
+      moneyDisplayChild.classList.remove("moneyMove");
+    }, 6000);
     if(roundStatus){
       coinSound.play();
     }
 
-    previousStatusDisplay.textContent = `Round Value \u20AC${roundValue.toFixed(
-      2
-    )}`;
+    previousStatusDisplayChild.textContent = `Round Value \u20AC${roundValue.toFixed(2)} - - - - - - - Inicial Value \u20AC${startMoney.toFixed(2)}`;
   }, 1450);
 }
 
@@ -248,20 +251,26 @@ function createMatchButton() {
   const matchButtonNoP = document.createElement("p");
 
   const earnedLostText = function () {
-    if (currentMoney < startMoney) {
+    if (currentMoney <= startMoney) {
       const lost = (startMoney-currentMoney).toFixed(2);
       return ``;
-    } else if (startMoney == currentMoney) {
-      return "You have no earns";
     } else {
       const earn = (currentMoney-startMoney).toFixed(2);
       return `You earned \u20AC${earn}`;
     }
   }
 
+  const yesButtonText = function () {
+    if (currentMoney <= startMoney) {
+      return `Play Again`;
+    } else {
+      return `Play Amount: \u20AC${currentMoney.toFixed(2)}`;
+    }
+  }
+
   const matchInformationDivText = document.createTextNode(earnedLostText());
-  const matchButtonYesText = document.createTextNode(`Play Amount: \u20AC${currentMoney.toFixed(2)}`);
-  const matchButtonNoText = document.createTextNode("X");
+  const matchButtonYesText = document.createTextNode(yesButtonText());
+  const matchButtonNoText = document.createTextNode("Exit");
 
   matchInformationDivP.appendChild(matchInformationDivText);
   matchInformationDiv.appendChild(matchInformationDivP);
@@ -272,20 +281,21 @@ function createMatchButton() {
   matchButtonYesP.appendChild(matchButtonYesText);
   matchButtonYes.appendChild(matchButtonYesP);
 
-  if (currentMoney > startMoney) {
+  if (currentMoney >= startMoney) {
   matchButtonDiv.appendChild(matchInformationDiv);
   }
 
-  if (currentMoney > 0) {
   matchButtonDiv.appendChild(matchButtonYes);
-  }
+
 
   matchButtonDiv.appendChild(matchButtonNo);
 
   matchButtonDivParent.appendChild(matchButtonDiv);
 
+  
   matchButtonDiv.setAttribute("id", "macthButtonDiv");
-
+  
+  matchInformationDiv.classList.add("matchInformationDiv")
   matchButtonDiv.classList.add("displayFlex");
   matchButtonDiv.classList.add("glass2");
   
@@ -303,7 +313,7 @@ function createMatchButton() {
 
   matchInformationDivP.classList.add("shadowText")
    if (currentMoney > startMoney) {
-    matchInformationDivP.classList.add("greenLightText")
+    matchInformationDivP.classList.add("yellowLightText")
   }
 
   matchButtonYesP.classList.add("greenLightTextHover");
@@ -321,9 +331,8 @@ function createMatchButton() {
     matchButtonYesP.removeChild(matchButtonYesText);
     matchButtonYes.removeChild(matchButtonYesP);
 
-    if (currentMoney > 0) {
-      matchButtonDiv.removeChild(matchButtonYes);
-      }
+    matchButtonDiv.removeChild(matchButtonYes);
+
     matchButtonDiv.removeChild(matchButtonNo);
     if (currentMoney > startMoney) {
       matchButtonDiv.removeChild(matchInformationDiv);
@@ -421,10 +430,10 @@ function cardLeftEfect() {
       choiceSound.pause();
       correctChoiceSound.play();
 
-      luckWord.classList.add("textScaleUp");
+      luckWord.classList.add("textScaleUp1");
       luckWord.classList.add("greenLightText");
       setTimeout(() => {
-        luckWord.classList.remove("textScaleUp");
+        luckWord.classList.remove("textScaleUp1");
         luckWord.classList.remove("greenLightText");
         luckWord.classList.remove("greenLightText");
         luckWord.classList.add("textScaleDown");
@@ -491,10 +500,10 @@ function cardRightEfect() {
       choiceSound.pause();
       correctChoiceSound.play();
 
-      luckWord.classList.add("textScaleUp");
+      luckWord.classList.add("textScaleUp1");
       luckWord.classList.add("greenLightText");
       setTimeout(() => {
-        luckWord.classList.remove("textScaleUp");
+        luckWord.classList.remove("textScaleUp1");
         luckWord.classList.remove("greenLightText");
         luckWord.classList.remove("greenLightText");
         luckWord.classList.add("textScaleDown");
@@ -535,5 +544,3 @@ cardRight.addEventListener("click", function () {
     cleanClasses();
   }, time3);
 });
-
-
