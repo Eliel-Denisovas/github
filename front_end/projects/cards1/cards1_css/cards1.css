@@ -232,6 +232,16 @@ html {
   text-shadow: 0 0 2vh rgba(122, 255, 222), 0 0 3vh rgb(0, 136, 102), 5vh 5vh 5vh hsl(0, 0%, 0%, 0.9);
   color: rgba(122, 255, 222);
 }
+
+.yellowLightText {
+  text-shadow: 0 0 0.1vh rgb(255, 255, 255), 0 0 2vh rgb(255, 255, 0), 0 0 1vh rgb(131, 131, 0), 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+}
+
+.redLightText {
+  text-shadow: 0 0 2vh rgb(255, 122, 122), 0 0 3vh rgb(136, 0, 0), 5vh 5vh 5vh hsl(0, 0%, 0%, 0.9);
+  color: rgb(255, 0, 0);
+  transition: all 1s ease;
+}
 .greenLightTextHover:hover {
   text-shadow: 0 0 2vh rgba(122, 255, 222), 0 0 3vh rgb(0, 136, 102), 5vh 5vh 5vh hsl(0, 0%, 0%, 0.9);
   color: rgb(0, 248, 186);
@@ -241,10 +251,6 @@ html {
   text-shadow: 0 0 2vh rgb(255, 122, 122), 0 0 3vh rgb(136, 0, 0), 5vh 5vh 5vh hsl(0, 0%, 0%, 0.9);
   color: rgb(255, 0, 0);
   transition: all 1s ease;
-}
-
-.yellowLightText {
-  text-shadow: 0 0 0.1vh rgb(255, 255, 255), 0 0 2vh rgb(255, 255, 0), 0 0 1vh rgb(131, 131, 0), 1vh 1vh 1vh black, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
 }
 
 /*Hovers*/
@@ -448,17 +454,17 @@ transform: translateY(0);
 
   /*Match button*/
 
-#macthButtonDiv {
-  position: absolute;
-  left: calc(50% - 25vh);
-  top: 45vh;
-  width: 50vh;
-  z-index: 5;
-  font-size: 4vh;
-  padding: 2.5vh 5vh 5vh;
-  flex-direction: column;
-  font-family: nos;
-}
+  #matchButtonDiv {
+    position: absolute;
+    left: calc(50% - 25vh);
+    top: calc(50%);
+    width: 50vh;
+    z-index: 5;
+    font-size: 4vh;
+    padding: 2.5vh 5vh 5vh;
+    flex-direction: column;
+    font-family: nos;
+  }
 
 .matchButton {
   margin-top: 2.5vh;
@@ -688,15 +694,16 @@ transform: translateY(0);
   box-shadow: 0 0 0.1vw rgb(0, 0, 0), 0 0 2vw rgb(22, 13, 13), 0 0 3vw rgb(139, 0, 0), 3vw 3vw 3vw black, 0 0 1vw var(--corFundo), 0 0 1vw var(--corFundo);
 }
 
-#macthButtonDiv {
-  position: absolute;
-  left: calc(50% - 25vw);
-  top: calc(50% - 25vw);
-  z-index: 5;
-  margin: 1vw;
-  font-size: 6vw;
-  padding: var(1vw);
-  flex-direction: column;
+#matchButtonDiv {
+    position: absolute;
+    left: calc(50% - 25vw);
+    top: calc(50% - 25vh);
+    width: 50vw;
+    z-index: 5;
+    font-size: 4vw;
+    padding: 2.5vw 5vw 5vw;
+    flex-direction: column;
+    font-family: nos;
 }
 
 .matchButton {
