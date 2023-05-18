@@ -1,5 +1,4 @@
-let startMoney = parseFloat(prompt("Bet", ""));
-
+const startMoney = parseFloat(prompt("Bet", ""));
 const cardLeft = document.getElementById("cardLeft");
 const cardRight = document.getElementById("cardRight");
 const numberFractionDisplay = document.getElementById("numberFraction");
@@ -9,11 +8,13 @@ const moneyDisplay = document.getElementById("moneyDiv");
 const moneyDisplayChild = document.getElementById("moneyDivChild");
 const previousStatusDisplay = document.getElementById("previousStatusDiv");
 const previousStatusDisplayChild = document.getElementById(
-  "previousStatusDivChild"
+    "previousStatusDivChild"
 );
+
 const PointsDisplayContainer = document.getElementById(
-  "PointsDisplayContainer"
+    "PointsDisplayContainer"
 );
+
 const containerCards = document.getElementById("containerCards");
 const roundSound = document.getElementById("roundSound");
 const cardLeftImage = document.getElementById("cardLeftImage");
@@ -41,171 +42,184 @@ let computerCardsArray = [];
 let computerCard;
 let userCard;
 let userCardsArray = [];
-let roundStatus = true
+let roundStatus = true;
 let arrayLuck = [];
 let luck = 0.5;
-let currentMoney = 0
+let currentMoney = 0;
 let rounds;
 let roundValue;
 
-function game() {
-  numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
-  currentRound = 0;
-  if (currentMoney == 0) {
-    currentMoney = startMoney;
-  }
-  rounds = parseInt(prompt("Rounds", ""));
-  roundValue = parseFloat(currentMoney / rounds);
+currentMoney = startMoney;
 
-  function generateComputerCardsArray() {
+function setRounds () {
+  rounds = parseInt(prompt("Rounds", ""));
+}
+setRounds();
+
+function setRoundValue () {
+roundValue = parseFloat(currentMoney / rounds);
+}
+setRoundValue();
+
+numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
+
+function generateComputerCardsArray() {
     let i = 0;
     while (i < rounds) {
-      computerCard = Math.floor(Math.random() * 2);
-      computerCardsArray.push(computerCard);
-      i++;
-    }
-  }
+        computerCard = Math.floor(Math.random() * 2);
+        computerCardsArray.push(computerCard);
+        i++;
+    };
+    console.log(computerCardsArray);
+}
 
-  generateComputerCardsArray();
+generateComputerCardsArray();
 
-  console.log(computerCardsArray);
 
-  document.querySelector(".page").classList.remove("disableElement");
 
-  function addCheckPoint() {
+document.querySelector(".page").classList.remove("disableElement");
+
+function addCheckPoint() {
     const checkPoint = document.createElement("div");
     PointsDisplayContainer.appendChild(checkPoint);
     checkPoint.classList.add("checkPoint");
     checkPoint.classList.add("glass");
-  }
+}
 
-  function removeCheckPoint () {
-    const checkPoints = document.querySelectorAll('.checkPoint');
+function removeCheckPoint() {
+    const checkPoints = document.querySelectorAll(".checkPoint");
 
-    checkPoints.forEach(cp => {
-      cp.remove();
+    checkPoints.forEach((cp) => {
+        cp.remove();
     });
-  };
+}
 
+function createCheckPointElements () {
   for (let i = 0; i < rounds; i++) {
-    addCheckPoint();
-  }
+      addCheckPoint();
+  };
+};
+createCheckPointElements();
 
+function setInicialNumerator () {
   PointsDisplayContainer.getElementsByClassName("checkPoint")[0].classList.add(
-    "choice"
+      "choice"
   );
+};
 
-  function checkCards(userCard, computerCard) {
+setInicialNumerator();
+
+function checkCards(userCard, computerCard) {
     if (userCard === computerCard) {
-      roundStatus = true;
+        roundStatus = true;
     } else {
-      roundStatus = false;
+        roundStatus = false;
     }
     arrayLuck.push(roundStatus);
-  }
+}
 
-  function checkLuck() {
+function checkLuck() {
     function rightChoicesNumber() {
-      let arrayRightChoices = arrayLuck.filter(function (currentValue) {
-        return currentValue === true;
-      });
+        let arrayRightChoices = arrayLuck.filter(function (currentValue) {
+            return currentValue === true;
+        });
 
-      return arrayRightChoices.length;
+        return arrayRightChoices.length;
     }
 
     luck = rightChoicesNumber() / arrayLuck.length;
-  }
+}
 
-  function checkMoney(roundStatus) {
+function checkMoney(roundStatus) {
     if (roundStatus) {
-      currentMoney += roundValue;
+        currentMoney += roundValue;
     } else {
-      currentMoney -= roundValue;
+        currentMoney -= roundValue;
     }
-  }
+}
 
-  function insertData() {
+function insertData() {
     if (currentRound > 0) {
-      setTimeout(() => {
-        roundSound.play();
-        roundSound.volume = 0.5;
-
-        numberFractionDisplay.classList.add("textScaleUp2");
-        numberFractionDisplay.classList.add("shadowText2");
         setTimeout(() => {
-          numberFractionDisplay.classList.remove("textScaleUp2");
-          numberFractionDisplay.classList.remove("shadowText2");
-          numberFractionDisplay.classList.add("textScaleDown");
-        }, 250);
+            roundSound.play();
+            roundSound.volume = 0.5;
 
-        numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
-      }, time1);
+            numberFractionDisplay.classList.add("textScaleUp2");
+            numberFractionDisplay.classList.add("shadowText2");
+            setTimeout(() => {
+                numberFractionDisplay.classList.remove("textScaleUp2");
+                numberFractionDisplay.classList.remove("shadowText2");
+                numberFractionDisplay.classList.add("textScaleDown");
+            }, 250);
+
+            numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
+        }, time1);
     }
     setTimeout(() => {
-      divisorFractionDisplay.textContent = "/" + rounds.toFixed(0);
-      numberPercentualDisplay.textContent = (luck * 100).toFixed(0) + "%";
-      setTimeout(() => {
-        moneyDisplayChild.innerHTML = "\u20AC" + currentMoney.toFixed(2);
-      }, 500);
+        divisorFractionDisplay.textContent = "/" + rounds.toFixed(0);
+        numberPercentualDisplay.textContent = (luck * 100).toFixed(0) + "%";
+        setTimeout(() => {
+            moneyDisplayChild.innerHTML = "\u20AC" + currentMoney.toFixed(2);
+        }, 500);
 
-      moneyDisplayChild.classList.add("moneyMove");
-      if (roundStatus) {
-      moneyDisplayChild.classList.add("greenLightText");
-        //coinSound.play();
-      } else {
-        moneyDisplayChild.classList.add("redLightText");
-      }
+        moneyDisplayChild.classList.add("moneyMove");
+        if (roundStatus) {
+            moneyDisplayChild.classList.add("greenLightText");
+            //coinSound.play();
+        } else {
+            moneyDisplayChild.classList.add("redLightText");
+        }
 
-      setTimeout(() => {
-        moneyDisplayChild.classList.remove("redLightText");
-        moneyDisplayChild.classList.remove("greenLightText");
-      }, 1000);
+        setTimeout(() => {
+            moneyDisplayChild.classList.remove("redLightText");
+            moneyDisplayChild.classList.remove("greenLightText");
+        }, 1000);
 
-      setTimeout(() => {
-        moneyDisplayChild.classList.remove("moneyMove");
-      }, 6000);
+        setTimeout(() => {
+            moneyDisplayChild.classList.remove("moneyMove");
+        }, 6000);
 
-      previousStatusDisplayChild.textContent = `Round Value \u20AC${roundValue.toFixed(
-        2
-      )} - - - - - - - Inicial Value \u20AC${startMoney.toFixed(2)}`;
+        previousStatusDisplayChild.textContent = `Round Value \u20AC${roundValue.toFixed(
+            2
+        )} - - - - - - - Inicial Value \u20AC${startMoney.toFixed(2)}`;
     }, 1450);
-  }
+}
 
-  insertData();
+insertData();
 
-  function choice() {
+function choice() {
     containerCards.classList.add("choice");
-  }
+}
 
-  function acceptedCardLeft() {
+function acceptedCardLeft() {
     cardLeft.classList.add("acceptedCardLeft");
     setTimeout(() => {
-      cardLeft.classList.remove("acceptedCardLeft");
+        cardLeft.classList.remove("acceptedCardLeft");
     }, 5000);
-  }
+}
 
-  function acceptedCardRight() {
+function acceptedCardRight() {
     cardRight.classList.add("acceptedCardRight");
     setTimeout(() => {
-      cardRight.classList.remove("acceptedCardRight");
+        cardRight.classList.remove("acceptedCardRight");
     }, 5000);
-  }
+}
 
-  function rejectedCardLeft() {
+function rejectedCardLeft() {
     cardLeft.classList.add("rejectedCardLeft");
     setTimeout(() => {
-      cardLeft.classList.remove("rejectedCardLeft");
+        cardLeft.classList.remove("rejectedCardLeft");
     }, 5000);
-  }
+}
 
-  function rejectedCardRight() {
+function rejectedCardRight() {
     cardRight.classList.add("rejectedCardRight");
     setTimeout(() => {
-      cardRight.classList.remove("rejectedCardRight");
+        cardRight.classList.remove("rejectedCardRight");
     }, 5000);
-  }
+}
 
-  function cleanClasses() {
+function cleanClasses() {
     containerCards.classList.remove("choice");
     containerCards.classList.remove("correctChoice");
     containerCards.classList.remove("wrongChoice");
@@ -216,63 +230,82 @@ function game() {
     numberFractionDisplay.classList.remove("textScaleDown");
 
     if (computerCard === undefined) {
-      cardLeft.classList.remove("glassHover");
-      cardRight.classList.remove("glassHover");
-      cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
-      cardRightImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+        cardLeft.classList.remove("glassHover");
+        cardRight.classList.remove("glassHover");
+        cardLeftImage.src =
+            "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+        cardRightImage.src =
+            "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
     } else {
-      cardLeft.classList.add("glassHover");
-      cardRight.classList.add("glassHover");
+        cardLeft.classList.add("glassHover");
+        cardRight.classList.add("glassHover");
     }
-  }
+}
 
-  function disableCards() {
+function disableCards() {
     cardRight.classList.add("cancelEvent");
     cardLeft.classList.add("cancelEvent");
-  }
+}
 
-  function ableCards() {
+function ableCards() {
     cardRight.classList.remove("cancelEvent");
     cardLeft.classList.remove("cancelEvent");
-  }
+}
 
-  function setCheckPoints() {
+function setCheckPoints() {
     let checkPointsValue = currentRound;
     let functionTime = time38;
 
     setTimeout(() => {
-      PointsDisplayContainer.getElementsByClassName("checkPoint")[
-        checkPointsValue
-      ].classList.remove("choice");
+        PointsDisplayContainer.getElementsByClassName("checkPoint")[
+            checkPointsValue
+        ].classList.remove("choice");
     }, functionTime);
 
     if (roundStatus) {
-      setTimeout(() => {
-        PointsDisplayContainer.getElementsByClassName("checkPoint")[
-          checkPointsValue
-        ].classList.add("greenLightBox");
-      }, functionTime);
+        setTimeout(() => {
+            PointsDisplayContainer.getElementsByClassName("checkPoint")[
+                checkPointsValue
+            ].classList.add("greenLightBox");
+        }, functionTime);
     } else {
-      setTimeout(() => {
-        PointsDisplayContainer.getElementsByClassName("checkPoint")[
-          checkPointsValue
-        ].classList.add("redLightBox");
-      }, functionTime);
+        setTimeout(() => {
+            PointsDisplayContainer.getElementsByClassName("checkPoint")[
+                checkPointsValue
+            ].classList.add("redLightBox");
+        }, functionTime);
     }
 
     if (checkPointsValue <= rounds - 2) {
-      setTimeout(() => {
-        PointsDisplayContainer.getElementsByClassName("checkPoint")[
-          checkPointsValue + 1
-        ].classList.add("choice");
-      }, functionTime);
+        setTimeout(() => {
+            PointsDisplayContainer.getElementsByClassName("checkPoint")[
+                checkPointsValue + 1
+            ].classList.add("choice");
+        }, functionTime);
     }
-  }
+}
 
-  function createMatchButton() {
+function rematch() {
+    if (currentMoney > 0) {
+        currentRound = 0;
+        computerCardsArray = [];
+        arrayLuck = [];
+        arrayRightChoices = [];
+        removeCheckPoint();
+        setRounds();
+        setRoundValue()
+        createCheckPointElements();  
+        generateComputerCardsArray();      
+        setInicialNumerator()
+        insertData();
+        ableCards();
+    } else {
+      location.reload();
+    }
+}
+
+function createMatchButton() {
     const matchButtonDivParent = document.getElementById("fundo");
-
     const matchButtonDiv = document.createElement("div");
     const matchInformationDiv = document.createElement("div");
     const matchInformationDivP = document.createElement("p");
@@ -282,20 +315,20 @@ function game() {
     const matchButtonNoP = document.createElement("p");
 
     const earnedLostText = function () {
-      if (currentMoney <= startMoney) {
-        return ``;
-      } else {
-        const earn = (currentMoney - startMoney).toFixed(2);
-        return `You earned \u20AC${earn}`;
-      }
+        if (currentMoney <= startMoney) {
+            return ``;
+        } else {
+            const earn = (currentMoney - startMoney).toFixed(2);
+            return `You earned \u20AC${earn}`;
+        }
     };
 
     const yesButtonText = function () {
-      if (currentMoney <= startMoney) {
-        return `Play Again`;
-      } else {
-        return `Play Amount: \u20AC${currentMoney.toFixed(2)}`;
-      }
+        if (currentMoney <= startMoney) {
+            return `Play Again`;
+        } else {
+            return `Play Amount: \u20AC${currentMoney.toFixed(2)}`;
+        }
     };
 
     const matchInformationDivText = document.createTextNode(earnedLostText());
@@ -312,7 +345,7 @@ function game() {
     matchButtonYes.appendChild(matchButtonYesP);
 
     if (currentMoney >= startMoney) {
-      matchButtonDiv.appendChild(matchInformationDiv);
+        matchButtonDiv.appendChild(matchInformationDiv);
     }
 
     matchButtonDiv.appendChild(matchButtonYes);
@@ -320,11 +353,11 @@ function game() {
     matchButtonDiv.appendChild(matchButtonNo);
 
     matchButtonDivParent.appendChild(matchButtonDiv);
-    
+
     matchInformationDiv.classList.add("matchInformationDiv");
     matchButtonDiv.classList.add("displayFlex");
     matchButtonDiv.classList.add("glass2");
-    
+
     matchButtonNo.classList.add("glass2");
     matchButtonNo.classList.add("matchButton");
     matchButtonNo.classList.add("glassHover");
@@ -335,53 +368,47 @@ function game() {
 
     matchButtonYesP.classList.add("shadowText");
     matchButtonNoP.classList.add("shadowText");
-    
+
     matchInformationDivP.classList.add("shadowText");
     if (currentMoney > startMoney) {
-      matchInformationDivP.classList.add("yellowLightText");
+        matchInformationDivP.classList.add("yellowLightText");
     }
-    
+
     matchButtonYesP.classList.add("greenLightTextHover");
     matchButtonNoP.classList.add("redLightTextHover");
-    
+
     matchButtonDiv.setAttribute("id", "matchButtonDiv");
-    
+
     function removeMatchButton() {
-      matchInformationDivP.removeChild(matchInformationDivText);
-      matchInformationDiv.removeChild(matchInformationDivP);
-      
-      matchButtonNoP.removeChild(matchButtonNoText);
-      matchButtonNo.removeChild(matchButtonNoP);
+        matchInformationDivP.removeChild(matchInformationDivText);
+        matchInformationDiv.removeChild(matchInformationDivP);
 
-      matchButtonYesP.removeChild(matchButtonYesText);
-      matchButtonYes.removeChild(matchButtonYesP);
+        matchButtonNoP.removeChild(matchButtonNoText);
+        matchButtonNo.removeChild(matchButtonNoP);
 
-      matchButtonDiv.removeChild(matchButtonYes);
+        matchButtonYesP.removeChild(matchButtonYesText);
+        matchButtonYes.removeChild(matchButtonYesP);
 
-      matchButtonDiv.removeChild(matchButtonNo);
-      if (currentMoney > startMoney) {
-        matchButtonDiv.removeChild(matchInformationDiv);
-      }
-      matchButtonDivParent.removeChild(matchButtonDiv);
+        matchButtonDiv.removeChild(matchButtonYes);
+
+        matchButtonDiv.removeChild(matchButtonNo);
+        if (currentMoney > startMoney) {
+            matchButtonDiv.removeChild(matchInformationDiv);
+        }
+        matchButtonDivParent.removeChild(matchButtonDiv);
     }
 
     matchButtonYes.addEventListener("click", function () {
-      currentRound = 0
-      computerCardsArray = [];
-      removeMatchButton();
-      if (currentMoney > 0) {
-        removeCheckPoint();
-        game();
-        ableCards();
-      };
+        removeMatchButton();
+        rematch();
     });
 
     matchButtonNo.addEventListener("click", function () {
-      removeMatchButton();
+        removeMatchButton();
     });
-  }
-  function roundFunctions() {
+}
 
+function roundFunctions() {
     disableCards();
     computerCard = computerCardsArray[currentRound];
     checkCards(userCard, computerCard);
@@ -389,22 +416,23 @@ function game() {
     checkMoney(roundStatus);
     choice();
     setTimeout(() => {
-      insertData();
+        insertData();
     }, time3);
     setCheckPoints();
     if (currentRound >= rounds - 1) {
-      setTimeout(() => {
-        createMatchButton();
-      }, time5);
-      return;
+        setTimeout(() => {
+            createMatchButton();
+        }, time5);
+        return;
     } else {
-      setTimeout(() => {
-        ableCards();
-      }, time5);
-      currentRound += 1;
+        setTimeout(() => {
+            ableCards();
+        }, time5);
+        currentRound += 1;
     }
-  }
-  function cardLeftEfect() {
+}
+
+function cardLeftEfect() {
     rejectedCardRight();
     acceptedCardLeft();
 
@@ -412,76 +440,76 @@ function game() {
     clickSound.volume = 0.3;
 
     setTimeout(() => {
-      cardRightImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+        cardRightImage.src =
+            "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
     }, 1000);
 
     setTimeout(() => {
-      choiceSound.load();
-      choiceSound.play();
+        choiceSound.load();
+        choiceSound.play();
     }, 900);
 
     setTimeout(() => {
-      choiceSound.load();
-      choiceSound.play();
+        choiceSound.load();
+        choiceSound.play();
     }, 2450);
 
     setTimeout(() => {
-      choiceSound.load();
-      choiceSound.play();
+        choiceSound.load();
+        choiceSound.play();
     }, 2900);
 
     setTimeout(() => {
-      if (computerCard === 0) {
-        cardRightImage.src =
-          "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
-      } else if (computerCard === 1) {
-        cardRightImage.src =
-          "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
-      } else {
-        cardRightImage.src =
-          "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
-      }
+        if (computerCard === 0) {
+            cardRightImage.src =
+                "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
+        } else if (computerCard === 1) {
+            cardRightImage.src =
+                "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
+        } else {
+            cardRightImage.src =
+                "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
+        }
     }, 1500);
 
     setTimeout(() => {
-      cardRightImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+        cardRightImage.src =
+            "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
     }, 3100);
 
     setTimeout(() => {
-      cardRightImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
+        cardRightImage.src =
+            "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
     }, 3400);
 
     setTimeout(() => {
-      containerCards.classList.remove("choice");
+        containerCards.classList.remove("choice");
 
-      if (roundStatus) {
-        containerCards.classList.add("correctChoice");
-        choiceSound.pause();
-        correctChoiceSound.play();
+        if (roundStatus) {
+            containerCards.classList.add("correctChoice");
+            choiceSound.pause();
+            correctChoiceSound.play();
 
-        luckWord.classList.add("textScaleUp1");
-        luckWord.classList.add("greenLightText");
-        setTimeout(() => {
-          luckWord.classList.remove("textScaleUp1");
-          luckWord.classList.remove("greenLightText");
-          luckWord.classList.remove("greenLightText");
-          luckWord.classList.add("textScaleDown");
-          setTimeout(() => {
-            luckWord.classList.remove("textScaleDown");
-          }, 250);
-        }, 2750);
-      } else {
-        containerCards.classList.add("wrongChoice");
-        choiceSound.pause();
-        wrongChoiceSound.play();
-      }
+            luckWord.classList.add("textScaleUp1");
+            luckWord.classList.add("greenLightText");
+            setTimeout(() => {
+                luckWord.classList.remove("textScaleUp1");
+                luckWord.classList.remove("greenLightText");
+                luckWord.classList.remove("greenLightText");
+                luckWord.classList.add("textScaleDown");
+                setTimeout(() => {
+                    luckWord.classList.remove("textScaleDown");
+                }, 250);
+            }, 2750);
+        } else {
+            containerCards.classList.add("wrongChoice");
+            choiceSound.pause();
+            wrongChoiceSound.play();
+        }
     }, time15);
-  }
+}
 
-  function cardRightEfect() {
+function cardRightEfect() {
     rejectedCardLeft();
     acceptedCardRight();
 
@@ -489,93 +517,91 @@ function game() {
     clickSound.volume = 1;
 
     setTimeout(() => {
-      cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+        cardLeftImage.src =
+            "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
     }, 1000);
 
     setTimeout(() => {
-      choiceSound.play();
+        choiceSound.play();
     }, 1000);
 
     setTimeout(() => {
-      choiceSound.play();
+        choiceSound.play();
     }, 3200);
 
     setTimeout(() => {
-      if (computerCard === 0) {
-        cardLeftImage.src =
-          "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
-      } else if (computerCard === 1) {
-        cardLeftImage.src =
-          "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
-      } else {
-        cardLeftImage.src =
-          "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
-      }
+        if (computerCard === 0) {
+            cardLeftImage.src =
+                "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
+        } else if (computerCard === 1) {
+            cardLeftImage.src =
+                "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
+        } else {
+            cardLeftImage.src =
+                "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
+        }
     }, 1500);
 
     setTimeout(() => {
-      cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
+        cardLeftImage.src =
+            "../images/Playing Cards/PNG-cards-1.3/red_joker.png";
     }, 3100);
 
     setTimeout(() => {
-      cardLeftImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/King_of_clubs2.png";
+        cardLeftImage.src =
+            "../images/Playing Cards/PNG-cards-1.3/King_of_clubs2.png";
     }, 3400);
 
     setTimeout(() => {
-      containerCards.classList.remove("choice");
+        containerCards.classList.remove("choice");
 
-      if (roundStatus) {
-        containerCards.classList.add("correctChoice");
-        choiceSound.pause();
-        correctChoiceSound.play();
+        if (roundStatus) {
+            containerCards.classList.add("correctChoice");
+            choiceSound.pause();
+            correctChoiceSound.play();
 
-        luckWord.classList.add("textScaleUp1");
-        luckWord.classList.add("greenLightText");
-        setTimeout(() => {
-          luckWord.classList.remove("textScaleUp1");
-          luckWord.classList.remove("greenLightText");
-          luckWord.classList.remove("greenLightText");
-          luckWord.classList.add("textScaleDown");
-          setTimeout(() => {
-            luckWord.classList.remove("textScaleDown");
-          }, 250);
-        }, 3500);
-      } else {
-        containerCards.classList.add("wrongChoice");
-        choiceSound.pause();
-        wrongChoiceSound.play();
-      }
+            luckWord.classList.add("textScaleUp1");
+            luckWord.classList.add("greenLightText");
+            setTimeout(() => {
+                luckWord.classList.remove("textScaleUp1");
+                luckWord.classList.remove("greenLightText");
+                luckWord.classList.remove("greenLightText");
+                luckWord.classList.add("textScaleDown");
+                setTimeout(() => {
+                    luckWord.classList.remove("textScaleDown");
+                }, 250);
+            }, 3500);
+        } else {
+            containerCards.classList.add("wrongChoice");
+            choiceSound.pause();
+            wrongChoiceSound.play();
+        }
     }, 1000);
-  }
+}
 
-  cardLeft.addEventListener("click", function () {
-    console.log(rounds, currentRound, roundValue);
+cardLeft.addEventListener("click", function () {
     userCard = 0;
     userCardsArray.push(userCard);
     roundFunctions();
     cardLeftEfect();
     setTimeout(() => {
-      choiceSound.play();
+        choiceSound.play();
     }, time25);
     setTimeout(() => {
-      cleanClasses();
+        cleanClasses();
     }, time3);
-  });
+});
 
-  cardRight.addEventListener("click", function () {
-    console.log(rounds, currentRound, roundValue);
+cardRight.addEventListener("click", function () {
     userCard = 1;
     userCardsArray.push(userCard);
     roundFunctions();
     cardRightEfect();
     setTimeout(() => {
-      choiceSound.play();
+        choiceSound.play();
     }, time25);
     setTimeout(() => {
-      cleanClasses();
+        cleanClasses();
     }, time3);
-  });
-}
+});
 
-game()
