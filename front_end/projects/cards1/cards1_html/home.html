@@ -3,14 +3,12 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../cards1_css/cars1_normalize.css">
   <link rel="stylesheet" href="../cards1_css/cards1.css">
-
 </head>
 
 <body class="fundo" id="fundo">
@@ -39,7 +37,7 @@
     <source src="../sounds/coin.wav" type="audio/wav">
   </audio>
 
-  <div class="page disableElement">
+  <div class="page disableElement glass2">
     <header class="headerSet glass">
 
       <nav class="displayFlex navSet">
@@ -103,27 +101,16 @@
           <div class=" displayFlex flexItem" id="moneyDiv">
             <div class="yellowLightText" id="moneyDivChild">&euro;0.00</div>
           </div>
- 
-            <div class=" displayFlex flexItem" id="previousStatusDiv">
-              <div id="previousStatusDivChild"></div>
-            </div>
-            
+
+          <div class=" displayFlex flexItem" id="previousStatusDiv">
+            <div id="previousStatusDivChild"></div>
+          </div>
+
         </div>
 
       </div>
 
-      <div class="display displayFlex" id="PointsDisplayContainer">
-        <!--         <div class="greenLightBox"></div>
-        <div class="greenLightBox"></div>
-        <div class="redLight"></div>
-        <div class="greenLightBox"></div>
-        <div class=" glass"></div>
-        <div class="glass"></div>
-        <div class="glass"></div>
-        <div class="glass"></div>
-        <div class="glass"></div>
-        <div class="glass"></div> -->
-      </div>
+      <div class="display displayFlex" id="PointsDisplayContainer"></div>
 
       <div id="containerCards" class="displayFlex flexItem glass">
         <div class="flexItem glass glassHover" id="cardLeft">
@@ -136,6 +123,15 @@
 
     </div>
   </div>
+    
+  <div id="matchPrompt" class="proptDiv disableElement glass2">
+    <span id="betLabel" class="matchButton disableElement glass2">Bet</span>
+    <input id="betInput" class='matchButton disableElement glass2' type="text" />
+    <span id="roundLabel" class='matchButton glass2'>Rounds</span>
+    <input id="roundInput" type="text" class='matchButton glass2' />
+    <input id="matchPromptButton" type="button" value="Submit" class='matchButton glass2' />
+  </div>
+
   <script src="../cards1_javascript/cards1.js"></script>
 
 </body>

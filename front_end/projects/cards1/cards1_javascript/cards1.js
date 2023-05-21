@@ -1,4 +1,8 @@
-const startMoney = parseFloat(prompt("Bet", ""));
+const matchPrompt = document.getElementById("matchPrompt");
+const betLabel = document.getElementById("betLabel");
+const betInput = document.getElementById("betInput");
+const roundInput = document.getElementById("roundInput");
+const matchPromptButton = document.getElementById("matchPromptButton");
 const cardLeft = document.getElementById("cardLeft");
 const cardRight = document.getElementById("cardRight");
 const numberFractionDisplay = document.getElementById("numberFraction");
@@ -10,11 +14,9 @@ const previousStatusDisplay = document.getElementById("previousStatusDiv");
 const previousStatusDisplayChild = document.getElementById(
     "previousStatusDivChild"
 );
-
 const PointsDisplayContainer = document.getElementById(
     "PointsDisplayContainer"
 );
-
 const containerCards = document.getElementById("containerCards");
 const roundSound = document.getElementById("roundSound");
 const cardLeftImage = document.getElementById("cardLeftImage");
@@ -25,6 +27,20 @@ const coinSound = document.getElementById("coinSound");
 const correctChoiceSound = document.getElementById("correctChoiceSound");
 const luckWord = document.getElementById("luckWord");
 const wrongChoiceSound = document.getElementById("wrongChoiceSound");
+
+const startMoney = 0;
+let currentRound;
+let computerCardsArray;
+let computerCard;
+let userCard;
+let userCardsArray;
+let roundStatus;
+let arrayLuck;
+let luck;
+let currentMoney;
+let rounds;
+let roundValue;
+
 const time05 = 500;
 const time08 = 800;
 const time1 = 1000;
@@ -36,32 +52,29 @@ const time38 = 3800;
 const time4 = 4000;
 const time5 = 5000;
 
-let currentRound = 0;
-numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
-let computerCardsArray = [];
-let computerCard;
-let userCard;
-let userCardsArray = [];
-let roundStatus = true;
-let arrayLuck = [];
-let luck = 0.5;
-let currentMoney = 0;
-let rounds;
-let roundValue;
-
-currentMoney = startMoney;
-
-function setRounds () {
-  rounds = parseInt(prompt("Rounds", ""));
+function showMatchPrompt() {
+    betInput.value = "";
+    roundInput.value = "";
+    ableMatchPrompt();
+    if (currentMoney <= 0 || currentMoney === undefined) {
+        ableMatchBetInput();
+    }
 }
-setRounds();
 
-function setRoundValue () {
-roundValue = parseFloat(currentMoney / rounds);
+function submitMatchPrompt() {
+    let betValue = betInput.value; // Get the answer
+    let roundsValue = roundInput.value; // Get the answer
+
+    if (currentMoney <= 0) {
+        currentMoney = betValue;
+    }
+
+    rounds = roundsValue;
 }
-setRoundValue();
 
-numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
+function setRoundValue() {
+    roundValue = parseFloat(currentMoney / rounds);
+}
 
 function generateComputerCardsArray() {
     let i = 0;
@@ -69,15 +82,9 @@ function generateComputerCardsArray() {
         computerCard = Math.floor(Math.random() * 2);
         computerCardsArray.push(computerCard);
         i++;
-    };
+    }
     console.log(computerCardsArray);
 }
-
-generateComputerCardsArray();
-
-
-
-document.querySelector(".page").classList.remove("disableElement");
 
 function addCheckPoint() {
     const checkPoint = document.createElement("div");
@@ -94,20 +101,17 @@ function removeCheckPoint() {
     });
 }
 
-function createCheckPointElements () {
-  for (let i = 0; i < rounds; i++) {
-      addCheckPoint();
-  };
-};
-createCheckPointElements();
+function createCheckPointElements() {
+    for (let i = 0; i < rounds; i++) {
+        addCheckPoint();
+    }
+}
 
-function setInicialNumerator () {
-  PointsDisplayContainer.getElementsByClassName("checkPoint")[0].classList.add(
-      "choice"
-  );
-};
-
-setInicialNumerator();
+function setInicialNumerator() {
+    PointsDisplayContainer.getElementsByClassName(
+        "checkPoint"
+    )[0].classList.add("choice");
+}
 
 function checkCards(userCard, computerCard) {
     if (userCard === computerCard) {
@@ -139,6 +143,7 @@ function checkMoney(roundStatus) {
 }
 
 function insertData() {
+    alert("insertData")
     if (currentRound > 0) {
         setTimeout(() => {
             roundSound.play();
@@ -181,11 +186,9 @@ function insertData() {
 
         previousStatusDisplayChild.textContent = `Round Value \u20AC${roundValue.toFixed(
             2
-        )} - - - - - - - Inicial Value \u20AC${startMoney.toFixed(2)}`;
+        )} | Inicial Value \u20AC${startMoney.toFixed(2)}`;
     }, 1450);
 }
-
-insertData();
 
 function choice() {
     containerCards.classList.add("choice");
@@ -252,6 +255,24 @@ function ableCards() {
     cardLeft.classList.remove("cancelEvent");
 }
 
+function disableMatchPrompt() {
+    matchPrompt.classList.add("disableElement");
+}
+
+function ableMatchPrompt() {
+    matchPrompt.classList.remove("disableElement");
+}
+
+function disableMatchBetInput() {
+    betInput.classList.add("disableElement");
+    betLabel.classList.add("disableElement");
+}
+
+function ableMatchBetInput() {
+    betInput.classList.remove("disableElement");
+    betLabel.classList.remove("disableElement");
+}
+
 function setCheckPoints() {
     let checkPointsValue = currentRound;
     let functionTime = time38;
@@ -285,25 +306,7 @@ function setCheckPoints() {
     }
 }
 
-function rematch() {
-    if (currentMoney > 0) {
-        currentRound = 0;
-        computerCardsArray = [];
-        arrayLuck = [];
-        arrayRightChoices = [];
-        removeCheckPoint();
-        setRounds();
-        setRoundValue()
-        createCheckPointElements();  
-        generateComputerCardsArray();      
-        setInicialNumerator()
-        insertData();
-        ableCards();
-    } else {
-      location.reload();
-    }
-}
-
+/* 
 function createMatchButton() {
     const matchButtonDivParent = document.getElementById("fundo");
     const matchButtonDiv = document.createElement("div");
@@ -313,7 +316,7 @@ function createMatchButton() {
     const matchButtonYesP = document.createElement("p");
     const matchButtonNo = document.createElement("div");
     const matchButtonNoP = document.createElement("p");
-
+    
     const earnedLostText = function () {
         if (currentMoney <= startMoney) {
             return ``;
@@ -322,7 +325,7 @@ function createMatchButton() {
             return `You earned \u20AC${earn}`;
         }
     };
-
+    
     const yesButtonText = function () {
         if (currentMoney <= startMoney) {
             return `Play Again`;
@@ -330,83 +333,84 @@ function createMatchButton() {
             return `Play Amount: \u20AC${currentMoney.toFixed(2)}`;
         }
     };
-
+    
     const matchInformationDivText = document.createTextNode(earnedLostText());
     const matchButtonYesText = document.createTextNode(yesButtonText());
     const matchButtonNoText = document.createTextNode("Exit");
-
+    
     matchInformationDivP.appendChild(matchInformationDivText);
     matchInformationDiv.appendChild(matchInformationDivP);
-
+    
     matchButtonNoP.appendChild(matchButtonNoText);
     matchButtonNo.appendChild(matchButtonNoP);
-
+    
     matchButtonYesP.appendChild(matchButtonYesText);
     matchButtonYes.appendChild(matchButtonYesP);
-
+    
     if (currentMoney >= startMoney) {
         matchButtonDiv.appendChild(matchInformationDiv);
     }
-
+    
     matchButtonDiv.appendChild(matchButtonYes);
-
+    
     matchButtonDiv.appendChild(matchButtonNo);
-
+    
     matchButtonDivParent.appendChild(matchButtonDiv);
-
+    
     matchInformationDiv.classList.add("matchInformationDiv");
     matchButtonDiv.classList.add("displayFlex");
     matchButtonDiv.classList.add("glass2");
-
+    
     matchButtonNo.classList.add("glass2");
     matchButtonNo.classList.add("matchButton");
     matchButtonNo.classList.add("glassHover");
-
+    
     matchButtonYes.classList.add("glass2");
     matchButtonYes.classList.add("matchButton");
     matchButtonYes.classList.add("glassHover");
-
+    
     matchButtonYesP.classList.add("shadowText");
     matchButtonNoP.classList.add("shadowText");
-
+    
     matchInformationDivP.classList.add("shadowText");
     if (currentMoney > startMoney) {
         matchInformationDivP.classList.add("yellowLightText");
     }
-
+    
     matchButtonYesP.classList.add("greenLightTextHover");
     matchButtonNoP.classList.add("redLightTextHover");
-
+    
     matchButtonDiv.setAttribute("id", "matchButtonDiv");
-
+    
     function removeMatchButton() {
         matchInformationDivP.removeChild(matchInformationDivText);
         matchInformationDiv.removeChild(matchInformationDivP);
-
+        
         matchButtonNoP.removeChild(matchButtonNoText);
         matchButtonNo.removeChild(matchButtonNoP);
-
+        
         matchButtonYesP.removeChild(matchButtonYesText);
         matchButtonYes.removeChild(matchButtonYesP);
-
+        
         matchButtonDiv.removeChild(matchButtonYes);
-
+        
         matchButtonDiv.removeChild(matchButtonNo);
         if (currentMoney > startMoney) {
             matchButtonDiv.removeChild(matchInformationDiv);
         }
         matchButtonDivParent.removeChild(matchButtonDiv);
     }
-
+    
     matchButtonYes.addEventListener("click", function () {
         removeMatchButton();
-        rematch();
+        match();
     });
-
+    
     matchButtonNo.addEventListener("click", function () {
         removeMatchButton();
     });
 }
+*/
 
 function roundFunctions() {
     disableCards();
@@ -579,6 +583,12 @@ function cardRightEfect() {
     }, 1000);
 }
 
+matchPromptButton.addEventListener("click", function () {
+    submitMatchPrompt();
+    disableMatchPrompt();
+    match();
+});
+
 cardLeft.addEventListener("click", function () {
     userCard = 0;
     userCardsArray.push(userCard);
@@ -604,4 +614,24 @@ cardRight.addEventListener("click", function () {
         cleanClasses();
     }, time3);
 });
+
+function match() {
+    currentRound = 0;
+    computerCardsArray = [];
+    arrayLuck = [];
+    luck = 0.5;
+    userCardsArray = [];
+    roundStatus = true;
+    arrayRightChoices = [];
+    removeCheckPoint();
+    setRoundValue();
+    generateComputerCardsArray();
+    createCheckPointElements();
+    setInicialNumerator();
+    insertData();
+    ableCards();
+    document.querySelector(".page").classList.remove("disableElement");
+}
+
+showMatchPrompt();
 
