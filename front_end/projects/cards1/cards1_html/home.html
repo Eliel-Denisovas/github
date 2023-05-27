@@ -103,7 +103,7 @@
           </div>
 
           <div class=" displayFlex flexItem" id="previousStatusDiv">
-            <div id="previousStatusDivChild"></div>
+            <div id="previousStatusDivChild">Round Value <span id="roundValueSpan" class=" shadowText"></span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Initial Value <span id="inicialValueSpan" class="shadowText"></span></div>
           </div>
 
         </div>
@@ -113,24 +113,30 @@
       <div class="display displayFlex" id="PointsDisplayContainer"></div>
 
       <div id="containerCards" class="displayFlex flexItem glass">
+
         <div class="flexItem glass glassHover" id="cardLeft">
           <img src="../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png" alt="" class="glass" id="cardLeftImage">
         </div>
         <div class="flexItem glass glassHover" id="cardRight">
           <img src="../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png" alt="" class="glass" id="cardRightImage">
         </div>
+
       </div>
 
     </div>
   </div>
-    
-  <div id="matchPrompt" class="proptDiv disableElement glass2">
-    <span id="betLabel" class="matchButton disableElement glass2">Bet</span>
-    <input id="betInput" class='matchButton disableElement glass2' type="text" />
-    <span id="roundLabel" class='matchButton glass2'>Rounds</span>
-    <input id="roundInput" type="text" class='matchButton glass2' />
-    <input id="matchPromptButton" type="button" value="Submit" class='matchButton glass2' />
+
+  <div id="matchPrompt" class="proptDiv disableElement glass2 displayFlex">
+    <div id="matchPromptInformation" class="yellowLightText"></div>
+    <label for="betInput"></label>
+    <input id="betInput" class='promptButton disableElement glass2 matchPromptInput flexItem' type="text" placeholder="Make a Bet" autocomplete="off">
+    <label for="roundInput"></label>
+    <input id="roundInput" type="text" class='promptButton glass2 matchPromptInput flexItem' placeholder="Place Rounds" autocomplete="off">
+    <input id="matchPromptButtonYes" type="button" value="Play" class='promptButton glass2 matchPromptInput greenLightTextHover' />
+    <input id="matchPromptButtonNo" type="button" value="Exit" class='promptButton glass2 matchPromptInput redLightTextHover' />
   </div>
+
+
 
   <script src="../cards1_javascript/cards1.js"></script>
 
