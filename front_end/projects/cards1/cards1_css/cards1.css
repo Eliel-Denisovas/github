@@ -181,8 +181,6 @@ html {
   display: block;
 }
 
-  /*Match button*/
-
   .matchInformationDiv {
     margin-bottom: 5vh;
   }
@@ -190,7 +188,7 @@ html {
   #matchPrompt {
     position: absolute;
     left: calc(50% - 25vh);
-    top: calc(50%);
+    top: 40vh;
     width: 50vh;
     z-index: 5;
     font-size: 4vh;
@@ -210,8 +208,12 @@ html {
   color: rgba(122, 255, 222);
 }
 
+#matchPromptInformation {
+  margin-top: 5vh;
+}
+
 /* 
-.matchPromptInput::placeholder {
+.matchPromptInputPlaceHolder::placeholder {
   text-shadow: 0 0 2vh blue, 0 0 3vh darkblue, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   color: rgb(196, 212, 255);
 };

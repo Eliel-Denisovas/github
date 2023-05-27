@@ -1,5 +1,7 @@
 const matchPrompt = document.getElementById("matchPrompt");
-const matchPromptInformation = document.getElementById("matchPromptInformation");
+const matchPromptInformation = document.getElementById(
+  "matchPromptInformation"
+);
 const betInput = document.getElementById("betInput");
 const roundInput = document.getElementById("roundInput");
 const matchPromptButtonYes = document.getElementById("matchPromptButtonYes");
@@ -45,60 +47,57 @@ let currentMoney;
 let rounds;
 let roundValue;
 
-const time05 = 500;
-const time08 = 800;
-const time1 = 1000;
-const time15 = 1500;
-const time2 = 2000;
-const time25 = 2500;
-const time3 = 3000;
-const time38 = 3800;
-const time4 = 4000;
-const time5 = 5000;   
-   
-   function showMatchPrompt() {
-     
-     const earnedLostText = function () {
-       if (currentMoney <= 0 || currentMoney === undefined) {
-         return ``;
-       } else {
-         const earn = (currentMoney - startMoney).toFixed(2);
-         return `You earned \u20AC${earn}`;
-       }
-     };
-
-     const yesButtonText = function () {
-      if (currentMoney <= 0 || currentMoney === undefined) {
-          return `Play`
-      } else {
-          return `Play Amount: \u20AC${currentMoney.toFixed(2)}`;
-      }
+function showMatchPrompt() {
+  const earnedLostText = function () {
+    if (
+      currentMoney <= 0 ||
+      currentMoney === undefined ||
+      currentMoney - startMoney <= 0
+    ) {
+      return ``;
+    } else {
+      const earn = (currentMoney - startMoney).toFixed(2);
+      return `You earned \u20AC${earn}`;
+    }
   };
-    matchPromptButtonYes.value = yesButtonText();
-     matchPromptInformation.innerText = earnedLostText();
-     betInput.value = "";
-     roundInput.value = "";
 
-     if (currentMoney <= 0 || currentMoney === undefined) {
-       ableMatchBetInput();
-      }
+  const yesButtonText = function () {
+    if (currentMoney <= 0 || currentMoney === undefined) {
+      return `Play`;
+    } else {
+      return `Play Amount: \u20AC${currentMoney.toFixed(2)}`;
+    }
+  };
+  matchPromptButtonYes.value = yesButtonText();
+  matchPromptInformation.innerText = earnedLostText();
+  betInput.value = "";
+  roundInput.value = "";
 
-      ableMatchPrompt();
+  if (currentMoney <= 0 || currentMoney === undefined) {
+    ableMatchBetInput();
+  }
+
+  ableMatchPrompt();
 }
 
 function submitMatchPromptButtonYes() {
-  let roundsLenght = parseFloat(roundInput.value);
-  
+  if (
+    roundInput.value == "" ||
+    (currentMoney <= 0 || currentMoney === undefined) & (betInput.value == "")
+  ) {
+    alert("Set Bet / Round(s)");
+    showMatchPrompt();
+    return;
+  }
   if (currentMoney <= 0 || currentMoney === undefined) {
     startMoney = parseFloat(betInput.value);
     currentMoney = parseFloat(startMoney);
   }
-  rounds = roundsLenght;
-  
+  rounds = parseFloat(roundInput.value);
   disableMatchPrompt();
   disableMatchBetInput();
   //disableInputStyle();
-  
+
   match();
 }
 
@@ -200,15 +199,12 @@ function insertData() {
       numberFractionDisplay.classList.remove("textScaleUp2");
       numberFractionDisplay.classList.remove("shadowText2");
       numberFractionDisplay.classList.add("textScaleDown");
-
     }, 250);
 
     numberFractionDisplay.textContent = (currentRound + 1).toFixed(0);
-
-  }, time1);
+  }, 1000);
 
   setTimeout(() => {
-
     divisorFractionDisplay.textContent = "/" + rounds.toFixed();
     numberPercentualDisplay.textContent = (luck * 100).toFixed() + "%";
 
@@ -231,12 +227,10 @@ function insertData() {
 
     setTimeout(() => {
       moneyDisplayChild.classList.remove("moneyMove");
-      
     }, 6000);
 
     roundValueSpan.textContent = `\u20AC ${roundValue.toFixed(2)}`;
     inicialValueSpan.textContent = `\u20AC ${startMoney.toFixed(2)}`;
-
   }, 1450);
 }
 
@@ -322,7 +316,7 @@ function ableMatchBetInput() {
 
 function setCheckPoints() {
   let checkPointsValue = currentRound;
-  let functionTime = time38;
+  let functionTime = 3800;
 
   setTimeout(() => {
     PointsDisplayContainer.getElementsByClassName("checkPoint")[
@@ -362,8 +356,8 @@ function roundFunctions() {
   choice();
   setTimeout(() => {
     insertData();
-  }, time3);
-  
+  }, 3000);
+
   setCheckPoints();
 
   if (currentRound >= rounds - 1) {
@@ -374,7 +368,7 @@ function roundFunctions() {
   } else {
     setTimeout(() => {
       ableCards();
-    }, time5);
+    }, 5000);
     currentRound += 1;
   }
 }
@@ -453,7 +447,7 @@ function cardLeftEfect() {
       choiceSound.pause();
       wrongChoiceSound.play();
     }
-  }, time15);
+  }, 1500);
 }
 
 function cardRightEfect() {
@@ -539,11 +533,11 @@ cardLeft.addEventListener("click", function () {
 
   setTimeout(() => {
     choiceSound.play();
-  }, time25);
+  }, 2500);
 
   setTimeout(() => {
     cleanClasses();
-  }, time3);
+  }, 3000);
 });
 
 cardRight.addEventListener("click", function () {
@@ -553,10 +547,10 @@ cardRight.addEventListener("click", function () {
   cardRightEfect();
   setTimeout(() => {
     choiceSound.play();
-  }, time25);
+  }, 2500);
   setTimeout(() => {
     cleanClasses();
-  }, time3);
+  }, 3000);
 });
 
 function match() {
