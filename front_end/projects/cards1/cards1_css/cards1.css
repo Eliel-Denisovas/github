@@ -79,10 +79,12 @@ html {
   padding: 0.5vh;
 }
 
-.navSet img { 
-  height: 4vh;
-  border-radius: 2vh;
-  padding: 1vh;
+.navIten { 
+  margin: 0 1vh;
+}
+
+#playerNameSpan, #playerLuckSpan, #playerMoneySpan {
+  font-size: 2.5vh;
 }
 
 #rightStatusDiv {
@@ -511,12 +513,6 @@ transform: translateY(0);
     max-height: 1vw;
     margin: 1vw auto 1vw;
     justify-content: center;
-  }
-
-  .navSet img { 
-    height: 4vw;
-    border-radius: 2vw;
-    padding: 1vw;
   }
 
   .checkPoint{

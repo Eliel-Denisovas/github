@@ -6,8 +6,14 @@ const betInput = document.getElementById("betInput");
 const roundInput = document.getElementById("roundInput");
 const matchPromptButtonYes = document.getElementById("matchPromptButtonYes");
 const matchPromptButtonNo = document.getElementById("matchPromptButtonNo");
+
+const playerNameSpan = document.getElementById("playerNameSpan");
+const playerLuckSpan = document.getElementById("playerLuckSpan");
+const playerMoneySpan = document.getElementById("playerMoneySpan");
+
 const cardLeft = document.getElementById("cardLeft");
 const cardRight = document.getElementById("cardRight");
+
 const numberFractionDisplay = document.getElementById("numberFraction");
 const divisorFractionDisplay = document.getElementById("divisorFraction");
 const numberPercentualDisplay = document.getElementById("numberPercentual");
@@ -34,6 +40,10 @@ const correctChoiceSound = document.getElementById("correctChoiceSound");
 const luckWord = document.getElementById("luckWord");
 const wrongChoiceSound = document.getElementById("wrongChoiceSound");
 
+let playerName = "Eliel Denisovas";
+let playerLuck = 0.5;
+let playerMoney = 500;
+let playerLuckArray = [];
 let startMoney = 0;
 let currentRound;
 let computerCardsArray;
@@ -89,11 +99,22 @@ function submitMatchPromptButtonYes() {
     showMatchPrompt();
     return;
   }
+
   if (currentMoney <= 0 || currentMoney === undefined) {
+    if (playerMoney < betInput.value) {
+      alert("You do not have available money, please reload the page ");
+      showMatchPrompt();
+      return
+    } else {
     startMoney = parseFloat(betInput.value);
     currentMoney = parseFloat(startMoney);
+    playerMoney -= startMoney;
+    }
+  } else {
+    playerMoney -= currentMoney;
   }
   rounds = parseFloat(roundInput.value);
+
   disableMatchPrompt();
   disableMatchBetInput();
   //disableInputStyle();
@@ -164,7 +185,6 @@ function checkCards(userCard, computerCard) {
   } else {
     roundStatus = false;
   }
-  arrayLuck.push(roundStatus);
 }
 
 function checkLuck() {
@@ -179,6 +199,18 @@ function checkLuck() {
   luck = rightChoicesNumber() / arrayLuck.length;
 }
 
+function playerCheckLuck() {
+  function rightChoicesNumber() {
+    let arrayRightChoices = playerLuckArray.filter(function (currentValue) {
+      return currentValue === true;
+    });
+
+    return arrayRightChoices.length;
+  }
+
+  playerLuck = rightChoicesNumber() / playerLuckArray.length;
+}
+
 function checkMoney(roundStatus) {
   if (roundStatus) {
     currentMoney += roundValue;
@@ -188,6 +220,7 @@ function checkMoney(roundStatus) {
 }
 
 function insertData() {
+  playerNameSpan.innerText = playerName;
   setTimeout(() => {
     roundSound.play();
     roundSound.volume = 0.5;
@@ -211,7 +244,8 @@ function insertData() {
     setTimeout(() => {
       moneyDisplayChild.innerHTML = "\u20AC" + currentMoney.toFixed(2);
     }, 500);
-
+    playerLuckSpan.innerText = ` ${(playerLuck * 100).toFixed()}%`;
+    playerMoneySpan.innerText = ` \u20AC ${playerMoney.toFixed(2)}`;
     moneyDisplayChild.classList.add("moneyMove");
     if (roundStatus) {
       moneyDisplayChild.classList.add("greenLightText");
@@ -351,17 +385,25 @@ function roundFunctions() {
   disableCards();
   computerCard = computerCardsArray[currentRound];
   checkCards(userCard, computerCard);
+  arrayLuck.push(roundStatus);
+  playerLuckArray.push(roundStatus);
   checkLuck();
+  playerCheckLuck();
   checkMoney(roundStatus);
   choice();
+
+  if (currentRound >= rounds - 1) {
+    playerMoney += currentMoney;
+  };
+
   setTimeout(() => {
     insertData();
   }, 3000);
 
   setCheckPoints();
-
   if (currentRound >= rounds - 1) {
     setTimeout(() => {
+
       showMatchPrompt();
     }, 6000);
     return;
