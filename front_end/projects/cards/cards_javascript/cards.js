@@ -44,6 +44,7 @@ let playerName = "Eliel Denisovas";
 let playerLuck = 0.5;
 let playerMoney = 500;
 let playerLuckArray = [];
+
 let startMoney = 0;
 let currentRound;
 let computerCardsArray;
@@ -56,6 +57,13 @@ let luck;
 let currentMoney;
 let rounds;
 let roundValue;
+
+function initialDataInsert () {
+  playerNameSpan.innerText = playerName;
+  playerLuckSpan.innerText = `${playerLuck * 100}%`;
+  playerMoneySpan.innerText = `\u20AC ${playerMoney.toFixed(2)}`;
+};
+initialDataInsert()
 
 function showMatchPrompt() {
   const earnedLostText = function () {
@@ -95,14 +103,14 @@ function submitMatchPromptButtonYes() {
     roundInput.value == "" ||
     (currentMoney <= 0 || currentMoney === undefined) & (betInput.value == "")
   ) {
-    alert("Set Bet / Round(s)");
+    alert("Set Bet and Round(s)");
     showMatchPrompt();
     return;
   }
 
   if (currentMoney <= 0 || currentMoney === undefined) {
     if (playerMoney < betInput.value) {
-      alert("You do not have available money, please reload the page ");
+      alert("You do not have available money to bet this value, if your ammount is zero, please reload the page");
       showMatchPrompt();
       return
     } else {
@@ -611,7 +619,7 @@ function match() {
   setInicialNumerator();
   insertData();
   ableCards();
-  document.querySelector(".page").classList.remove("disableElement");
+  document.querySelector(".table1").classList.remove("disableElement");
 }
 
 showMatchPrompt();

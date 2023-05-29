@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../cards_css/cards_normalize.css">
+  <link rel="stylesheet" href="../cards_css/general_style.css">
+</head>
+
+<body class="fundo" id="fundo">
+
+  <audio id="choiceSound">
+    <source src="../sounds/choice.mp3" type="audio/ogg">
+  </audio>
+
+  <audio id="correctChoiceSound">
+    <source src="../sounds/correct_choice.mp3" type="audio/mp3">
+  </audio>
+
+  <audio id="wrongChoiceSound">
+    <source src="../sounds/wrong_choice.mp3" type="audio/ogg">
+  </audio>
+
+  <audio id="roundSound">
+    <source src="../sounds/round2.wav" type="audio/wav">
+  </audio>
+
+  <audio id="clickSound">
+    <source src="../sounds/cardclick.wav" type="audio/wav">
+  </audio>
+
+  <audio id="coinSound">
+    <source src="../sounds/coin.wav" type="audio/wav">
+  </audio>
+
+  <div class="page">
+    <header class="headerSet glass">
+
+      <nav class="displayFlex navSet">
+
+        <div class="displayFlex flexItem navIten">
+          <div class="displayFlex flexItem">
+            <div class="flexItem navIten">
+              <a href="../cards_html/perfil.html" id="playerNameSpan" class="shadowText">
+                PlayerName
+              </a>
+            </div>
+            <div class="flexItem navIten">
+              <span> Luck: <span id="playerLuckSpan" class="shadowText"></span></span>
+            </div>
+            <div class="flexItem navIten">
+              <span> Money: <span id="playerMoneySpan" class="yellowLightText"></span> </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flexItem navIten">
+          <a href="../cards_html/games.html">
+            Games
+          </a>
+        </div>
+
+        <div class="flexItem navIten">
+          <a href="../cards_html/settings.html">
+            settings
+          </a>
+        </div>
+
+      </nav>
+
+    </header>
+
+    <div id="gameDisplayDiv" class="displayFlex glass">
+      <div class="gameDiv flexItem glass"><a href="../cards_html/king_or_queen.html">King or Queen</a></div>
+    </div></div>
+
+  <script src="../cards_javascript/cards.js"></script>
+
+</body>
+
+</html>

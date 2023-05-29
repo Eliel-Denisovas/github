@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../cards1_css/cars1_normalize.css">
-  <link rel="stylesheet" href="../cards1_css/cards1.css">
+  <link rel="stylesheet" href="../cards_css/cards_normalize.css">
+  <link rel="stylesheet" href="../cards_css/general_style.css">
 </head>
 
 <body class="fundo" id="fundo">
@@ -37,7 +37,7 @@
     <source src="../sounds/coin.wav" type="audio/wav">
   </audio>
 
-  <div class="page disableElement glass2">
+  <div class="page">
     <header class="headerSet glass">
 
       <nav class="displayFlex navSet">
@@ -45,7 +45,7 @@
         <div class="displayFlex flexItem navIten">
           <div class="displayFlex flexItem">
             <div class="flexItem navIten">
-              <a href="" id="playerNameSpan" class="shadowText">
+              <a href="../cards_html/perfil.html" id="playerNameSpan" class="shadowText">
                 PlayerName
               </a>
             </div>
@@ -53,19 +53,19 @@
               <span> Luck: <span id="playerLuckSpan" class="shadowText"></span></span>
             </div>
             <div class="flexItem navIten">
-              <span> Money: <span id="playerMoneySpan" class="yellowLightText"></span></span>
+              <span> Money: <span id="playerMoneySpan" class="yellowLightText"></span> </span>
             </div>
           </div>
         </div>
 
         <div class="flexItem navIten">
-          <a href="">
+          <a href="../cards_html/games.html">
             Games
           </a>
         </div>
 
         <div class="flexItem navIten">
-          <a href="">
+          <a href="../cards_html/settings.html">
             settings
           </a>
         </div>
@@ -74,7 +74,7 @@
 
     </header>
 
-    <div class="table1 glass">
+    <div class="table1 glass disableElement">
 
       <div class="status displayFlex">
 
@@ -141,12 +141,12 @@
     <input id="betInput" class='promptButton disableElement glass2 matchPromptInput flexItem matchPromptInputPlaceHolder' type="text" placeholder="Make a Bet" autocomplete="off">
     <label for="roundInput"></label>
     <input id="roundInput" type="text" class='promptButton glass2 matchPromptInput flexItem matchPromptInputPlaceHolder' placeholder="Place Rounds" autocomplete="off">
-    <input id="matchPromptButtonYes" type="button" value="Play" class='promptButton glass2 matchPromptInput greenLightTextHover' />
-    <input id="matchPromptButtonNo" type="button" value="Exit" class='promptButton glass2 matchPromptInput redLightTextHover' />
+    <input id="matchPromptButtonYes" type="button" value="Play" class='promptButton glass2 matchPromptInput greenLightTextHover shadowText' />
+    <input id="matchPromptButtonNo" type="button" value="Exit" class='promptButton glass2 matchPromptInput redLightTextHover shadowText' />
     <div id="matchPromptInformation" class="yellowLightText"></div>
   </div>
 
-  <script src="../cards1_javascript/cards1.js"></script>
+  <script src="../cards_javascript/cards.js"></script>
 
 </body>
 
