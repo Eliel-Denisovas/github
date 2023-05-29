@@ -1,6 +1,10 @@
 @font-face {
-  src: url(../fonts/classica_3/Classica-Book.ttf);
   font-family: nos;
+  src: url(../fonts/classica_3/Classica-Book.ttf);
+}
+@font-face {
+  font-family: elecstrom;
+  src: url(../fonts/elecstrom-font/ElecstromRegular-w1y4P.ttf);
 }
 
 :root {
@@ -22,7 +26,9 @@
   margin: 0;
   padding: 0;
 }
-
+a {
+  text-decoration: none;
+}
 p {
   padding: 0;
   margin: 0;
@@ -47,6 +53,10 @@ p {
   width: 100%;
   height: 100%;
 }
+
+.titleStyle {
+  font-family: elecstrom;
+  };
 
 /* Elements */
 
@@ -190,7 +200,7 @@ html {
   #matchPrompt {
     position: absolute;
     left: calc(50% - 25vh);
-    top: 40vh;
+    top: 17.5vh;
     width: 50vh;
     z-index: 5;
     font-size: 4vh;
@@ -224,10 +234,6 @@ html {
 .shadowText {
   text-shadow: 0 0 2vh blue, 0 0 3vh darkblue, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   color: rgb(196, 212, 255);
-}
-
-.shadowText2 {
-  color: rgb(255, 255, 255);
 }
 
 .glass {
