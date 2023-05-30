@@ -2,6 +2,7 @@ const matchPrompt = document.getElementById("matchPrompt");
 const matchPromptInformation = document.getElementById(
   "matchPromptInformation"
 );
+
 const betInput = document.getElementById("betInput");
 const roundInput = document.getElementById("roundInput");
 const matchPromptButtonYes = document.getElementById("matchPromptButtonYes");

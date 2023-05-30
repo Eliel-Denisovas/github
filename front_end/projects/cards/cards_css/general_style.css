@@ -76,17 +76,16 @@ html {
 
 .headerSet {
   width: 100%;
-  min-height: 5vh;
-  max-height: 1vh;
-  margin: 1vh auto;
+  margin: 1vh auto 0 auto;
   justify-content: center;
+  align-items: center;
 }
 
 .navSet {
   height: 100%;
   width: 100%;
   justify-content: space-around;
-  padding: 0.5vh;
+  padding: 0.5vh;;
 }
 
 .navIten { 
@@ -200,7 +199,7 @@ html {
   #matchPrompt {
     position: absolute;
     left: calc(50% - 25vh);
-    top: 17.5vh;
+    top: 10vh;
     width: 50vh;
     z-index: 5;
     font-size: 4vh;
@@ -287,6 +286,9 @@ html {
 .greenLightTextHover:hover {
   text-shadow: 0 0 2vh rgba(122, 255, 222), 0 0 3vh rgb(0, 136, 102), 5vh 5vh 5vh hsl(0, 0%, 0%, 0.9);
   color: rgb(0, 248, 186);
+}
+
+.greenLightTextHover {
   transition: all 1s ease;
 }
 .redLightTextHover:hover {
@@ -493,6 +495,26 @@ transform: translateY(0);
   scale: 1;
   transition: all 0.25s ease;
 }
+
+/*Efects*/
+
+.showHiddenInformationHover {
+  font-size: 3vh;
+  margin: 2.5vh auto 0 auto;
+  padding: 1vh;
+}
+
+.hiddenInformationHover {
+  display: none;
+  font-size: 2vh;
+  padding: 1vh;
+}
+
+
+.showHiddenInformationHover:hover + .hiddenInformationHover {
+  display: block;
+}
+
 
   /*Media*/
 

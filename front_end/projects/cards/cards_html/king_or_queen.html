@@ -39,6 +39,7 @@
   </audio>
 
   <div class="page">
+
     <header class="headerSet glass">
 
       <nav class="displayFlex navSet">
@@ -46,7 +47,7 @@
         <div class="displayFlex flexItem navIten">
           <div class="displayFlex flexItem">
             <div class="flexItem navIten">
-              <a href="../cards_html/perfil.html" id="playerNameSpan" class="shadowText">
+              <a href="../cards_html/perfil.html" id="playerNameSpan" class="shadowText greenLightTextHover">
                 PlayerName
               </a>
             </div>
@@ -60,14 +61,14 @@
         </div>
 
         <div class="flexItem navIten">
-          <a href="../cards_html/games.html">
-            Games
+          <a href="../cards_html/games.html" class="shadowText greenLightTextHover">
+            GAMES
           </a>
         </div>
 
         <div class="flexItem navIten">
-          <a href="../cards_html/settings.html">
-            settings
+          <a href="../cards_html/settings.html" class="shadowText greenLightTextHover">
+            SETTINGS
           </a>
         </div>
 
@@ -114,7 +115,9 @@
           </div>
 
           <div class=" displayFlex flexItem" id="previousStatusDiv">
-            <div id="previousStatusDivChild">Round Value <span id="roundValueSpan" class=" shadowText"></span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Initial Value <span id="inicialValueSpan" class="shadowText"></span></div>
+            <div id="previousStatusDivChild">Round Value <span id="roundValueSpan"
+                class=" shadowText"></span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              Initial Value <span id="inicialValueSpan" class="shadowText"></span></div>
           </div>
 
         </div>
@@ -138,13 +141,31 @@
   </div>
 
   <div id="matchPrompt" class="proptDiv disableElement glass2 displayFlex">
-    <div id="kingOrQueenTiltleDiv" class="flexItem shadowText titleStyle"> King or Queen</div>
+    <div id="kingOrQueenTiltleDiv" class="flexItem shadowText titleStyle"> King or Queen </div>
+
+    <div class="flexItem">
+      <span class="greenLightTextHover showHiddenInformationHover">?</span>
+      <div class="hiddenInformationHover">Place a bet and choose the number of rounds for the game.
+        The more rounds, the less risky the game is, but the fewer rounds, the greater the chances of winning.
+        At the start of the game, the computer generates a file with a selection of cards chosen at random.
+        You must choose between two cards: King or Queen. You must guess which card the computer has chosen.
+        Each round of the game has a value which is the bet amount divided by the number of rounds.
+        If you get it right, you win the value of the round, if you get it wrong, you lose.</div>
+    </div>
+    <span class="showHiddenInformationHover">more...</span>
+        <div class="hiddenInformationHover">This file is sent to your email before the game and can only be opened through a password that will be provided after the game. This demonstrates the transparency of the game and attests that the results are true.</div>
+
     <label for="betInput"></label>
-    <input id="betInput" class='promptButton disableElement glass2 matchPromptInput flexItem matchPromptInputPlaceHolder' type="text" placeholder="Make a Bet" autocomplete="off">
+    <input id="betInput"
+      class='promptButton disableElement glass2 matchPromptInput flexItem matchPromptInputPlaceHolder' type="text"
+      placeholder="Make a Bet" autocomplete="off">
     <label for="roundInput"></label>
-    <input id="roundInput" type="text" class='promptButton glass2 matchPromptInput flexItem matchPromptInputPlaceHolder' placeholder="Place Rounds" autocomplete="off">
-    <input id="matchPromptButtonYes" type="button" value="Play" class='promptButton glass2 matchPromptInput greenLightTextHover shadowText' />
-    <input id="matchPromptButtonNo" type="button" value="Exit" class='promptButton glass2 matchPromptInput redLightTextHover shadowText' />
+    <input id="roundInput" type="text" class='promptButton glass2 matchPromptInput flexItem matchPromptInputPlaceHolder'
+      placeholder="Place Rounds" autocomplete="off">
+    <input id="matchPromptButtonYes" type="button" value="Play"
+      class='promptButton glass2 matchPromptInput greenLightTextHover shadowText' />
+    <input onclick="window.location.href = 'games.html';" id="matchPromptButtonNo" type="button" value="Exit"
+      class='promptButton glass2 matchPromptInput redLightTextHover shadowText' />
     <div id="matchPromptInformation" class="yellowLightText"></div>
   </div>
 
