@@ -76,7 +76,7 @@ html {
 
 .headerSet {
   width: 100%;
-  margin: 1vh auto 0 auto;
+  margin: 1vh auto;
   justify-content: center;
   align-items: center;
 }
@@ -234,6 +234,10 @@ html {
   text-shadow: 0 0 2vh blue, 0 0 3vh darkblue, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   color: rgb(196, 212, 255);
 }
+.shadowTextEfect {
+  animation: shadowTextEfect 2s ease 0.5s;
+  animation-fill-mode: forwards;
+}
 
 .glass {
   background-image: linear-gradient(315deg, hsla(182, 100%, 50%, 0.05), hsla(0, 0%, 0%, 0.25));
@@ -294,6 +298,10 @@ html {
 .redLightTextHover:hover {
   text-shadow: 0 0 2vh rgb(255, 122, 122), 0 0 3vh rgb(136, 0, 0), 5vh 5vh 5vh hsl(0, 0%, 0%, 0.9);
   color: rgb(255, 0, 0);
+
+}
+
+.redLightTextHover {
   transition: all 1s ease;
 }
 
@@ -317,6 +325,13 @@ html {
   background-color: hsl(240, 100%, 50%, 0.4);
   box-shadow: 0 0 0.1vh rgb(0, 0, 0), 0 0 2vh blue, 0 0 3vh darkblue, 3vh 3vh 3vh black;
   transition: all 1s ease;
+}
+
+@keyframes shadowTextEfect {
+  100% {
+  text-shadow: 0 0 2vh blue, 0 0 3vh darkblue, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  color: rgb(196, 212, 255);
+  }
 }
 
 @keyframes moneyMove {
@@ -498,22 +513,18 @@ transform: translateY(0);
 
 /*Efects*/
 
-.showHiddenInformationHover {
-  font-size: 3vh;
-  margin: 2.5vh auto 0 auto;
-  padding: 1vh;
-}
 
-.hiddenInformationHover {
-  display: none;
+.hiddenInformation {
   font-size: 2vh;
   padding: 1vh;
 }
 
-
-.showHiddenInformationHover:hover + .hiddenInformationHover {
-  display: block;
+.informationButtonSet {
+  font-size: 3vh;
+  margin: 1vh auto 0 auto;
+  padding: 1vh;
 }
+
 
 
   /*Media*/

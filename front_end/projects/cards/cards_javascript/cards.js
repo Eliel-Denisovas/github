@@ -3,6 +3,13 @@ const matchPromptInformation = document.getElementById(
   "matchPromptInformation"
 );
 
+const showInformationButton1 = document.getElementById("showInformationButton1");
+const showInformationButton2 = document.getElementById("showInformationButton2");
+const closeInformation1 = document.getElementById("closeInformation1");
+const closeInformation2 = document.getElementById("closeInformation2");
+const information1 = document.getElementById("information1");
+const information2 = document.getElementById("information2");
+
 const betInput = document.getElementById("betInput");
 const roundInput = document.getElementById("roundInput");
 const matchPromptButtonYes = document.getElementById("matchPromptButtonYes");
@@ -65,6 +72,75 @@ function initialDataInsert () {
   playerMoneySpan.innerText = `\u20AC ${playerMoney.toFixed(2)}`;
 };
 initialDataInsert()
+
+function showInformation1 () {
+  information1.classList.remove("disableElement");
+  information1.classList.add("shadowTextEfect");
+  showInformationButton1.classList.add("disableElement");
+  showInformationButton2.classList.remove("disableElement");
+  closeInformation1.classList.remove("disableElement");
+
+  betInput.classList.add("disableElement");
+  roundInput.classList.add("disableElement");
+  matchPromptButtonYes.classList.add("disableElement");
+  matchPromptButtonNo.classList.add("disableElement");
+};
+
+showInformationButton1.addEventListener("click", function () {
+  showInformation1();
+});
+
+function hideInformation1 () {
+  information1.classList.add("disableElement");
+  information1.classList.remove("shadowTextEfect");
+  showInformationButton1.classList.remove("disableElement");
+  showInformationButton2.classList.add("disableElement");
+  closeInformation1.classList.add("disableElement");
+  
+  betInput.classList.remove("disableElement");
+  roundInput.classList.remove("disableElement");
+  matchPromptButtonYes.classList.remove("disableElement");
+  matchPromptButtonNo.classList.remove("disableElement");
+  
+};
+
+closeInformation1.addEventListener("click", function () {
+  hideInformation1();
+});
+
+function showInformation2 () {
+  information1.classList.remove("shadowTextEfect");
+  information2.classList.add("shadowTextEfect");
+  showInformationButton1.classList.add("disableElement");
+  information2.classList.remove("disableElement");
+  information1.classList.add("disableElement");
+  showInformationButton1.classList.add("disableElement");
+  closeInformation1.classList.add("disableElement");
+  closeInformation2.classList.remove("disableElement");
+
+  betInput.classList.add("disableElement");
+  roundInput.classList.add("disableElement");
+  matchPromptButtonYes.classList.add("disableElement");
+  matchPromptButtonNo.classList.add("disableElement");
+  
+};
+
+showInformationButton2.addEventListener("click", function () {
+  showInformation2();
+});
+
+function hideInformation2 () {
+  information1.classList.remove("disableElement");
+  information1.classList.add("shadowTextEfect");
+  information2.classList.remove("shadowTextEfect");
+  information2.classList.add("disableElement");
+  closeInformation1.classList.remove("disableElement")
+  closeInformation2.classList.add("disableElement");  
+};
+
+closeInformation2.addEventListener("click", function () {
+  hideInformation2();
+});
 
 function showMatchPrompt() {
   const earnedLostText = function () {
