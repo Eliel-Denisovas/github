@@ -93,9 +93,11 @@ function checkLocalStorage() {
 checkLocalStorage();
 
 function headerDataInsert() {
-  playerMoneySpan.innerText = `\u20AC ${playerMoney.toFixed(2)}`;
-  playerLuckSpan.innerText = `${playerLuck * 100}%`;
-  playerNameSpan.innerText = playerName;
+  setTimeout(() => {
+    playerMoneySpan.innerText = `\u20AC ${parseFloat(playerMoney).toFixed(2)}`;
+    playerLuckSpan.innerText = `${playerLuck * 100}%`;
+    playerNameSpan.innerText = playerName;
+  }, 6500);
 }
 
 headerDataInsert();
@@ -204,6 +206,7 @@ function showMatchPrompt() {
 function checkInputsContent () {
   if ((currentMoney <= 0 || currentMoney === undefined) && (betInput.value == "")) {
     alert("Set Bet Value");
+
     location.reload();
     return;
 
@@ -212,7 +215,6 @@ function checkInputsContent () {
   if (roundInput.value == "") {
     alert("Set Round Value");
     location.reload();
-
   }
 };
 
