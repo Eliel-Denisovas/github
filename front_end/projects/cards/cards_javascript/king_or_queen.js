@@ -204,13 +204,15 @@ function showMatchPrompt() {
 function checkInputsContent () {
   if ((currentMoney <= 0 || currentMoney === undefined) && (betInput.value == "")) {
     alert("Set Bet Value");
-    showMatchPrompt();
+    location.reload();
     return;
+
   };
 
   if (roundInput.value == "") {
     alert("Set Round Value");
-    showMatchPrompt()
+    location.reload();
+
   }
 };
 
