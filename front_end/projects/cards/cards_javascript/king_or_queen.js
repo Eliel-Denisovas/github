@@ -93,7 +93,7 @@ function checkLocalStorage() {
 checkLocalStorage();
 
 function headerDataInsert() {
-  playerMoneySpan.innerText = `\u20AC ${playerMoney}`;
+  playerMoneySpan.innerText = `\u20AC ${playerMoney.toFixed(2)}`;
   playerLuckSpan.innerText = `${playerLuck * 100}%`;
   playerNameSpan.innerText = playerName;
 }
