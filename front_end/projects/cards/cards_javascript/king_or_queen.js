@@ -3,8 +3,12 @@ const matchPromptInformation = document.getElementById(
   "matchPromptInformation"
 );
 
-const showInformationButton1 = document.getElementById("showInformationButton1");
-const showInformationButton2 = document.getElementById("showInformationButton2");
+const showInformationButton1 = document.getElementById(
+  "showInformationButton1"
+);
+const showInformationButton2 = document.getElementById(
+  "showInformationButton2"
+);
 const closeInformation1 = document.getElementById("closeInformation1");
 const closeInformation2 = document.getElementById("closeInformation2");
 const information1 = document.getElementById("information1");
@@ -14,6 +18,7 @@ const betInput = document.getElementById("betInput");
 const roundInput = document.getElementById("roundInput");
 const matchPromptButtonYes = document.getElementById("matchPromptButtonYes");
 const matchPromptButtonNo = document.getElementById("matchPromptButtonNo");
+const resetButton = document.getElementById("resetButton");
 
 const playerNameSpan = document.getElementById("playerNameSpan");
 const playerLuckSpan = document.getElementById("playerLuckSpan");
@@ -37,6 +42,7 @@ const inicialValueSpan = document.getElementById("inicialValueSpan");
 const PointsDisplayContainer = document.getElementById(
   "PointsDisplayContainer"
 );
+
 const containerCards = document.getElementById("containerCards");
 const roundSound = document.getElementById("roundSound");
 const cardLeftImage = document.getElementById("cardLeftImage");
@@ -49,9 +55,15 @@ const luckWord = document.getElementById("luckWord");
 const wrongChoiceSound = document.getElementById("wrongChoiceSound");
 
 let playerName = "Eliel Denisovas";
+let playerNameLocalStorage = localStorage.getItem("playerNameLocalStorage");
 let playerLuck = 0.5;
+let playerLuckLocalStorage = parseFloat(
+  localStorage.getItem("playerLuckLocalStorage")
+);
 let playerMoney = 500;
-let playerLuckArray = [];
+let playerMoneyLocalStorage = parseFloat(
+  localStorage.getItem("playerMoneyLocalStorage")
+);
 
 let startMoney = 0;
 let currentRound;
@@ -60,22 +72,37 @@ let computerCard;
 let userCard;
 let userCardsArray;
 let roundStatus;
-let arrayLuck;
+let arrayLuck = [];
+let playerLuckArray = [];
 let luck;
 let currentMoney;
 let rounds;
 let roundValue;
 
-function initialDataInsert () {
-  playerNameSpan.innerText = playerName;
-  playerLuckSpan.innerText = `${playerLuck * 100}%`;
-  playerMoneySpan.innerText = `\u20AC ${playerMoney.toFixed(2)}`;
-};
-initialDataInsert()
+function checkLocalStorage() {
+  if (playerMoneyLocalStorage) {
+    playerMoney = parseFloat(playerMoneyLocalStorage).toFixed(2);
+  }
+  if (playerLuckLocalStorage) {
+    playerLuck = parseFloat(playerLuckLocalStorage).toFixed(2);
+  }
+  if (playerNameLocalStorage) {
+    playerName = playerNameLocalStorage;
+  }
+}
+checkLocalStorage();
 
-function showInformation1 () {
+function headerDataInsert() {
+  playerMoneySpan.innerText = `\u20AC ${playerMoney}`;
+  playerLuckSpan.innerText = `${playerLuck * 100}%`;
+  playerNameSpan.innerText = playerName;
+}
+
+headerDataInsert();
+
+function showInformation1() {
   information1.classList.remove("disableElement");
-  information1.classList.add("shadowTextEfect");
+  information1.classList.add("shadowTextEfectBlue");
   showInformationButton1.classList.add("disableElement");
   showInformationButton2.classList.remove("disableElement");
   closeInformation1.classList.remove("disableElement");
@@ -84,59 +111,58 @@ function showInformation1 () {
   roundInput.classList.add("disableElement");
   matchPromptButtonYes.classList.add("disableElement");
   matchPromptButtonNo.classList.add("disableElement");
-};
+}
 
 showInformationButton1.addEventListener("click", function () {
   showInformation1();
 });
 
-function hideInformation1 () {
+function hideInformation1() {
   information1.classList.add("disableElement");
-  information1.classList.remove("shadowTextEfect");
+  information1.classList.remove("shadowTextEfectBlue");
   showInformationButton1.classList.remove("disableElement");
   showInformationButton2.classList.add("disableElement");
   closeInformation1.classList.add("disableElement");
-  
+
   betInput.classList.remove("disableElement");
   roundInput.classList.remove("disableElement");
   matchPromptButtonYes.classList.remove("disableElement");
   matchPromptButtonNo.classList.remove("disableElement");
-  
-};
+}
 
 closeInformation1.addEventListener("click", function () {
   hideInformation1();
 });
 
-function showInformation2 () {
-  information1.classList.remove("shadowTextEfect");
-  information2.classList.add("shadowTextEfect");
+function showInformation2() {
+  information1.classList.remove("shadowTextEfectBlue");
+  information2.classList.add("shadowTextEfectBlue");
   showInformationButton1.classList.add("disableElement");
   information2.classList.remove("disableElement");
   information1.classList.add("disableElement");
   showInformationButton1.classList.add("disableElement");
   closeInformation1.classList.add("disableElement");
   closeInformation2.classList.remove("disableElement");
-
+  resetButton.classList.remove("disableElement");
   betInput.classList.add("disableElement");
   roundInput.classList.add("disableElement");
   matchPromptButtonYes.classList.add("disableElement");
   matchPromptButtonNo.classList.add("disableElement");
-  
-};
+}
 
 showInformationButton2.addEventListener("click", function () {
   showInformation2();
 });
 
-function hideInformation2 () {
+function hideInformation2() {
   information1.classList.remove("disableElement");
-  information1.classList.add("shadowTextEfect");
-  information2.classList.remove("shadowTextEfect");
+  information1.classList.add("shadowTextEfectBlue");
+  information2.classList.remove("shadowTextEfectBlue");
   information2.classList.add("disableElement");
-  closeInformation1.classList.remove("disableElement")
-  closeInformation2.classList.add("disableElement");  
-};
+  closeInformation1.classList.remove("disableElement");
+  closeInformation2.classList.add("disableElement");
+  resetButton.classList.add("disableElement");
+}
 
 closeInformation2.addEventListener("click", function () {
   hideInformation2();
@@ -160,7 +186,7 @@ function showMatchPrompt() {
     if (currentMoney <= 0 || currentMoney === undefined) {
       return `Play`;
     } else {
-      return `Play Amount: \u20AC${currentMoney.toFixed(2)}`;
+      return `Play Ammount: \u20AC${currentMoney.toFixed(2)}`;
     }
   };
   matchPromptButtonYes.value = yesButtonText();
@@ -170,46 +196,50 @@ function showMatchPrompt() {
 
   if (currentMoney <= 0 || currentMoney === undefined) {
     ableMatchBetInput();
-  }
+  };
 
   ableMatchPrompt();
+};
+
+function checkInputsContent () {
+  if ((currentMoney <= 0 || currentMoney === undefined) && (betInput.value == "")) {
+    alert("Set Bet Value");
+    showMatchPrompt();
+    return;
+  };
+
+  if (roundInput.value == "") {
+    alert("Set Round Value");
+    showMatchPrompt()
+  }
+};
+
+function checkPlayerMoney() {
+  if (currentMoney <= 0 || currentMoney === undefined || (startMoney - currentMoney) <= 0) {
+    if (playerMoney < betInput.value) {
+      alert(
+        `You do not have available money to bet this value (\u20AC ${currentMoney}), if your ammount is zero, please reset all your player settings`
+      );
+    };
+  };
+};
+
+function insertBet() {
+  checkPlayerMoney();
+  if (currentMoney <= 0 || currentMoney === undefined) {
+    startMoney = parseFloat(betInput.value);
+    currentMoney = parseFloat(startMoney);
+  }
 }
 
 function submitMatchPromptButtonYes() {
-  if (
-    roundInput.value == "" ||
-    (currentMoney <= 0 || currentMoney === undefined) & (betInput.value == "")
-  ) {
-    alert("Set Bet and Round(s)");
-    showMatchPrompt();
-    return;
-  }
-
-  if (currentMoney <= 0 || currentMoney === undefined) {
-    if (playerMoney < betInput.value) {
-      alert("You do not have available money to bet this value, if your ammount is zero, please reload the page");
-      showMatchPrompt();
-      return
-    } else {
-    startMoney = parseFloat(betInput.value);
-    currentMoney = parseFloat(startMoney);
-    playerMoney -= startMoney;
-    }
-  } else {
-    playerMoney -= currentMoney;
-  }
+  checkInputsContent();
+  insertBet();
   rounds = parseFloat(roundInput.value);
-
   disableMatchPrompt();
   disableMatchBetInput();
   //disableInputStyle();
-
   match();
-}
-
-function submitMatchPromptButtonNo() {
-  disableMatchPrompt();
-  //disableInputStyle();
 }
 
 /* 
@@ -305,7 +335,6 @@ function checkMoney(roundStatus) {
 }
 
 function insertData() {
-  playerNameSpan.innerText = playerName;
   setTimeout(() => {
     roundSound.play();
     roundSound.volume = 0.5;
@@ -327,7 +356,7 @@ function insertData() {
     numberPercentualDisplay.textContent = (luck * 100).toFixed() + "%";
 
     setTimeout(() => {
-      moneyDisplayChild.innerHTML = "\u20AC" + currentMoney.toFixed(2);
+      moneyDisplayChild.innerHTML = `\u20AC ${currentMoney.toFixed(2)}`;
     }, 500);
     playerLuckSpan.innerText = ` ${(playerLuck * 100).toFixed()}%`;
     playerMoneySpan.innerText = ` \u20AC ${playerMoney.toFixed(2)}`;
@@ -466,6 +495,22 @@ function setCheckPoints() {
   }
 }
 
+function saveDataInLocalStorage() {
+  localStorage.setItem("playerMoneyLocalStorage", playerMoney);
+  localStorage.setItem("playerLuckLocalStorage", playerLuck);
+  localStorage.setItem("playerNameLocalStorage", playerName);
+}
+
+function resetPlayerData() {
+  localStorage.setItem("playerMoneyLocalStorage", undefined);
+  localStorage.setItem("playerLuckLocalStorage", 0.5);
+  localStorage.setItem("playerNameLocalStorage", "player");
+  playerMoney = 500;
+  playerLuck = 0.5;
+  playerName = "Player";
+  headerDataInsert();
+}
+
 function roundFunctions() {
   disableCards();
   computerCard = computerCardsArray[currentRound];
@@ -479,7 +524,9 @@ function roundFunctions() {
 
   if (currentRound >= rounds - 1) {
     playerMoney += currentMoney;
-  };
+    saveDataInLocalStorage();
+    headerDataInsert();
+  }
 
   setTimeout(() => {
     insertData();
@@ -488,7 +535,6 @@ function roundFunctions() {
   setCheckPoints();
   if (currentRound >= rounds - 1) {
     setTimeout(() => {
-
       showMatchPrompt();
     }, 6000);
     return;
@@ -649,7 +695,11 @@ matchPromptButtonYes.addEventListener("click", function () {
 });
 
 matchPromptButtonNo.addEventListener("click", function () {
-  submitMatchPromptButtonNo();
+  disableMatchPrompt();
+});
+resetButton.addEventListener("click", function () {
+  alert("Are you sure you want to reset all player settings?");
+  resetPlayerData();
 });
 
 cardLeft.addEventListener("click", function () {
@@ -681,13 +731,14 @@ cardRight.addEventListener("click", function () {
 });
 
 function match() {
+
+  playerMoney -= parseFloat(currentMoney);
   currentRound = 0;
   computerCardsArray = [];
   arrayLuck = [];
   luck = 0.5;
   userCardsArray = [];
   roundStatus = true;
-  arrayRightChoices = [];
 
   removeCheckPoint();
   setRoundValue();
@@ -695,6 +746,7 @@ function match() {
   createCheckPointElements();
   setInicialNumerator();
   insertData();
+  headerDataInsert();
   ableCards();
   document.querySelector(".table1").classList.remove("disableElement");
 }

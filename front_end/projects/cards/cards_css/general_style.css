@@ -234,8 +234,12 @@ html {
   text-shadow: 0 0 2vh blue, 0 0 3vh darkblue, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   color: rgb(196, 212, 255);
 }
-.shadowTextEfect {
-  animation: shadowTextEfect 2s ease 0.5s;
+.shadowTextEfectBlue {
+  animation: shadowTextEfectBlue 2s ease 0.5s;
+  animation-fill-mode: forwards;
+}
+.shadowTextEfectRed {
+  animation: shadowTextEfectRed 2s ease 0.5s;
   animation-fill-mode: forwards;
 }
 
@@ -327,10 +331,17 @@ html {
   transition: all 1s ease;
 }
 
-@keyframes shadowTextEfect {
+@keyframes shadowTextEfectBlue {
   100% {
   text-shadow: 0 0 2vh blue, 0 0 3vh darkblue, 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
   color: rgb(196, 212, 255);
+  }
+}
+
+@keyframes shadowTextEfectRed {
+  100% {
+  text-shadow: 0 0 2vh rgb(255, 0, 0), 0 0 3vh rgb(139, 0, 0), 0 0 1vh var(--corFundo), 0 0 1vh var(--corFundo);
+  color: rgb(255, 162, 162);
   }
 }
 

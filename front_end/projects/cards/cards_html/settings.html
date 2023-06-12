@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../cards_css/cards_normalize.css">
-  <link rel="stylesheet" href="../cards_css/general_style.css">
-</head>
-
-<body class="fundo" id="fundo">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../cards_css/cards_normalize.css">
+    <link rel="stylesheet" href="../cards_css/general_style.css">
+    <link rel="stylesheet" href="../cards_css/settings.css">
+    <script type="module" defer src="../cards_javascript/king_or_queen.js"></script>
+    <script type="module" defer src="../cards_javascript/settings.js"></script>
+    </body>
+  </head>
+  
+  <body class="fundo" id="fundo">
 
   <audio id="choiceSound">
     <source src="../sounds/choice.mp3" type="audio/ogg">
@@ -75,10 +79,12 @@
 
     </header>
 
-    <div class=""></div></div>
+    <div id="settingDisplayDiv" class="displayFlex">
 
-  <script src="../cards_javascript/cards.js"></script>
+      <a href="#" class="flexItem">
+      <div id="resetAllButtom" class="settingDiv flexItem settingItem glass shadowText titleStyle glassHover greenLightTextHover">Reset All</div>
+      </a>
 
-</body>
-
+    </div>
+  
 </html>
