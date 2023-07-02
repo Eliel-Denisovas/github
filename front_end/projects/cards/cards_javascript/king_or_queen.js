@@ -172,11 +172,12 @@ function showMatchPrompt() {
 };
 
 function checkInputsContent () {
-  if ((betInput.value == ``)) {
-    alert("Set Bet Value");
+  if (currentMoney <= startMoney)
+    if ((betInput.value == ``)) {
+      alert("Set Bet Value");
 
-    location.reload();
-    return;
+      location.reload();
+      return;
   };
 
   if (roundInput.value == "") {
@@ -203,12 +204,15 @@ function insertBet() {
 }
 
 function submitMatchPromptButtonYes() {
+  disableMatchPrompt();
+  disableMatchBetInput();
   checkInputsContent();
   insertBet();
   rounds = parseFloat(roundInput.value);
-  disableMatchPrompt();
-  disableMatchBetInput();
-  //disableInputStyle();
+  playerCheckLuck();
+  checkLocalStorage();
+  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+  headerDataInsert();
   match();
 }
 
@@ -453,6 +457,10 @@ function setCheckPoints() {
 }
 
 function roundFunctions() {
+  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+  setTimeout(() => {
+    headerDataInsert();
+  }, 6500);
   disableCards();
   computerCard = computerCardsArray[currentRound];
   checkCards(userCard, computerCard);
@@ -465,11 +473,6 @@ function roundFunctions() {
 
   if (currentRound >= rounds - 1) {
     playerMoneyUpdate += currentMoney;
-    updateVariables();
-    setTimeout(() => {
-      headerDataInsert();
-    }, 6500);
-
   }
 
   setTimeout(() => {
@@ -488,6 +491,7 @@ function roundFunctions() {
     }, 5000);
     currentRound += 1;
   }
+  console.log(playerLuckArrayUpdate);
 }
 
 function cardLeftEfect() {
@@ -676,21 +680,23 @@ cardRight.addEventListener("click", function () {
 
 function match() {
   playerMoneyUpdate -= parseFloat(currentMoney);
-  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
   currentRound = 0;
   computerCardsArray = [];
   arrayLuck = [];
   luck = 0.5;
   userCardsArray = [];
   roundStatus = true;
-
+  
   removeCheckPoint();
   setRoundValue();
   generateComputerCardsArray();
   createCheckPointElements();
   setInicialNumerator();
-  insertData();
+  checkLocalStorage();
+  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+  playerCheckLuck();
   headerDataInsert();
+  insertData();
   document.querySelector(".table1").classList.remove("disableElement");
   ableCards();
 }

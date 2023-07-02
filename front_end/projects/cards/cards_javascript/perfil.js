@@ -28,7 +28,7 @@ function playerCheckLuck() {
 
   function updateVariables (argumentoPlayerLuck, argumentoPlayerLuckArrayUpdate, argumentoPlayerMoney) {
     playerLuck = argumentoPlayerLuck;
-    playerLuckArray = argumentoPlayerLuckArrayUpdate
+    playerLuckArray = argumentoPlayerLuckArrayUpdate;
     playerMoney = argumentoPlayerMoney;
     saveDataInLocalStorage()
   };
