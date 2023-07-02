@@ -1,8 +1,9 @@
-// import { resetPlayerData } from "./king_or_queen.js";
+import { resetPlayerData} from "./perfil.js";
 
 const resetAllButtom = document.getElementById("resetAllButtom");
 
 resetAllButtom.addEventListener("click", function () {
-    // resetPlayerData();
-    alert("resetAllButtom");
+    resetPlayerData();
+    alert("Game reset has been applyed successfully");
   });
+

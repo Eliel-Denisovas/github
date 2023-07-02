@@ -1,3 +1,10 @@
+import {playerMoney, playerLuck, playerLuckArray, playerCheckLuck, checkLocalStorage, updateVariables} from './perfil.js';
+import {headerDataInsert} from './header.js';
+checkLocalStorage();
+let playerMoneyUpdate = playerMoney;
+let playerLuckUpdate = playerLuck;
+let playerLuckArrayUpdate = [...playerLuckArray];
+
 const matchPrompt = document.getElementById("matchPrompt");
 const matchPromptInformation = document.getElementById(
   "matchPromptInformation"
@@ -19,10 +26,6 @@ const roundInput = document.getElementById("roundInput");
 const matchPromptButtonYes = document.getElementById("matchPromptButtonYes");
 const matchPromptButtonNo = document.getElementById("matchPromptButtonNo");
 const resetButton = document.getElementById("resetButton");
-
-const playerNameSpan = document.getElementById("playerNameSpan");
-const playerLuckSpan = document.getElementById("playerLuckSpan");
-const playerMoneySpan = document.getElementById("playerMoneySpan");
 
 const cardLeft = document.getElementById("cardLeft");
 const cardRight = document.getElementById("cardRight");
@@ -54,17 +57,6 @@ const correctChoiceSound = document.getElementById("correctChoiceSound");
 const luckWord = document.getElementById("luckWord");
 const wrongChoiceSound = document.getElementById("wrongChoiceSound");
 
-let playerName = "Eliel Denisovas";
-let playerNameLocalStorage = localStorage.getItem("playerNameLocalStorage");
-let playerLuck = 0.5;
-let playerLuckLocalStorage = parseFloat(
-  localStorage.getItem("playerLuckLocalStorage")
-);
-let playerMoney = 500;
-let playerMoneyLocalStorage = parseFloat(
-  localStorage.getItem("playerMoneyLocalStorage")
-);
-
 let startMoney = 0;
 let currentRound;
 let computerCardsArray;
@@ -73,32 +65,10 @@ let userCard;
 let userCardsArray;
 let roundStatus;
 let arrayLuck = [];
-let playerLuckArray = [];
 let luck;
-let currentMoney;
+let currentMoney = 0;
 let rounds;
 let roundValue;
-
-function checkLocalStorage() {
-  if (playerMoneyLocalStorage) {
-    playerMoney = parseFloat(playerMoneyLocalStorage).toFixed(2);
-  }
-  if (playerLuckLocalStorage) {
-    playerLuck = parseFloat(playerLuckLocalStorage).toFixed(2);
-  }
-  if (playerNameLocalStorage) {
-    playerName = playerNameLocalStorage;
-  }
-}
-checkLocalStorage();
-
-function headerDataInsert() {
-  setTimeout(() => {
-    playerMoneySpan.innerText = `\u20AC ${parseFloat(playerMoney).toFixed(2)}`;
-    playerLuckSpan.innerText = `${playerLuck * 100}%`;
-    playerNameSpan.innerText = playerName;
-  }, 6500);
-}
 
 headerDataInsert();
 
@@ -173,8 +143,6 @@ closeInformation2.addEventListener("click", function () {
 function showMatchPrompt() {
   const earnedLostText = function () {
     if (
-      currentMoney <= 0 ||
-      currentMoney === undefined ||
       currentMoney - startMoney <= 0
     ) {
       return ``;
@@ -185,7 +153,7 @@ function showMatchPrompt() {
   };
 
   const yesButtonText = function () {
-    if (currentMoney <= 0 || currentMoney === undefined) {
+    if (currentMoney <= 0 ) {
       return `Play`;
     } else {
       return `Play Ammount: \u20AC${currentMoney.toFixed(2)}`;
@@ -196,7 +164,7 @@ function showMatchPrompt() {
   betInput.value = "";
   roundInput.value = "";
 
-  if (currentMoney <= 0 || currentMoney === undefined) {
+  if (currentMoney <= 0) {
     ableMatchBetInput();
   };
 
@@ -204,12 +172,11 @@ function showMatchPrompt() {
 };
 
 function checkInputsContent () {
-  if ((currentMoney <= 0 || currentMoney === undefined) && (betInput.value == "")) {
+  if ((betInput.value == ``)) {
     alert("Set Bet Value");
 
     location.reload();
     return;
-
   };
 
   if (roundInput.value == "") {
@@ -219,18 +186,17 @@ function checkInputsContent () {
 };
 
 function checkPlayerMoney() {
-  if (currentMoney <= 0 || currentMoney === undefined || (startMoney - currentMoney) <= 0) {
+
     if (playerMoney < betInput.value) {
       alert(
-        `You do not have available money to bet this value (\u20AC ${currentMoney}), if your ammount is zero, please reset all your player settings`
+        `You do not have available money to bet this value (\u20AC ${betInput.value}), if your ammount is zero, please reset all your player settings`
       );
     };
   };
-};
 
 function insertBet() {
   checkPlayerMoney();
-  if (currentMoney <= 0 || currentMoney === undefined) {
+  if (currentMoney <= 0) {
     startMoney = parseFloat(betInput.value);
     currentMoney = parseFloat(startMoney);
   }
@@ -318,18 +284,6 @@ function checkLuck() {
   luck = rightChoicesNumber() / arrayLuck.length;
 }
 
-function playerCheckLuck() {
-  function rightChoicesNumber() {
-    let arrayRightChoices = playerLuckArray.filter(function (currentValue) {
-      return currentValue === true;
-    });
-
-    return arrayRightChoices.length;
-  }
-
-  playerLuck = rightChoicesNumber() / playerLuckArray.length;
-}
-
 function checkMoney(roundStatus) {
   if (roundStatus) {
     currentMoney += roundValue;
@@ -362,8 +316,7 @@ function insertData() {
     setTimeout(() => {
       moneyDisplayChild.innerHTML = `\u20AC ${currentMoney.toFixed(2)}`;
     }, 500);
-    playerLuckSpan.innerText = ` ${(playerLuck * 100).toFixed()}%`;
-    playerMoneySpan.innerText = ` \u20AC ${playerMoney.toFixed(2)}`;
+    headerDataInsert()
     moneyDisplayChild.classList.add("moneyMove");
     if (roundStatus) {
       moneyDisplayChild.classList.add("greenLightText");
@@ -499,37 +452,24 @@ function setCheckPoints() {
   }
 }
 
-function saveDataInLocalStorage() {
-  localStorage.setItem("playerMoneyLocalStorage", playerMoney);
-  localStorage.setItem("playerLuckLocalStorage", playerLuck);
-  localStorage.setItem("playerNameLocalStorage", playerName);
-}
-
-function resetPlayerData() {
-  localStorage.setItem("playerMoneyLocalStorage", undefined);
-  localStorage.setItem("playerLuckLocalStorage", 0.5);
-  localStorage.setItem("playerNameLocalStorage", "player");
-  playerMoney = 500;
-  playerLuck = 0.5;
-  playerName = "Player";
-  headerDataInsert();
-}
-
 function roundFunctions() {
   disableCards();
   computerCard = computerCardsArray[currentRound];
   checkCards(userCard, computerCard);
   arrayLuck.push(roundStatus);
-  playerLuckArray.push(roundStatus);
+  playerLuckArrayUpdate.push(roundStatus);
   checkLuck();
   playerCheckLuck();
   checkMoney(roundStatus);
   choice();
 
   if (currentRound >= rounds - 1) {
-    playerMoney += currentMoney;
-    saveDataInLocalStorage();
-    headerDataInsert();
+    playerMoneyUpdate += currentMoney;
+    updateVariables();
+    setTimeout(() => {
+      headerDataInsert();
+    }, 6500);
+
   }
 
   setTimeout(() => {
@@ -735,8 +675,8 @@ cardRight.addEventListener("click", function () {
 });
 
 function match() {
-
-  playerMoney -= parseFloat(currentMoney);
+  playerMoneyUpdate -= parseFloat(currentMoney);
+  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
   currentRound = 0;
   computerCardsArray = [];
   arrayLuck = [];
@@ -751,8 +691,8 @@ function match() {
   setInicialNumerator();
   insertData();
   headerDataInsert();
-  ableCards();
   document.querySelector(".table1").classList.remove("disableElement");
+  ableCards();
 }
 
 showMatchPrompt();
