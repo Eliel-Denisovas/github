@@ -57,6 +57,7 @@ function checkLocalStorage() {
     playerLuck = 0.5;
     playerName = "Player";
     playerLuckArray = [];
+    location.reload();
   }
 
   export {playerName, playerLuck, playerLuckArray, playerMoney, playerCheckLuck, checkLocalStorage, updateVariables, resetPlayerData};

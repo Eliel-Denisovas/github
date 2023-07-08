@@ -1,21 +1,15 @@
-import {playerMoney, playerLuck, playerLuckArray, playerCheckLuck, checkLocalStorage, updateVariables} from './perfil.js';
-import {headerDataInsert} from './header.js';
+import { playerMoney, playerLuck, playerLuckArray, playerCheckLuck, checkLocalStorage, updateVariables } from "./perfil.js";
+import { headerDataInsert } from "./header.js";
 checkLocalStorage();
 let playerMoneyUpdate = playerMoney;
 let playerLuckUpdate = playerLuck;
 let playerLuckArrayUpdate = [...playerLuckArray];
 
 const matchPrompt = document.getElementById("matchPrompt");
-const matchPromptInformation = document.getElementById(
-  "matchPromptInformation"
-);
+const matchPromptInformation = document.getElementById("matchPromptInformation");
 
-const showInformationButton1 = document.getElementById(
-  "showInformationButton1"
-);
-const showInformationButton2 = document.getElementById(
-  "showInformationButton2"
-);
+const showInformationButton1 = document.getElementById("showInformationButton1");
+const showInformationButton2 = document.getElementById("showInformationButton2");
 const closeInformation1 = document.getElementById("closeInformation1");
 const closeInformation2 = document.getElementById("closeInformation2");
 const information1 = document.getElementById("information1");
@@ -36,15 +30,11 @@ const numberPercentualDisplay = document.getElementById("numberPercentual");
 const moneyDisplay = document.getElementById("moneyDiv");
 const moneyDisplayChild = document.getElementById("moneyDivChild");
 const previousStatusDisplay = document.getElementById("previousStatusDiv");
-const previousStatusDisplayChild = document.getElementById(
-  "previousStatusDivChild"
-);
+const previousStatusDisplayChild = document.getElementById("previousStatusDivChild");
 
 const roundValueSpan = document.getElementById("roundValueSpan");
 const inicialValueSpan = document.getElementById("inicialValueSpan");
-const PointsDisplayContainer = document.getElementById(
-  "PointsDisplayContainer"
-);
+const PointsDisplayContainer = document.getElementById("PointsDisplayContainer");
 
 const containerCards = document.getElementById("containerCards");
 const roundSound = document.getElementById("roundSound");
@@ -142,9 +132,7 @@ closeInformation2.addEventListener("click", function () {
 
 function showMatchPrompt() {
   const earnedLostText = function () {
-    if (
-      currentMoney - startMoney <= 0
-    ) {
+    if (currentMoney - startMoney <= 0) {
       return ``;
     } else {
       const earn = (currentMoney - startMoney).toFixed(2);
@@ -153,7 +141,7 @@ function showMatchPrompt() {
   };
 
   const yesButtonText = function () {
-    if (currentMoney <= 0 ) {
+    if (currentMoney <= 0) {
       return `Play`;
     } else {
       return `Play Ammount: \u20AC${currentMoney.toFixed(2)}`;
@@ -166,34 +154,16 @@ function showMatchPrompt() {
 
   if (currentMoney <= 0) {
     ableMatchBetInput();
-  };
+  }
 
   ableMatchPrompt();
-};
-
-function checkInputsContent () {
-  if (currentMoney <= startMoney)
-    if ((betInput.value == ``)) {
-      alert("Set Bet Value");
-
-      location.reload();
-      return;
-  };
-
-  if (roundInput.value == "") {
-    alert("Set Round Value");
-    location.reload();
-  }
-};
+}
 
 function checkPlayerMoney() {
-
-    if (playerMoney < betInput.value) {
-      alert(
-        `You do not have available money to bet this value (\u20AC ${betInput.value}), if your ammount is zero, please reset all your player settings`
-      );
-    };
-  };
+  if (playerMoney < betInput.value) {
+    alert(`You do not have available money to bet this value (\u20AC ${betInput.value}), if your ammount is zero, please reset all your player settings`);
+  }
+}
 
 function insertBet() {
   checkPlayerMoney();
@@ -204,15 +174,25 @@ function insertBet() {
 }
 
 function submitMatchPromptButtonYes() {
+  //checkInputsContent
+  if (currentMoney <= startMoney) {
+    if (betInput.value == ``) {
+      alert("Set Bet Value");
+      showMatchPrompt();
+      return;
+    }
+  }
+
+  if (roundInput.value == "") {
+    alert("Set Round Value");
+    showMatchPrompt();
+    return;
+  }
+
   disableMatchPrompt();
   disableMatchBetInput();
-  checkInputsContent();
   insertBet();
   rounds = parseFloat(roundInput.value);
-  playerCheckLuck();
-  checkLocalStorage();
-  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
-  headerDataInsert();
   match();
 }
 
@@ -263,9 +243,7 @@ function createCheckPointElements() {
 }
 
 function setInicialNumerator() {
-  PointsDisplayContainer.getElementsByClassName("checkPoint")[0].classList.add(
-    "choice"
-  );
+  PointsDisplayContainer.getElementsByClassName("checkPoint")[0].classList.add("choice");
 }
 
 function checkCards(userCard, computerCard) {
@@ -320,7 +298,7 @@ function insertData() {
     setTimeout(() => {
       moneyDisplayChild.innerHTML = `\u20AC ${currentMoney.toFixed(2)}`;
     }, 500);
-    headerDataInsert()
+    headerDataInsert();
     moneyDisplayChild.classList.add("moneyMove");
     if (roundStatus) {
       moneyDisplayChild.classList.add("greenLightText");
@@ -428,36 +406,27 @@ function setCheckPoints() {
   let functionTime = 3800;
 
   setTimeout(() => {
-    PointsDisplayContainer.getElementsByClassName("checkPoint")[
-      checkPointsValue
-    ].classList.remove("choice");
+    PointsDisplayContainer.getElementsByClassName("checkPoint")[checkPointsValue].classList.remove("choice");
   }, functionTime);
 
   if (roundStatus) {
     setTimeout(() => {
-      PointsDisplayContainer.getElementsByClassName("checkPoint")[
-        checkPointsValue
-      ].classList.add("greenLightBox");
+      PointsDisplayContainer.getElementsByClassName("checkPoint")[checkPointsValue].classList.add("greenLightBox");
     }, functionTime);
   } else {
     setTimeout(() => {
-      PointsDisplayContainer.getElementsByClassName("checkPoint")[
-        checkPointsValue
-      ].classList.add("redLightBox");
+      PointsDisplayContainer.getElementsByClassName("checkPoint")[checkPointsValue].classList.add("redLightBox");
     }, functionTime);
   }
 
   if (checkPointsValue <= rounds - 2) {
     setTimeout(() => {
-      PointsDisplayContainer.getElementsByClassName("checkPoint")[
-        checkPointsValue + 1
-      ].classList.add("choice");
+      PointsDisplayContainer.getElementsByClassName("checkPoint")[checkPointsValue + 1].classList.add("choice");
     }, functionTime);
   }
 }
 
 function roundFunctions() {
-  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
   setTimeout(() => {
     headerDataInsert();
   }, 6500);
@@ -470,16 +439,19 @@ function roundFunctions() {
   playerCheckLuck();
   checkMoney(roundStatus);
   choice();
+  
+  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
 
   if (currentRound >= rounds - 1) {
     playerMoneyUpdate += currentMoney;
   }
-
+  
   setTimeout(() => {
     insertData();
   }, 3000);
-
+  
   setCheckPoints();
+
   if (currentRound >= rounds - 1) {
     setTimeout(() => {
       showMatchPrompt();
@@ -491,13 +463,12 @@ function roundFunctions() {
     }, 5000);
     currentRound += 1;
   }
-  console.log(playerLuckArrayUpdate);
 }
 
 function cardLeftEfect() {
   rejectedCardRight();
   acceptedCardLeft();
-
+  
   clickSound.play();
   clickSound.volume = 0.3;
 
@@ -522,14 +493,11 @@ function cardLeftEfect() {
 
   setTimeout(() => {
     if (computerCard === 0) {
-      cardRightImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
+      cardRightImage.src = "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
     } else if (computerCard === 1) {
-      cardRightImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
+      cardRightImage.src = "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
     } else {
-      cardRightImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
+      cardRightImage.src = "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
     }
   }, 1500);
 
@@ -538,8 +506,7 @@ function cardLeftEfect() {
   }, 3100);
 
   setTimeout(() => {
-    cardRightImage.src =
-      "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
+    cardRightImage.src = "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
   }, 3400);
 
   setTimeout(() => {
@@ -592,14 +559,11 @@ function cardRightEfect() {
 
   setTimeout(() => {
     if (computerCard === 0) {
-      cardLeftImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
+      cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/king_of_clubs2.png";
     } else if (computerCard === 1) {
-      cardLeftImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
+      cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/queen_of_clubs2.png";
     } else {
-      cardLeftImage.src =
-        "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
+      cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/2_of_clubs.png";
     }
   }, 1500);
 
@@ -608,8 +572,7 @@ function cardRightEfect() {
   }, 3100);
 
   setTimeout(() => {
-    cardLeftImage.src =
-      "../images/Playing Cards/PNG-cards-1.3/King_of_clubs2.png";
+    cardLeftImage.src = "../images/Playing Cards/PNG-cards-1.3/King_of_clubs2.png";
   }, 3400);
 
   setTimeout(() => {
@@ -639,12 +602,20 @@ function cardRightEfect() {
 }
 
 matchPromptButtonYes.addEventListener("click", function () {
+  //checkLocalStorage();
+  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+  headerDataInsert();
   submitMatchPromptButtonYes();
 });
 
 matchPromptButtonNo.addEventListener("click", function () {
+  //checkLocalStorage();
+  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+  headerDataInsert();
+  //playerCheckLuck();
   disableMatchPrompt();
 });
+
 resetButton.addEventListener("click", function () {
   alert("Are you sure you want to reset all player settings?");
   resetPlayerData();
@@ -686,14 +657,12 @@ function match() {
   luck = 0.5;
   userCardsArray = [];
   roundStatus = true;
-  
+  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
   removeCheckPoint();
   setRoundValue();
   generateComputerCardsArray();
   createCheckPointElements();
   setInicialNumerator();
-  checkLocalStorage();
-  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
   playerCheckLuck();
   headerDataInsert();
   insertData();
