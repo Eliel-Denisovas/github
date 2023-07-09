@@ -34,6 +34,7 @@ const previousStatusDisplay = document.getElementById("previousStatusDiv");
 const previousStatusDisplayChild = document.getElementById("previousStatusDivChild");
 
 const roundValueSpan = document.getElementById("roundValueSpan");
+const playerLuckSpan = document.getElementById("playerLuckSpan");
 const inicialValueSpan = document.getElementById("inicialValueSpan");
 const PointsDisplayContainer = document.getElementById("PointsDisplayContainer");
 
@@ -132,7 +133,6 @@ closeInformation2.addEventListener("click", function () {
 });
 
 function showMatchPrompt() {
-  moneyDisplayChild.innerHTML = ``;
   headerDataInsert();
   const earnedLostText = function () {
     if (currentMoney - startMoney <= 0) {
@@ -445,6 +445,7 @@ function roundFunctions() {
   checkCards(userCard, computerCard);
   arrayLuck.push(roundStatus);
   playerLuckArrayUpdate.push(roundStatus);
+  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
   checkLuck();
   playerCheckLuck();
   checkMoney(roundStatus);
@@ -457,10 +458,11 @@ function roundFunctions() {
   setCheckPoints();
 
   if (currentRound >= rounds - 1) {
-    
+
     playerMoneyUpdate += currentMoney;
 
     updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+    
     setTimeout(() => {
       headerDataInsert();
     }, 6500);
