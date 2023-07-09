@@ -6,7 +6,8 @@ let playerLuckUpdate = playerLuck;
 let playerLuckArrayUpdate = [...playerLuckArray];
 
 const matchPrompt = document.getElementById("matchPrompt");
-const matchPromptInformation = document.getElementById("matchPromptInformation");
+const matchPromptInformation1 = document.getElementById("matchPromptInformation1");
+const matchPromptInformation2 = document.getElementById("matchPromptInformation2");
 
 const showInformationButton1 = document.getElementById("showInformationButton1");
 const showInformationButton2 = document.getElementById("showInformationButton2");
@@ -131,12 +132,22 @@ closeInformation2.addEventListener("click", function () {
 });
 
 function showMatchPrompt() {
+  moneyDisplayChild.innerHTML = ``;
+  headerDataInsert();
   const earnedLostText = function () {
     if (currentMoney - startMoney <= 0) {
       return ``;
     } else {
       const earn = (currentMoney - startMoney).toFixed(2);
-      return `You earned \u20AC${earn}`;
+      return `You&nbsp;earned&nbsp;\u20AC${earn}`;
+    }
+  };
+
+  const initialBetText = function () {
+    if (currentMoney - startMoney <= 0) {
+      return ``;
+    } else {
+      return `Inicial Bet:&nbsp;\u20AC${startMoney}`;
     }
   };
 
@@ -148,7 +159,8 @@ function showMatchPrompt() {
     }
   };
   matchPromptButtonYes.value = yesButtonText();
-  matchPromptInformation.innerText = earnedLostText();
+  matchPromptInformation1.innerHTML = initialBetText();
+  matchPromptInformation2.innerHTML = earnedLostText();
   betInput.value = "";
   roundInput.value = "";
 
@@ -174,8 +186,9 @@ function insertBet() {
 }
 
 function submitMatchPromptButtonYes() {
-  //checkInputsContent
+ 
   if (currentMoney <= startMoney) {
+     //checkInputContent
     if (betInput.value == ``) {
       alert("Set Bet Value");
       showMatchPrompt();
@@ -184,16 +197,16 @@ function submitMatchPromptButtonYes() {
   }
 
   if (roundInput.value == "") {
+         //checkInputContent
     alert("Set Round Value");
     showMatchPrompt();
     return;
   }
-
   disableMatchPrompt();
   disableMatchBetInput();
   insertBet();
   rounds = parseFloat(roundInput.value);
-  match();
+  matchFunction();
 }
 
 /* 
@@ -427,9 +440,6 @@ function setCheckPoints() {
 }
 
 function roundFunctions() {
-  setTimeout(() => {
-    headerDataInsert();
-  }, 6500);
   disableCards();
   computerCard = computerCardsArray[currentRound];
   checkCards(userCard, computerCard);
@@ -439,23 +449,25 @@ function roundFunctions() {
   playerCheckLuck();
   checkMoney(roundStatus);
   choice();
-  
-  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
 
-  if (currentRound >= rounds - 1) {
-    playerMoneyUpdate += currentMoney;
-  }
-  
   setTimeout(() => {
     insertData();
   }, 3000);
-  
+
   setCheckPoints();
 
   if (currentRound >= rounds - 1) {
+    
+    playerMoneyUpdate += currentMoney;
+
+    updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+    setTimeout(() => {
+      headerDataInsert();
+    }, 6500);
+
     setTimeout(() => {
       showMatchPrompt();
-    }, 6000);
+    }, 7000);
     return;
   } else {
     setTimeout(() => {
@@ -463,6 +475,10 @@ function roundFunctions() {
     }, 5000);
     currentRound += 1;
   }
+
+  setTimeout(() => {
+    headerDataInsert();
+  }, 6500);
 }
 
 function cardLeftEfect() {
@@ -602,17 +618,12 @@ function cardRightEfect() {
 }
 
 matchPromptButtonYes.addEventListener("click", function () {
-  //checkLocalStorage();
   updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
   headerDataInsert();
   submitMatchPromptButtonYes();
 });
 
 matchPromptButtonNo.addEventListener("click", function () {
-  //checkLocalStorage();
-  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
-  headerDataInsert();
-  //playerCheckLuck();
   disableMatchPrompt();
 });
 
@@ -649,7 +660,8 @@ cardRight.addEventListener("click", function () {
   }, 3000);
 });
 
-function match() {
+function matchFunction() {
+  console.log("matchFunction()")
   playerMoneyUpdate -= parseFloat(currentMoney);
   currentRound = 0;
   computerCardsArray = [];
@@ -664,8 +676,8 @@ function match() {
   createCheckPointElements();
   setInicialNumerator();
   playerCheckLuck();
-  headerDataInsert();
   insertData();
+  headerDataInsert();
   document.querySelector(".table1").classList.remove("disableElement");
   ableCards();
 }

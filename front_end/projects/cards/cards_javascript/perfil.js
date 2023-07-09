@@ -26,9 +26,9 @@ function playerCheckLuck() {
      localStorage.setItem("playerNameLocalStorage", playerName);
    }
 
-  function updateVariables (argumentoPlayerLuck, argumentoPlayerLuckArrayUpdate, argumentoPlayerMoney) {
+  function updateVariables (argumentoPlayerLuck, argumentoPlayerLuckArray, argumentoPlayerMoney) {
     playerLuck = argumentoPlayerLuck;
-    playerLuckArray = argumentoPlayerLuckArrayUpdate;
+    playerLuckArray = argumentoPlayerLuckArray;
     playerMoney = argumentoPlayerMoney;
     saveDataInLocalStorage()
   };
@@ -47,7 +47,7 @@ function checkLocalStorage() {
         playerLuckArray = playerLuckArrayLocalStorage;
     }
   }
-  
+  checkLocalStorage();
   function resetPlayerData() {
     localStorage.setItem("playerMoneyLocalStorage", undefined);
     localStorage.setItem("playerLuckLocalStorage", 0.5);
