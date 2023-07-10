@@ -1,8 +1,7 @@
-import { playerMoney, playerLuck, playerLuckArray, playerCheckLuck, checkLocalStorage, updateVariables } from "./perfil.js";
+import { playerMoney, playerLuckArray, checkLocalStorage, updateVariables } from "./perfil.js";
 import { headerDataInsert } from "./header.js";
 checkLocalStorage();
 let playerMoneyUpdate = playerMoney;
-let playerLuckUpdate = playerLuck;
 let playerLuckArrayUpdate = [...playerLuckArray];
 
 const matchPrompt = document.getElementById("matchPrompt");
@@ -445,9 +444,8 @@ function roundFunctions() {
   checkCards(userCard, computerCard);
   arrayLuck.push(roundStatus);
   playerLuckArrayUpdate.push(roundStatus);
-  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+  updateVariables(playerLuckArrayUpdate, playerMoneyUpdate);
   checkLuck();
-  playerCheckLuck();
   checkMoney(roundStatus);
   choice();
 
@@ -461,7 +459,7 @@ function roundFunctions() {
 
     playerMoneyUpdate += currentMoney;
 
-    updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+    updateVariables(playerLuckArrayUpdate, playerMoneyUpdate);
     
     setTimeout(() => {
       headerDataInsert();
@@ -620,7 +618,7 @@ function cardRightEfect() {
 }
 
 matchPromptButtonYes.addEventListener("click", function () {
-  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+  updateVariables(playerLuckArrayUpdate, playerMoneyUpdate);
   headerDataInsert();
   submitMatchPromptButtonYes();
 });
@@ -663,7 +661,6 @@ cardRight.addEventListener("click", function () {
 });
 
 function matchFunction() {
-  console.log("matchFunction()")
   playerMoneyUpdate -= parseFloat(currentMoney);
   currentRound = 0;
   computerCardsArray = [];
@@ -671,13 +668,12 @@ function matchFunction() {
   luck = 0.5;
   userCardsArray = [];
   roundStatus = true;
-  updateVariables(playerLuckUpdate, playerLuckArrayUpdate, playerMoneyUpdate);
+  updateVariables(playerLuckArrayUpdate, playerMoneyUpdate);
   removeCheckPoint();
   setRoundValue();
   generateComputerCardsArray();
   createCheckPointElements();
   setInicialNumerator();
-  playerCheckLuck();
   insertData();
   headerDataInsert();
   document.querySelector(".table1").classList.remove("disableElement");
