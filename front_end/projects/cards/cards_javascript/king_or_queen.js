@@ -1,8 +1,9 @@
-import { playerMoney, playerLuckArray, checkLocalStorage, updateVariables } from "./perfil.js";
-import { headerDataInsert } from "./header.js";
+import { playerMoney, playerLuckArray, checkLocalStorage, playerCheckLuck, updateVariables, headerDataInsert } from "./perfil.js";
 checkLocalStorage();
+playerCheckLuck();
+headerDataInsert();
 let playerMoneyUpdate = playerMoney;
-let playerLuckArrayUpdate = [...playerLuckArray];
+let playerLuckArrayUpdate = playerLuckArray;
 
 const matchPrompt = document.getElementById("matchPrompt");
 const matchPromptInformation1 = document.getElementById("matchPromptInformation1");
@@ -29,14 +30,9 @@ const divisorFractionDisplay = document.getElementById("divisorFraction");
 const numberPercentualDisplay = document.getElementById("numberPercentual");
 const moneyDisplay = document.getElementById("moneyDiv");
 const moneyDisplayChild = document.getElementById("moneyDivChild");
-const previousStatusDisplay = document.getElementById("previousStatusDiv");
-const previousStatusDisplayChild = document.getElementById("previousStatusDivChild");
-
 const roundValueSpan = document.getElementById("roundValueSpan");
-const playerLuckSpan = document.getElementById("playerLuckSpan");
 const inicialValueSpan = document.getElementById("inicialValueSpan");
 const PointsDisplayContainer = document.getElementById("PointsDisplayContainer");
-
 const containerCards = document.getElementById("containerCards");
 const roundSound = document.getElementById("roundSound");
 const cardLeftImage = document.getElementById("cardLeftImage");
@@ -60,8 +56,6 @@ let luck;
 let currentMoney = 0;
 let rounds;
 let roundValue;
-
-headerDataInsert();
 
 function showInformation1() {
   information1.classList.remove("disableElement");
@@ -444,7 +438,6 @@ function roundFunctions() {
   checkCards(userCard, computerCard);
   arrayLuck.push(roundStatus);
   playerLuckArrayUpdate.push(roundStatus);
-  updateVariables(playerLuckArrayUpdate, playerMoneyUpdate);
   checkLuck();
   checkMoney(roundStatus);
   choice();
@@ -460,7 +453,7 @@ function roundFunctions() {
     playerMoneyUpdate += currentMoney;
 
     updateVariables(playerLuckArrayUpdate, playerMoneyUpdate);
-    
+    playerCheckLuck();
     setTimeout(() => {
       headerDataInsert();
     }, 6500);
@@ -475,10 +468,6 @@ function roundFunctions() {
     }, 5000);
     currentRound += 1;
   }
-
-  setTimeout(() => {
-    headerDataInsert();
-  }, 6500);
 }
 
 function cardLeftEfect() {
@@ -618,13 +607,12 @@ function cardRightEfect() {
 }
 
 matchPromptButtonYes.addEventListener("click", function () {
-  updateVariables(playerLuckArrayUpdate, playerMoneyUpdate);
   headerDataInsert();
   submitMatchPromptButtonYes();
 });
 
 matchPromptButtonNo.addEventListener("click", function () {
-  disableMatchPrompt();
+  location.reload();
 });
 
 resetButton.addEventListener("click", function () {
@@ -668,7 +656,6 @@ function matchFunction() {
   luck = 0.5;
   userCardsArray = [];
   roundStatus = true;
-  updateVariables(playerLuckArrayUpdate, playerMoneyUpdate);
   removeCheckPoint();
   setRoundValue();
   generateComputerCardsArray();

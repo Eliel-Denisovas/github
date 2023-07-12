@@ -6,4 +6,3 @@ resetAllButtom.addEventListener("click", function () {
     resetPlayerData();
     alert("Game reset has been applyed successfully");
   });
-
