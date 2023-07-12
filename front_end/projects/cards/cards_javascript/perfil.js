@@ -9,6 +9,7 @@ let playerMoneyLocalStorage = parseFloat(localStorage.getItem("playerMoneyLocalS
 const playerNameSpan = document.getElementById("playerNameSpan");
 const playerLuckSpan = document.getElementById("playerLuckSpan");
 const playerMoneySpan = document.getElementById("playerMoneySpan");
+
 function checkLocalStorage() {
   if (playerMoneyLocalStorage) {
     playerMoney = parseFloat(playerMoneyLocalStorage).toFixed(2);
@@ -63,6 +64,6 @@ function headerDataInsert() {
   playerLuckSpan.innerText = `${parseFloat(playerLuck * 100).toFixed(0)}%`;
   playerNameSpan.innerText = playerName;
 }
-console.log(playerLuckArray);
 headerDataInsert();
+console.log(playerLuckArray);
 export { playerName, playerLuck, playerLuckArray, playerMoney, checkLocalStorage, playerCheckLuck, updateVariables, headerDataInsert, resetPlayerData };

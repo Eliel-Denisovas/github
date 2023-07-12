@@ -1,4 +1,4 @@
-import { resetPlayerData} from "./perfil.js";
+import {resetPlayerData} from "./perfil.js";
 
 const resetAllButtom = document.getElementById("resetAllButtom");
 

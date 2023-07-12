@@ -1,7 +1,5 @@
-import { playerMoney, playerLuckArray, checkLocalStorage, playerCheckLuck, updateVariables, headerDataInsert } from "./perfil.js";
-checkLocalStorage();
-playerCheckLuck();
-headerDataInsert();
+import { playerMoney, playerLuckArray, playerCheckLuck, updateVariables, headerDataInsert } from "./perfil.js";
+
 let playerMoneyUpdate = playerMoney;
 let playerLuckArrayUpdate = playerLuckArray;
 
@@ -225,6 +223,7 @@ function generateComputerCardsArray() {
     i++;
   }
   console.log(computerCardsArray);
+  console.log(typeof(computerCardsArray));
 }
 
 function addCheckPoint() {
@@ -437,6 +436,7 @@ function roundFunctions() {
   computerCard = computerCardsArray[currentRound];
   checkCards(userCard, computerCard);
   arrayLuck.push(roundStatus);
+  console.log(playerLuckArrayUpdate);
   playerLuckArrayUpdate.push(roundStatus);
   checkLuck();
   checkMoney(roundStatus);
