@@ -1,7 +1,4 @@
-import { playerMoney, playerLuckArray, playerCheckLuck, updateVariables, headerDataInsert } from "./perfil.js";
-
-let playerMoneyUpdate = playerMoney;
-let playerLuckArrayUpdate = playerLuckArray;
+import { playerMoney, playerLuckArray, playerCheckLuck, saveArrayToLocalStorage, headerDataInsert } from "./perfil.js";
 
 const matchPrompt = document.getElementById("matchPrompt");
 const matchPromptInformation1 = document.getElementById("matchPromptInformation1");
@@ -436,8 +433,7 @@ function roundFunctions() {
   computerCard = computerCardsArray[currentRound];
   checkCards(userCard, computerCard);
   arrayLuck.push(roundStatus);
-  console.log(playerLuckArrayUpdate);
-  playerLuckArrayUpdate.push(roundStatus);
+  playerLuckArray.push(roundStatus);
   checkLuck();
   checkMoney(roundStatus);
   choice();
@@ -450,9 +446,10 @@ function roundFunctions() {
 
   if (currentRound >= rounds - 1) {
 
-    playerMoneyUpdate += currentMoney;
+    playerMoney += currentMoney;
 
-    updateVariables(playerLuckArrayUpdate, playerMoneyUpdate);
+    //updateVariables(playerLuckArray, playerMoney);
+    saveArrayToLocalStorage();
     playerCheckLuck();
     setTimeout(() => {
       headerDataInsert();
@@ -649,7 +646,7 @@ cardRight.addEventListener("click", function () {
 });
 
 function matchFunction() {
-  playerMoneyUpdate -= parseFloat(currentMoney);
+  playerMoney -= parseFloat(currentMoney);
   currentRound = 0;
   computerCardsArray = [];
   arrayLuck = [];
