@@ -1,5 +1,10 @@
 :root {
-    --main-bg-color: background-color: brown;
+    --mainBgColor: rgb(28, 28, 82);
+    --mainDkColor: rgb(0, 0, 53);
+    --mainRoundRadius: 1vw;
+    --linkColor1: rgb(159, 252, 255);
+    --height1: 2vw;
+    --height2: 5vw;
   }
 
 * {
@@ -10,27 +15,28 @@
 #appWindow {
     background-color: rgb(0, 0, 0);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 0;
 }
 
 #mainItensDiv{
     width: 60vw;
-    background-color: var(--main-bg-color);
-    height: 100%;
     padding: 0;
+    border-radius: var(--mainRoundRadius);
 }
 
 #mainItensDisplayDiv {
     display: flex;
+    background-color: var(--mainBgColor);
     justify-content: space-between;
-/*     justify-items: end; */
     flex-wrap: wrap;
-    height: 70vh;
-
+    height: 38vw;
+    margin-left: 0;
+    margin-right: 0;
 }
 .mainItens {
     background-color: rgb(0, 0, 131);
-    border-radius: 0.5vw;
+    border-radius: var(--mainRoundRadius);
     margin: 1vw;
     width: 10vw;
     min-height: 5vw;
@@ -38,23 +44,24 @@
     font-weight: 1000;
     font-size: 1.5vw;
     color: rgb(185, 160, 104);
-
 }
 
 #comands {
     display: flex;
     justify-content: space-between;
-    background-color: var(--main-bg-color);
-
+    background-color: var(--mainDkColor);
+    margin: 0;
+    border-radius: 0 0 var(--mainRoundRadius) var(--mainRoundRadius);
+    height: var(--height2);
 }
 
 .comandsButton {
-    background-color: aqua;
+    background-color: var(--mainBgColor);
     min-width: 10vw;
     margin: 1vw;
-    border-radius: 0.5vw;
+    border-radius: var(--mainRoundRadius);
     font-size: 1.5vw;
-    color: blue;
+    color: var(--linkColor1);
     font-weight: 1000;
 }
 
@@ -64,9 +71,47 @@
     height: 100%;
 }
 
-.title{
+#orderDisplay {
+    background-color: rgb(47, 43, 58);
+    margin-left: 0;
+    margin-right: 0;
+    height: 31.48vw;
+}
+
+.orderDisplayItens {
     color: white;
-    background-color: rgb(0, 0, 66);
+    letter-spacing: 0.2vw;
+    font-size: 1.5vw;
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+    font-family: monospace;
+}
+
+.title{
+    color: rgb(173, 159, 255);
+    background-color: var(--mainDkColor);
     font-size: 2vw;
     margin: 0;
+    border-radius: var(--mainRoundRadius) var(--mainRoundRadius) 0 0;
+    height: var(--height1);
+}
+
+#price {
+    background-color: rgb(31, 29, 39);
+    color: rgb(255, 255, 255);
+    font-size: 5vw;
+    margin-left: 0;
+    margin-right: 0;
+    height: var(--height2);
+}
+
+#printerButton {
+    background-color: var(--mainDkColor);
+    color: var(--linkColor1);
+    font-size: 5vw;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0 0 var(--mainRoundRadius) var(--mainRoundRadius);
+    height: var(--height2);
 }
