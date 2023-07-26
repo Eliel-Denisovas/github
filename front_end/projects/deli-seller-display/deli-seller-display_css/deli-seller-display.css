@@ -25,7 +25,7 @@
     border-radius: var(--mainRoundRadius);
 }
 
-#mainItensDisplayDiv {
+.mainItensDisplayDiv {
     display: flex;
     background-color: var(--mainBgColor);
     justify-content: space-between;
@@ -44,6 +44,13 @@
     font-weight: 1000;
     font-size: 1.5vw;
     color: rgb(185, 160, 104);
+}
+
+
+
+#baseItenDiv, #mainItensDiv{
+    display: flex;
+    justify-content: space-between;
 }
 
 #comands {
@@ -88,13 +95,22 @@
     font-family: monospace;
 }
 
-.title{
+.title1{
     color: rgb(173, 159, 255);
     background-color: var(--mainDkColor);
     font-size: 2vw;
     margin: 0;
     border-radius: var(--mainRoundRadius) var(--mainRoundRadius) 0 0;
     height: var(--height1);
+}
+
+.title2{
+    color: rgb(173, 159, 255);
+    background-color: var(--mainDkColor);
+    font-size: 1.5vw;
+    border-radius: var(--mainRoundRadius) var(--mainRoundRadius) 0 0;
+    height: var(--height1);
+    display: block;
 }
 
 #price {
