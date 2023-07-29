@@ -1,37 +1,44 @@
 :root {
+    --mainLtColor: rgb(88, 88, 255);
     --mainBgColor: rgb(28, 28, 82);
-    --mainDkColor: rgb(0, 0, 53);
+    --mainDkColor: rgba(0, 0, 46, 0.863);
     --mainRoundRadius: 1vw;
     --linkColor1: rgb(159, 252, 255);
     --height1: 2vw;
     --height2: 5vw;
-  }
+}
+
+* {
+    text-align: center;
+}
 
 .displayNone {
     display: none;
 }
 
-* {
-    text-align: center;
-    padding: 0.5vw;
-    margin: 0.5vw;
-}
+#appBody {
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+  }
+  
 #appWindow {
     background-color: rgb(0, 0, 0);
+    height: 100vh;
     display: flex;
     justify-content: space-around;
-    padding: 0;
-}
-
-#mainItensDiv, #breakfastItensDiv {
     margin: 0;
-    padding: 0;
 }
 
 #shopItensDiv{
-    width: 60vw;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--mainBgColor);
     border-radius: var(--mainRoundRadius);
+    margin: 1vw;
 }
 
 .itensDiv {
@@ -39,97 +46,125 @@
     background-color: var(--mainBgColor);
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 36vw;
     margin-left: 0;
     margin-right: 0;
-}
-.shopIten {
-    background-color: rgb(0, 0, 131);
-    border-radius: var(--mainRoundRadius);
-    margin: 1vw;
-    width: 10vw;
-    min-height: 5vw;
-    max-height: 5vw;
-    font-weight: 1000;
-    font-size: 1.5vw;
-    color: rgb(185, 160, 104);
+    width: 100%;
 }
 
-#comands {
+.shopIten {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mainLtColor);
+    border-radius: var(--mainRoundRadius);
+    margin: 1vw;
+    font-weight: 100;
+    font-size: 3vw;
+    font-weight: 1000;
+    color: black;
+    height: 7.5vw;
+    width: 12.5vw;
+    flex-wrap: wrap;
+    padding: 0.5vw;
+}
+
+#buttonsDiv {
     background-color: var(--mainDkColor);
-    margin: 0;
+    margin-top: auto;
     border-radius: 0 0 var(--mainRoundRadius) var(--mainRoundRadius);
+    border-top: 1vw solid black;
     height: var(--height2);
 }
 
 .comandsButton {
-    background-color: var(--mainBgColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.13);
     min-width: 10vw;
     margin: 1vw;
     border-radius: var(--mainRoundRadius);
-    font-size: 1.5vw;
+    font-size: 2vw;
     color: var(--linkColor1);
-    font-weight: 1000;
+    font-weight: 100;
 }
 
 #orderDiv {
-    width: 40vw;
-    padding: 0;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--mainBgColor);
+    border-radius: var(--mainRoundRadius);
+    width: 25vw;
+    margin: 1vw 1vw 1vw 0 ;
 }
 
 #orderDisplay {
-    background-color: rgb(47, 43, 58);
+    background-color: var(--mainBgColor);
     margin-left: 0;
     margin-right: 0;
-    height: 31.48vw;
-}
-
-.orderDisplayItens {
-    color: white;
-    letter-spacing: 0.2vw;
-    font-size: 1.5vw;
-    margin: 0;
-    padding: 0;
-    font-weight: 100;
-    font-family: monospace;
 }
 
 .mainTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: rgb(173, 159, 255);
     background-color: var(--mainDkColor);
     font-size: 2vw;
-    margin: 0;
+    border-bottom: 1vw solid black;
     border-radius: var(--mainRoundRadius) var(--mainRoundRadius) 0 0;
     height: var(--height1);
+    padding: 1vw;
 }
 
 .title2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: rgb(173, 159, 255);
     background-color: var(--mainDkColor);
     font-size: 1.5vw;
-    margin: 0.5vw 0;
+    border-bottom: 1vw solid black;
     height: 1.5vw;
-    padding: 0;
+    padding: 0.5vw;
 }
 
 #price {
-    background-color: rgb(31, 29, 39);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mainDkColor);
     color: rgb(255, 255, 255);
     font-size: 5vw;
-    margin-left: 0;
-    margin-right: 0;
     height: var(--height2);
+    border-top: 1vw solid black;
+    margin-top: auto;
+}
+
+.OrderLine {
+    background-color: rgba(255, 255, 255, 0.171);
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0.3vw;
+    color: black;
+    letter-spacing: 0.2vw;
+    font-family: monospace;
+    font-size: 1.5vw;
+    font-weight: 1000;
 }
 
 #printerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vw;
     background-color: var(--mainDkColor);
     color: var(--linkColor1);
-    font-size: 5vw;
-    margin-left: 0;
-    margin-right: 0;
     border-radius: 0 0 var(--mainRoundRadius) var(--mainRoundRadius);
+    margin-top: auto;
+    border-top: 1vw solid black;
     height: var(--height2);
 }
+
+
