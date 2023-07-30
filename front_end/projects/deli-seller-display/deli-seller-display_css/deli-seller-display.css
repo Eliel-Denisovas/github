@@ -32,6 +32,30 @@
     margin: 0;
 }
 
+.mainTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(173, 159, 255);
+    background-color: var(--mainDkColor);
+    font-size: 4vw;
+    border-bottom: 1vw solid black;
+    border-radius: var(--mainRoundRadius) var(--mainRoundRadius) 0 0;
+    height: var(--height1);
+    padding: 1vw;
+}
+
+.title2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(173, 159, 255);
+    background-color: var(--mainDkColor);
+    font-size: 1.5vw;
+    border-bottom: 1vw solid black;
+    height: 1.5vw;
+    padding: 0.5vw;
+}
 #shopItensDiv{
     display: flex;
     flex-direction: column;
@@ -61,7 +85,7 @@
     font-weight: 100;
     font-size: 3vw;
     font-weight: 1000;
-    color: black;
+    color: rgba(180, 0, 0, 0.63);
     height: 7.5vw;
     width: 12.5vw;
     flex-wrap: wrap;
@@ -85,48 +109,23 @@
     margin: 1vw;
     border-radius: var(--mainRoundRadius);
     font-size: 2vw;
-    color: var(--linkColor1);
+    color: var(--mainLtColor);
     font-weight: 100;
 }
 
 #orderDiv {
     display: flex;
     flex-direction: column;
-    background-color: var(--mainBgColor);
+    background-color: var(--mainDkColor);
     border-radius: var(--mainRoundRadius);
-    width: 25vw;
+    width: 70%;
     margin: 1vw 1vw 1vw 0 ;
 }
 
 #orderDisplay {
-    background-color: var(--mainBgColor);
+    background-color: var(--mainDkColor);
     margin-left: 0;
     margin-right: 0;
-}
-
-.mainTitle{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(173, 159, 255);
-    background-color: var(--mainDkColor);
-    font-size: 2vw;
-    border-bottom: 1vw solid black;
-    border-radius: var(--mainRoundRadius) var(--mainRoundRadius) 0 0;
-    height: var(--height1);
-    padding: 1vw;
-}
-
-.title2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(173, 159, 255);
-    background-color: var(--mainDkColor);
-    font-size: 1.5vw;
-    border-bottom: 1vw solid black;
-    height: 1.5vw;
-    padding: 0.5vw;
 }
 
 #price {
@@ -138,29 +137,46 @@
     font-size: 5vw;
     height: var(--height2);
     border-top: 1vw solid black;
+    margin: .5vw;
     margin-top: auto;
+
+}
+
+.orderDisplayPrice, .orderDisplayTitles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin: 0 0.5vw;
+}
+
+.orderDisplayPrice {
+    width: 7vw;
 }
 
 .OrderLine {
-    background-color: rgba(255, 255, 255, 0.171);
+    background-color: var(--mainLtColor);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 0;
     margin: 0.3vw;
-    color: black;
-    letter-spacing: 0.2vw;
+    color: rgb(255, 251, 0);
     font-family: monospace;
     font-size: 1.5vw;
-    font-weight: 1000;
+    font-weight: 100;
+}
+
+#printerButtonDiv {
+    margin-top: auto;
 }
 
 #printerButton {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3vw;
+    font-size: 4vw;
     background-color: var(--mainDkColor);
-    color: var(--linkColor1);
+    color: var(--mainLtColor);
     border-radius: 0 0 var(--mainRoundRadius) var(--mainRoundRadius);
     margin-top: auto;
     border-top: 1vw solid black;
