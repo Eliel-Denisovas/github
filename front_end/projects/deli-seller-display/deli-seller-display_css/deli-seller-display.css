@@ -30,6 +30,7 @@
     display: flex;
     justify-content: space-around;
     margin: 0;
+    width: 100%;
 }
 
 .mainTitle{
@@ -49,9 +50,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(173, 159, 255);
+    color: rgb(255, 255, 255);
     background-color: var(--mainDkColor);
-    font-size: 1.5vw;
+    font-size: 2vw;
+    font-weight: bolder;
+    letter-spacing: 0.5vw;
     border-bottom: 1vw solid black;
     height: 1.5vw;
     padding: 0.5vw;
@@ -63,12 +66,13 @@
     background-color: var(--mainBgColor);
     border-radius: var(--mainRoundRadius);
     margin: 1vw;
+    width: 100%;
 }
 
 .itensDiv {
     display: flex;
     background-color: var(--mainBgColor);
-    justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
     margin-left: 0;
     margin-right: 0;
@@ -83,16 +87,19 @@
     border-radius: var(--mainRoundRadius);
     margin: 1vw;
     font-weight: 100;
-    font-size: 3vw;
+    font-size: 1.5vw;
+    letter-spacing: 0.1vw;
     font-weight: 1000;
-    color: rgba(180, 0, 0, 0.63);
-    height: 7.5vw;
-    width: 12.5vw;
+    color: rgb(255, 251, 0);
+    height: auto;
+    width: 7vw;
     flex-wrap: wrap;
     padding: 0.5vw;
 }
 
 #buttonsDiv {
+    display: flex;
+    justify-content: space-between;
     background-color: var(--mainDkColor);
     margin-top: auto;
     border-radius: 0 0 var(--mainRoundRadius) var(--mainRoundRadius);
@@ -100,7 +107,7 @@
     height: var(--height2);
 }
 
-.comandsButton {
+.buttons {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,7 +125,6 @@
     flex-direction: column;
     background-color: var(--mainDkColor);
     border-radius: var(--mainRoundRadius);
-    width: 70%;
     margin: 1vw 1vw 1vw 0 ;
 }
 
@@ -146,7 +152,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: nowrap;
+    white-space: nowrap;
     margin: 0 0.5vw;
 }
 
@@ -160,10 +166,10 @@
     justify-content: space-between;
     padding: 0;
     margin: 0.3vw;
-    color: rgb(255, 251, 0);
+    color: rgb(0, 0, 0);
     font-family: monospace;
     font-size: 1.5vw;
-    font-weight: 100;
+    font-weight: 1000;
 }
 
 #printerButtonDiv {
