@@ -6,10 +6,12 @@
     --linkColor1: rgb(159, 252, 255);
     --height1: 2vw;
     --height2: 5vw;
+    --clicked-color: rgb(122, 255, 255);
 }
 
 * {
     text-align: center;
+    box-sizing:border-box;
 }
 
 .displayNone {
@@ -42,8 +44,8 @@
     font-size: 4vw;
     border-bottom: 1vw solid black;
     border-radius: var(--mainRoundRadius) var(--mainRoundRadius) 0 0;
-    height: var(--height1);
-    padding: 1vw;
+    height:fit-content;
+    padding: 0;
 }
 
 .title2 {
@@ -56,8 +58,8 @@
     font-weight: bolder;
     letter-spacing: 0.5vw;
     border-bottom: 1vw solid black;
-    height: 1.5vw;
-    padding: 0.5vw;
+    height:fit-content;
+    padding: 0;
 }
 #shopItensDiv{
     display: flex;
@@ -85,16 +87,31 @@
     justify-content: center;
     background-color: var(--mainLtColor);
     border-radius: var(--mainRoundRadius);
-    margin: 1vw;
+    padding: 0 4vw;
+    margin: 0.7vw 2vw;
     font-weight: 100;
     font-size: 1.5vw;
-    letter-spacing: 0.1vw;
+    line-height: normal;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.3vw;
     font-weight: 1000;
     color: rgb(255, 251, 0);
     height: auto;
-    width: 7vw;
+    width: 7.5vw;
     flex-wrap: wrap;
-    padding: 0.5vw;
+        text-shadow: 
+    -0.2vw -0.2vw 0.5vw hsla(0, 0%, 0%, 0.808), /* Sombra superior esquerda (borda) */
+     0.2vw -0.2vw 0.5vw hsla(0, 0%, 0%, 0.808), /* Sombra superior direita (borda) */
+    -0.2vw  0.2vw 0.5vw hsla(0, 0%, 0%, 0.808), /* Sombra inferior esquerda (borda) */
+     0.2vw 0.2vw 0.5vw hsla(0, 0%, 0%, 0.808); /* Sombra inferior direita (borda) */
+    cursor: pointer;
+    box-shadow: 
+    0.2vw 0.2vw 0.4vw rgba(0, 0, 0, 0.5), /* Primeira sombra */
+    -0.2vw -0.2vw 0.4vw rgba(0, 0, 0, 0.5); /* Segunda sombra */
+}
+
+.shopIten:active {
+    background-color: black;
 }
 
 #buttonsDiv {
@@ -118,6 +135,11 @@
     font-size: 2vw;
     color: var(--mainLtColor);
     font-weight: 100;
+    cursor: pointer;
+}
+
+.buttons:active {
+    background-color: red;
 }
 
 #orderDiv {
@@ -145,6 +167,7 @@
     border-top: 1vw solid black;
     margin: .5vw;
     margin-top: auto;
+    padding: 3vw 0;
 
 }
 
@@ -161,7 +184,7 @@
 }
 
 .OrderLine {
-    background-color: var(--mainLtColor);
+    background-color: rgb(151, 146, 255);
     display: flex;
     justify-content: space-between;
     padding: 0;
@@ -187,6 +210,23 @@
     margin-top: auto;
     border-top: 1vw solid black;
     height: var(--height2);
+    cursor: pointer;
+}
+
+#printerButton:active {
+    background-color: white;
+}
+
+.clicked {
+    background-color: var(--clicked-color);
+}
+
+#saladsItensDiv .itensDiv, #coldMeatItensDiv .itensDiv, #meatItensDiv .itensDiv, #breadItensDiv .itensDiv, #baguettesPreparedItensDiv .itensDiv {
+    border-bottom: 0.5vw solid black;
+}
+
+#saladsItensDiv .itensDiv:last-child, #coldMeatItensDiv .itensDiv:last-child, #meatItensDiv .itensDiv:last-child, #breadItensDiv .itensDiv:last-child, #baguettesPreparedItensDiv .itensDiv:last-child {
+    border-bottom: none;
 }
 
 

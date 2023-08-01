@@ -7,6 +7,10 @@
     <title>Deli seller display</title>
     <link rel="stylesheet" href="../deli-seller-display_css/deli-seller-display_normalize.css">
     <link rel="stylesheet" href="../deli-seller-display_css/deli-seller-display.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
 </head>
 
 <body id="appBody">
@@ -14,9 +18,9 @@
         <div id="shopItensDiv">
             <div class="mainTitle">Products</div>
 
-            <div id="mainItensDiv" class="displayNone">
+            <div id="mainItensDiv" class="">
                 <div id="mainItensTitle" class="title2">Main</div>
-                <div id="shopItensDisplayDiv" class="itensDiv">
+                <div class="itensDiv">
                     <div class="shopIten">Baguete Etc</div>
                     <div class="shopIten">Breakfast</div>
                     <div class="shopIten">Salads</div>
@@ -29,98 +33,103 @@
 
             <div id="baguettesMenuItensDiv" class="displayNone">
                 <div id="baguettesMenuItensTitle" class="title2">Baguetes Menu</div>
-                <div id="shopItensDisplayDiv" class="itensDiv">
-                    <div class="shopIten">B Y O</div>
+                <div class="itensDiv">
+                    <div class="shopIten">BYO</div>
                     <div class="shopIten">Prepared Dishes</div>
                 </div>
             </div>
-
-            <div id="baguettesPreparedItensDiv" class="">
+            	
+            <div id="baguettesPreparedItensDiv" class="displayNone">
                 <div id="baguettesPreparedItensTitle" class="title2">Prepared Baguettes Etc</div>
-                <div id="shopItensDisplayDiv" class="itensDiv" style="justify-content: space-between;">
+                <div class="itensDiv">
                     <div class="shopIten">Cajun Chicken Baguete</div>
                     <div class="shopIten">Goat Cheese Baguette</div>
+                </div>
+                <div class="itensDiv">
                     <div class="shopIten">Ceaser Wrap</div>
                     <div class="shopIten">Jalapeño Wrap</div>
+                </div>
+                <div class="itensDiv">
                     <div class="shopIten">Tuna Piadina</div>
-                    
                 </div>
             </div>
 
             <div id="breadItensDiv" class="displayNone">
                 <div id="breadItensTitle" class="title2">Bread</div>
-                <div id="shopItensDisplayDiv" class="itensDiv">
+                <div class="itensDiv">
                     <div class="shopIten">Plain Baguette</div>
                     <div class="shopIten">Plain Wrap</div>
                     <div class="shopIten">Plain Sandwich</div>
+                </div>
+                <div class="itensDiv">
                     <div class="shopIten">Brown Baguette</div>
                     <div class="shopIten">Brown Wrap</div>
                     <div class="shopIten">Brown Sandwich</div>
+                </div>
+                <div class="itensDiv">
                     <div class="shopIten">Plain Bap</div>
                     <div class="shopIten">Multiseed Bap</div>
+                </div>
+                <div class="itensDiv">
                     <div class="shopIten">Italian Bread</div>
                     <div class="shopIten">Betroot Bread</div>
+                </div>
+                <div class="itensDiv">
                     <div class="shopIten">Franch Hot Dog Bread</div>
                     <div class="shopIten">Plain Hot Dog Bread</div>
                 </div>
             </div>
 
-            <div id="coldHotmeatItensDiv" class="displayNone">
-                <div id="coldHotItensTitle" class="title2">Meat</div>
-                <div id="shopItensDisplayDiv" class="itensDiv">
-                    <div class="shopIten">Hot</div>
-                    <div class="shopIten">Cold</div>
-                </div>
-            </div>
-
-            <div id="hotMeatItensDiv" class="displayNone">
-                <div id="hotMeatItensTitle" class="title2"> Hot Meat</div>
-                <div id="shopItensDisplayDiv" class="itensDiv">
+            <div id="meatItensDiv" class="displayNone">
+                <div id="meatItensTitle" class="title2">Meat</div>
+                <div class="itensDiv">
                     <div class="shopIten">Plain Chicken Fillet</div>
                     <div class="shopIten">Southern Chicken Fillet</div>
                     <div class="shopIten">Spicy Chicken Fillet</div>
                 </div>
-            </div>
-
-            <div id="coldMeatItensDiv" class="displayNone">
-                <div id="coldMeatItensTitle" class="title2"> Cold Meat</div>
-                <div id="shopItensDisplayDiv" class="itensDiv">
+                <div class="itensDiv">
                     <div class="shopIten">Pulled Chicken</div>
                     <div class="shopIten">Cajun Chicken</div>
                     <div class="shopIten">Grilled Chicken</div>
                     <div class="shopIten">Chicken Kebabs</div>
+                </div>
+                <div class="itensDiv">
                     <div class="shopIten">Ham</div>
                     <div class="shopIten">Turkey</div>
                     <div class="shopIten">Tuna</div>
+                </div>
+                <div class="itensDiv">
                     <div class="shopIten">Chorizo</div>
-                    <div class="shopIten">Falafel</div>
                     <div class="shopIten">Streaky Bacon</div>
+                </div>
+                <div class="itensDiv">
+                    <div class="shopIten">Falafel</div>
                 </div>
             </div>
 
             <div id="saladsItensDiv" class="displayNone">
                 <div id="saladsItensTitle" class="title2"> Salads</div>
-                <div id="shopItensDisplayDiv" class="itensDiv">
+                <div class="itensDiv">
                     <div class="shopIten">Lettuce</div>
                     <div class="shopIten">Spinach</div>
                     <div class="shopIten">Rocket</div>
                 </div>
 
-                <div id="shopItensDisplayDiv" class="itensDiv">
+                <div class="itensDiv">
                     <div class="shopIten">Grated Cheddar</div>
                     <div class="shopIten">Sliced Cheddar</div>
                     <div class="shopIten">Goat Cheese</div>
                     <div class="shopIten">Italian Cheese</div>
                 </div>
 
-                <div id="shopItensDisplayDiv" class="itensDiv">
+                <div class="itensDiv">
                     <div class="shopIten">Red Onion</div>
                     <div class="shopIten">Crispy Onion</div>
                     <div class="shopIten">Spring Onion</div>
                     <div class="shopIten">Sage & Onion Stuffing</div>
                 </div>
                 
-                <div id="shopItensDisplayDiv" class="itensDiv">
+                <div class="itensDiv">
                     <div class="shopIten">Peppers</div>
                     <div class="shopIten">Jalapeño</div>
                     <div class="shopIten">Cucumber</div>
@@ -133,7 +142,7 @@
                     <div class="shopIten">Croutons</div>
                 </div>
 
-                <div id="shopItensDisplayDiv" class="itensDiv">
+                <div class="itensDiv">
                     <div class="shopIten">Egg Mayo</div>
                     <div class="shopIten">Bean Salad</div>
                     <div class="shopIten">Coleslaw</div>
@@ -145,15 +154,15 @@
 
             <div id="breakfastMenuItensDiv" class="displayNone">
                 <div id="breakfastMenuItensTitle" class="title2">Breakfast Menu</div>
-                <div id="shopItensDisplayDiv" class="itensDiv" style="justify-content: space-between;">
-                    <div class="shopIten">B Y O</div>
+                <div class="itensDiv">
+                    <div class="shopIten">BYO</div>
                     <div class="shopIten">Itens</div>
                 </div>
             </div>
 
             <div id="breakfastItensDiv" class="displayNone">
                 <div id="breakfastItensTitle" class="title2">Breakfast Itens</div>
-                <div id="shopItensDisplayDiv" class="itensDiv">
+                <div class="itensDiv">
                     <div class="shopIten">Sausage</div>
                     <div class="shopIten">Rasher</div>
                     <div class="shopIten">Hash Brown</div>
@@ -166,15 +175,15 @@
 
             <div id="saladMenuItensDiv" class="displayNone">
                 <div id="saladMenuItensTitle" class="title2">Salad Menu</div>
-                <div id="shopItensDisplayDiv" class="itensDiv" style="justify-content: space-between;">
-                    <div class="shopIten">B Y O</div>
+                <div class="itensDiv">
+                    <div class="shopIten">BYO</div>
                     <div class="shopIten">Prepared Salads</div>
                 </div>
             </div>
 
             <div id="preparedSaladItensDiv" class="displayNone">
                 <div id="preparedSaladItensTitle" class="title2">Prepared Salads</div>
-                <div id="shopItensDisplayDiv" class="itensDiv" style="justify-content: space-between;">
+                <div class="itensDiv">
                     <div class="shopIten">Mexican Salad</div>
                     <div class="shopIten">Asian Salad</div>
                     <div class="shopIten">Ceaser Salad</div>
@@ -183,27 +192,26 @@
 
             <div id="hotSnackingItensDiv" class="displayNone">
                 <div id="hotSnackingItensTitle" class="title2">Hot Snacking</div>
-                <div id="shopItensDisplayDiv" class="itensDiv" style="justify-content: space-between;">
+                <div class="itensDiv">
                     <div class="shopIten">Jambom</div>
                     <div class="shopIten">Jumbo Sausage Roll</div>
                     <div class="shopIten">Small Sausage Roll</div>
                     <div class="shopIten">Gourmet Jambom</div>
                     <div class="shopIten">Gourmet Jumbo Sausage Roll</div>
                     <div class="shopIten">Potato Cubes Portion</div>
-
                 </div>
             </div>
 
             <div id="hotMealsItensDiv" class="displayNone">
                 <div id="hotMealsItensTitle" class="title2">Hot Meals</div>
-                <div id="shopItensDisplayDiv" class="itensDiv" style="justify-content: space-between;">
+                <div class="itensDiv">
                     <div class="shopIten">Sweet & Sour Nuggets Dish</div>
                 </div>
             </div>
 
             <div id="hotDogsItensDiv" class="displayNone">
                 <div id="hotDogsItensTitle" class="title2">Hot Dogs</div>
-                <div id="shopItensDisplayDiv" class="itensDiv" style="justify-content: space-between;">
+                <div class="itensDiv">
                     <div class="shopIten">Hot Dog</div>
                     <div class="shopIten">French Hot Dog</div>
                 </div>
@@ -242,6 +250,7 @@
             </div>
         </div>
     </div>
+    <script src="../deli-seller-display_javascript/deli-Javascript.js"></script>
 </body>
 
 </html>
