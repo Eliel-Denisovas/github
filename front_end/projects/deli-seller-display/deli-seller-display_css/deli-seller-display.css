@@ -148,6 +148,7 @@
     background-color: var(--mainDkColor);
     border-radius: var(--mainRoundRadius);
     margin: 1vw 1vw 1vw 0 ;
+    width: 50%;
 }
 
 #orderDisplay {
@@ -172,11 +173,18 @@
 }
 
 .orderDisplayPrice, .orderDisplayTitles {
+    background-color: rgb(151, 146, 255);
     display: flex;
     align-items: center;
     justify-content: center;
-    white-space: nowrap;
-    margin: 0 0.5vw;
+    padding: 0 0.5vw;
+    margin: 0.5vw;
+}
+
+.orderDisplayTitles {
+    width: 100%;
+    white-space: wrap;
+    text-align: left;
 }
 
 .orderDisplayPrice {
@@ -184,7 +192,6 @@
 }
 
 .OrderLine {
-    background-color: rgb(151, 146, 255);
     display: flex;
     justify-content: space-between;
     padding: 0;

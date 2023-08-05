@@ -1,7 +1,9 @@
-let pedido = "";
-
+let pedido = "Baguette";
+let shopItenValue = 5.30;
+let saladsClicked = 0;
 const shopItenElements = document.querySelectorAll(".shopIten");
-const breadItensButtons = document.querySelectorAll("#breadItensDiv .shopItem");
+const breadItensDivs = document.querySelectorAll("#breadItensDiv .shopItem");
+const meatItens = document.querySelectorAll("#meatItensDiv .shopItem");
 
 const ceaserWrapDiv = document.getElementById("ceaserWrap");
 const jalapenoWrapDiv = document.getElementById("jalapenoWrap");
@@ -92,9 +94,11 @@ const printerButton = document.getElementById("printerButton");
 
 // Adicionando o evento de clique a cada div
 shopItenElements.forEach(function (shopItenParameter) {
-    shopItenParameter.addEventListener("click", function () {
-        this.classList.toggle("clicked");
-    });
+  shopItenParameter.addEventListener("click", function () {
+    this.classList.toggle("clicked");
+    countSalads();
+    createOrderText();
+  });
 });
 
 // Selecione todos os elementos que possuem a classe desejada (substitua 'cliked' pelo nome da classe que você deseja remover)
@@ -103,21 +107,79 @@ function removeClickedClass() {
   clickedClassElements.forEach((element) => {
     element.classList.remove("clicked");
   });
-  location.reload();
+  //location.reload();
 }
 
-plainBaguetteDiv.addEventListener("click", function (event) {
-    if (!pedido.includes("Baguette")) {
-        pedido += "Baguette";
-    } 
-    console.log(pedido);
-});
+plainBaguetteDiv.addEventListener("click", function (event) {});
 
-brownBaguetteDiv.addEventListener("click", function (event) {
-    if (!pedido.includes("Baguette")) {
-        pedido += "Baguette";
-    } 
-    console.log(pedido);
-});
+function countSalads() {
+  return document.querySelectorAll("#saladsItensDiv .clicked").length;
+}
 
-printerButton.addEventListener("click", removeClickedClass);
+function removeOrderLineDiv() {
+  // Obtendo a referência para o conjunto de elementos que você adicionou
+  const orderLineDiv = document.querySelector(".OrderLine"); // Use o seletor correto para selecionar a div
+
+  // Obtendo o pai (elemento que contém o conjunto de elementos)
+  const paiDoOrderLineDiv = orderLineDiv.parentElement;
+
+  // Removendo o conjunto de elementos da div pai
+  paiDoOrderLineDiv.removeChild(orderLineDiv);
+}
+
+function saladWordGrammarCorrection() {
+  if (countSalads() > 1) {
+    return "Salads";
+  } else {
+    return "Salad";
+  }
+}
+
+function extraSaladText() {
+  let extraSaladNumber;
+  if (countSalads() > 3) {
+    extraSaladNumber = countSalads() - 3;
+    return `(${extraSaladNumber} extra)`;
+  } else {
+  return ``;
+  }
+}
+
+function createOrderText() {
+  removeOrderLineDiv();
+  // Obtendo a referência para a div onde deseja adicionar o conjunto de elementos
+  const orderDisplay = document.getElementById("orderDisplay");
+
+  // Criando a div principal com a classe "OrderLine"
+  const orderLineDiv = document.createElement("div");
+  orderLineDiv.classList.add("OrderLine");
+
+  // Criando a div com a classe "orderDisplayTitles" e definindo o conteúdo
+  const orderDisplayTitlesDiv = document.createElement("div");
+  orderDisplayTitlesDiv.classList.add("orderDisplayTitles");
+  orderDisplayTitlesDiv.textContent = `1 ${pedido} ${countSalads()} ${saladWordGrammarCorrection()} ${extraSaladText()} Meat:1 `;
+
+  // Criando a div com a classe "orderDisplayPrice" e definindo o conteúdo
+  const orderDisplayPriceDiv = document.createElement("div");
+  orderDisplayPriceDiv.classList.add("orderDisplayPrice");
+  orderDisplayPriceDiv.textContent = shopItenValue;
+
+  // Aninhando os elementos adequadamente
+  orderLineDiv.appendChild(orderDisplayTitlesDiv);
+  orderLineDiv.appendChild(orderDisplayPriceDiv);
+
+  // Adicionando a div principal como um filho da div container
+  orderDisplay.appendChild(orderLineDiv);
+}
+
+function printerButtonFunction() {
+  // removeClickedClass();
+}
+
+/* brownBaguetteDiv.addEventListener("click", function (event) {
+  if (!pedido.includes("Baguette")) {
+    pedido += "Baguette";
+  }
+});
+ */
+printerButton.addEventListener("click", printerButtonFunction);
