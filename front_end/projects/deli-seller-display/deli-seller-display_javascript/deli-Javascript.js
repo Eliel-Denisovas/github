@@ -5,9 +5,22 @@ const shopItenElements = document.querySelectorAll(".shopIten");
 const meatItens = document.querySelectorAll("#meatItensDiv .shopItem");
 
 const breadItensDiv = document.getElementById("breadItensDiv");
+const breakfastItensDiv = document.getElementById("breakfastItensDiv");
+const salads = document.getElementById("salads");
+const hotSnacking = document.getElementById("hotSnacking");
+const hotMeals = document.getElementById("hotMeals");
+const hotDogs = document.getElementById("hotDogs");
+const prices = document.getElementById("prices");
 const meatItensDiv = document.getElementById("meatItensDiv");
 const saladsItensDiv = document.getElementById("saladsItensDiv");
+const hotSnackingItensDiv = document.getElementById("hotSnackingItensDiv");
+const hotMealsItensDiv = document.getElementById("hotMealsItensDiv");
+const hotDogsItensDiv = document.getElementById("hotDogsItensDiv");
+const pricesDiv = document.getElementById("pricesDiv");
 const baguettesMenuItensDiv = document.getElementById("baguettesMenuItensDiv");
+const baguettesPreparedItensDiv = document.getElementById("baguettesPreparedItensDiv");
+const breakfastMenuItensDiv = document.getElementById("breakfastMenuItensDiv");
+const breakfastItensDivByo = document.getElementById("breakfastItensDivByo");
 const mainItensDiv = document.getElementById("mainItensDiv");
 
 const meatItensTitlebackButton = document.getElementById("meatItensTitlebackButton");
@@ -16,6 +29,11 @@ const saladItensTitleBackButton = document.getElementById("saladItensTitlebackBu
 
 const bagueteEtc = document.getElementById("bagueteEtc");
 const baguettesByo = document.getElementById("baguettesByo");
+const baguettesPreparedDishes = document.getElementById("baguettesPreparedDishes");
+const breakfast = document.getElementById("breakfast");
+const breakfastByo = document.getElementById("breakfastByo");
+const breakfastByoItensTitleGoButton = document.getElementById("breakfastByoItensTitleGoButton");
+const breakfastItens = document.getElementById("breakfastItens");
 
 const ceaserWrapDiv = document.getElementById("ceaserWrap");
 const jalapenoWrapDiv = document.getElementById("jalapenoWrap");
@@ -206,6 +224,56 @@ bagueteEtc.addEventListener("click", function () {
 baguettesByo.addEventListener("click", function () {
     baguettesMenuItensDiv.classList.add("displayNone");
     breadItensDiv.classList.remove("displayNone");
+});
+
+baguettesPreparedDishes.addEventListener("click", function () {
+  baguettesMenuItensDiv.classList.add("displayNone");
+  baguettesPreparedItensDiv.classList.remove("displayNone");
+});
+
+breakfast.addEventListener("click", function () {
+  mainItensDiv.classList.add("displayNone");
+  breakfastMenuItensDiv.classList.remove("displayNone");
+});
+
+breakfastByo.addEventListener("click", function () {
+  breakfastMenuItensDiv.classList.add("displayNone");
+  breakfastItensDivByo.classList.remove("displayNone");
+});
+
+breakfastByoItensTitleGoButton.addEventListener("click", function () {
+  breakfastItensDivByo.classList.add("displayNone");
+  breadItensDiv.classList.remove("displayNone");
+});
+
+breakfastItens.addEventListener("click", function () {
+  breakfastMenuItensDiv.classList.add("displayNone");
+  breakfastItensDiv.classList.remove("displayNone");
+});
+
+salads.addEventListener("click", function () {
+  mainItensDiv.classList.add("displayNone");
+  saladsItensDiv.classList.remove("displayNone");
+});
+
+hotSnacking.addEventListener("click", function () {
+  mainItensDiv.classList.add("displayNone");
+  hotSnackingItensDiv.classList.remove("displayNone");
+});
+
+hotMeals.addEventListener("click", function () {
+  mainItensDiv.classList.add("displayNone");
+  hotMealsItensDiv.classList.remove("displayNone");
+});
+
+hotDogs.addEventListener("click", function () {
+  mainItensDiv.classList.add("displayNone");
+  hotDogsItensDiv.classList.remove("displayNone");
+});
+
+prices.addEventListener("click", function () {
+  mainItensDiv.classList.add("displayNone");
+  pricesDiv.classList.remove("displayNone");
 });
 
 /*  
