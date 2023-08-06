@@ -1,26 +1,37 @@
-let pedido = "Baguette";
-let shopItenValue = 5.30;
+let baseType = "";
+let shopItenValue = 5.3;
 let saladsClicked = 0;
 const shopItenElements = document.querySelectorAll(".shopIten");
-const breadItensDivs = document.querySelectorAll("#breadItensDiv .shopItem");
 const meatItens = document.querySelectorAll("#meatItensDiv .shopItem");
+
+const breadItensDiv = document.getElementById("breadItensDiv");
+const meatItensDiv = document.getElementById("meatItensDiv");
+const saladsItensDiv = document.getElementById("saladsItensDiv");
+const baguettesMenuItensDiv = document.getElementById("baguettesMenuItensDiv");
+const mainItensDiv = document.getElementById("mainItensDiv");
+
+const meatItensTitlebackButton = document.getElementById("meatItensTitlebackButton");
+const meatItensTitleGoButton = document.getElementById("meatItensTitleGoButton");
+const saladItensTitleBackButton = document.getElementById("saladItensTitlebackButton");
+
+const bagueteEtc = document.getElementById("bagueteEtc");
+const baguettesByo = document.getElementById("baguettesByo");
 
 const ceaserWrapDiv = document.getElementById("ceaserWrap");
 const jalapenoWrapDiv = document.getElementById("jalapenoWrap");
 const tunaPiadinaDiv = document.getElementById("tunaPiadina");
 
 const plainBaguetteDiv = document.getElementById("plainBaguette");
-const plainWrapDiv = document.getElementById("plainWrap");
-const plainSandwichDiv = document.getElementById("plainSandwich");
 const brownBaguetteDiv = document.getElementById("brownBaguette");
+const plainWrapDiv = document.getElementById("plainWrap");
 const brownWrapDiv = document.getElementById("brownWrap");
+const plainSandwichDiv = document.getElementById("plainSandwich");
 const brownSandwichDiv = document.getElementById("brownSandwich");
 const plainBapDiv = document.getElementById("plainBap");
 const multiseedBapDiv = document.getElementById("multiseedBap");
 const italianBreadDiv = document.getElementById("italianBread");
 const betrootBreadDiv = document.getElementById("betrootBread");
 const plainHotDogDiv = document.getElementById("plainHotDog");
-const franchHotDogDiv = document.getElementById("franchHotDog");
 
 const plainChickenFilletDiv = document.getElementById("plainChickenFillet");
 const southernChickenFilletDiv = document.getElementById("southernChickenFillet");
@@ -97,23 +108,118 @@ shopItenElements.forEach(function (shopItenParameter) {
   shopItenParameter.addEventListener("click", function () {
     this.classList.toggle("clicked");
     countSalads();
+    countMeats();
     createOrderText();
   });
 });
 
 // Selecione todos os elementos que possuem a classe desejada (substitua 'cliked' pelo nome da classe que você deseja remover)
-function removeClickedClass() {
+function removeAllClickedClass() {
   const clickedClassElements = document.querySelectorAll(".cliked");
   clickedClassElements.forEach((element) => {
     element.classList.remove("clicked");
   });
-  //location.reload();
+}
+function removeBreadClickedClass() {
+  const clickedClassElements = document.querySelectorAll("#breadItensDiv .clicked");
+  clickedClassElements.forEach((element) => {
+    element.classList.remove("clicked");
+  });
 }
 
-plainBaguetteDiv.addEventListener("click", function (event) {});
+plainBaguetteDiv.addEventListener("click", function () {
+  baseType = "Baguette";
+  removeBreadClickedClass();
+  this.classList.add("clicked");
+  breadItensDiv.classList.add("displayNone");
+  meatItensDiv.classList.remove("displayNone");
+});
+brownBaguetteDiv.addEventListener("click", function () {
+  baseType = "Baguette";
+  removeBreadClickedClass();
+  this.classList.add("clicked");
+  breadItensDiv.classList.add("displayNone");
+  meatItensDiv.classList.remove("displayNone");
+});
+plainWrapDiv.addEventListener("click", function () {
+  baseType = "Wrap";
+  removeBreadClickedClass();
+  this.classList.add("clicked");
+  breadItensDiv.classList.add("displayNone");
+  meatItensDiv.classList.remove("displayNone");
+});
+brownWrapDiv.addEventListener("click", function () {
+  baseType = "Wrap";
+  removeBreadClickedClass();
+  this.classList.add("clicked");
+  breadItensDiv.classList.add("displayNone");
+  meatItensDiv.classList.remove("displayNone");
+});
+plainSandwichDiv.addEventListener("click", function () {
+  baseType = "Sandwich";
+  removeBreadClickedClass();
+  this.classList.add("clicked");
+  breadItensDiv.classList.add("displayNone");
+  meatItensDiv.classList.remove("displayNone");
+});
+brownSandwichDiv.addEventListener("click", function () {
+  baseType = "Sandwich";
+  removeBreadClickedClass();
+  this.classList.add("clicked");
+  breadItensDiv.classList.add("displayNone");
+  meatItensDiv.classList.remove("displayNone");
+});
+italianBreadDiv.addEventListener("click", function () {
+  baseType = "Italian Bread";
+  removeBreadClickedClass();
+  this.classList.add("clicked");
+  breadItensDiv.classList.add("displayNone");
+  meatItensDiv.classList.remove("displayNone");
+});
+betrootBreadDiv.addEventListener("click", function () {
+  baseType = "Betroot Bread";
+  removeBreadClickedClass();
+  this.classList.add("clicked");
+  breadItensDiv.classList.add("displayNone");
+  meatItensDiv.classList.remove("displayNone");
+});
+
+meatItensTitlebackButton.addEventListener("click", function () {
+    meatItensDiv.classList.add("displayNone");
+  breadItensDiv.classList.remove("displayNone");
+});
+meatItensTitleGoButton.addEventListener("click", function () {
+    meatItensDiv.classList.add("displayNone");
+    saladsItensDiv.classList.remove("displayNone");
+});
+
+saladItensTitleBackButton.addEventListener("click", function () {
+    saladsItensDiv.classList.add("displayNone");
+    meatItensDiv.classList.remove("displayNone");
+});
+
+bagueteEtc.addEventListener("click", function () {
+    mainItensDiv.classList.add("displayNone");
+    baguettesMenuItensDiv.classList.remove("displayNone");
+});
+
+baguettesByo.addEventListener("click", function () {
+    baguettesMenuItensDiv.classList.add("displayNone");
+    breadItensDiv.classList.remove("displayNone");
+});
+
+/*  
+
+const plainHotDogDiv = document.getElementById("plainHotDog");
+const franchHotDogDiv = document.getElementById("franchHotDog");
+ */
 
 function countSalads() {
   return document.querySelectorAll("#saladsItensDiv .clicked").length;
+}
+
+function countMeats() {
+  return document.querySelectorAll("#meatItensDiv .clicked").length;
 }
 
 function removeOrderLineDiv() {
@@ -135,13 +241,47 @@ function saladWordGrammarCorrection() {
   }
 }
 
+function meatWordGrammarCorrection() {
+  if (countMeats() > 1) {
+    return "Meats";
+  } else {
+    return "Meat";
+  }
+}
+
+function extraSaladWordGrammarCorrection() {
+  if (countSalads() > 4) {
+    return "Salads";
+  } else {
+    return "Salad";
+  }
+}
+
+function extraMeatWordGrammarCorrection() {
+  if (countMeats() > 2) {
+    return "Meats";
+  } else {
+    return "Meat";
+  }
+}
+
 function extraSaladText() {
   let extraSaladNumber;
   if (countSalads() > 3) {
     extraSaladNumber = countSalads() - 3;
-    return `(${extraSaladNumber} extra)`;
+    return `(${extraSaladNumber} extra ${extraSaladWordGrammarCorrection()})`;
   } else {
-  return ``;
+    return ``;
+  }
+}
+
+function extraMeatText() {
+  let extraMeatNumber;
+  if (countMeats() > 1) {
+    extraMeatNumber = countMeats() - 1;
+    return `(${extraMeatNumber} extra ${extraMeatWordGrammarCorrection()})`;
+  } else {
+    return ``;
   }
 }
 
@@ -157,7 +297,9 @@ function createOrderText() {
   // Criando a div com a classe "orderDisplayTitles" e definindo o conteúdo
   const orderDisplayTitlesDiv = document.createElement("div");
   orderDisplayTitlesDiv.classList.add("orderDisplayTitles");
-  orderDisplayTitlesDiv.textContent = `1 ${pedido} ${countSalads()} ${saladWordGrammarCorrection()} ${extraSaladText()} Meat:1 `;
+  orderDisplayTitlesDiv.textContent = `${baseType} ${countMeats()} ${meatWordGrammarCorrection()} ${extraMeatText()} ${countSalads()} ${saladWordGrammarCorrection()} ${extraSaladText()}`;
+
+  //1 Meat (1 extra meat)
 
   // Criando a div com a classe "orderDisplayPrice" e definindo o conteúdo
   const orderDisplayPriceDiv = document.createElement("div");
@@ -173,12 +315,12 @@ function createOrderText() {
 }
 
 function printerButtonFunction() {
-  // removeClickedClass();
+  // removeAllClickedClass();
 }
 
 /* brownBaguetteDiv.addEventListener("click", function (event) {
-  if (!pedido.includes("Baguette")) {
-    pedido += "Baguette";
+  if (!baseType.includes("Baguette")) {
+    baseType += "Baguette";
   }
 });
  */

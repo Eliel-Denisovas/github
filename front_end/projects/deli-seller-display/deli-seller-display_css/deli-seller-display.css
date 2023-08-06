@@ -54,7 +54,7 @@
     justify-content: center;
     color: rgb(255, 255, 255);
     background-color: var(--mainDkColor);
-    font-size: 2vw;
+    font-size: 3vw;
     font-weight: bolder;
     letter-spacing: 0.5vw;
     border-bottom: 1vw solid black;
@@ -187,6 +187,10 @@
     text-align: left;
 }
 
+#meatItensTitle {
+    display: flexbox;
+};
+
 .orderDisplayPrice {
     width: 7vw;
 }
@@ -236,4 +240,10 @@
     border-bottom: none;
 }
 
-
+.backGoButton {
+    color: var(--clicked-color);
+    margin: 0 2vw;
+    cursor: pointer;
+    font-size: 1.5vw;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
