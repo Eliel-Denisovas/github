@@ -1,8 +1,10 @@
 let baseType = "";
 let shopItenValue = 5.3;
-let saladsClicked = 0;
+let saladsNumber = 0;
+let meatNumber = 0;
 const shopItenElements = document.querySelectorAll(".shopIten");
-const meatItens = document.querySelectorAll("#meatItensDiv .shopItem");
+const shopItenSalads = document.querySelectorAll("#saladsItensDiv .shopIten");
+const shopItenMeat = document.querySelectorAll("#meatItensDiv .shopIten");
 
 const breadItensDiv = document.getElementById("breadItensDiv");
 const breakfastItensDiv = document.getElementById("breakfastItensDiv");
@@ -121,83 +123,59 @@ const frenchHotDogDiv = document.getElementById("frenchHotDog");
 
 const printerButton = document.getElementById("printerButton");
 
-// Adicionando o evento de clique a cada div
-shopItenElements.forEach(function (shopItenParameter) {
-  shopItenParameter.addEventListener("click", function () {
-    this.classList.toggle("clicked");
-    countSalads();
-    countMeats();
-    createOrderText();
-  });
-});
-
-// Selecione todos os elementos que possuem a classe desejada (substitua 'cliked' pelo nome da classe que você deseja remover)
-function removeAllClickedClass() {
-  const clickedClassElements = document.querySelectorAll(".cliked");
-  clickedClassElements.forEach((element) => {
-    element.classList.remove("clicked");
-  });
-}
-function removeBreadClickedClass() {
-  const clickedClassElements = document.querySelectorAll("#breadItensDiv .clicked");
-  clickedClassElements.forEach((element) => {
-    element.classList.remove("clicked");
-  });
-}
-
 plainBaguetteDiv.addEventListener("click", function () {
   baseType = "Baguette";
-  removeBreadClickedClass();
-  this.classList.add("clicked");
+  removeOrderLineDiv();
+  createOrderTextDiv();
   breadItensDiv.classList.add("displayNone");
   meatItensDiv.classList.remove("displayNone");
 });
 brownBaguetteDiv.addEventListener("click", function () {
   baseType = "Baguette";
-  removeBreadClickedClass();
-  this.classList.add("clicked");
+  removeOrderLineDiv();
+  createOrderTextDiv();
   breadItensDiv.classList.add("displayNone");
   meatItensDiv.classList.remove("displayNone");
 });
 plainWrapDiv.addEventListener("click", function () {
   baseType = "Wrap";
-  removeBreadClickedClass();
-  this.classList.add("clicked");
+  removeOrderLineDiv();
+  createOrderTextDiv();
   breadItensDiv.classList.add("displayNone");
   meatItensDiv.classList.remove("displayNone");
 });
 brownWrapDiv.addEventListener("click", function () {
   baseType = "Wrap";
-  removeBreadClickedClass();
-  this.classList.add("clicked");
+  removeOrderLineDiv();
+  createOrderTextDiv();
   breadItensDiv.classList.add("displayNone");
   meatItensDiv.classList.remove("displayNone");
 });
 plainSandwichDiv.addEventListener("click", function () {
   baseType = "Sandwich";
-  removeBreadClickedClass();
-  this.classList.add("clicked");
+  removeOrderLineDiv();
+  createOrderTextDiv();
   breadItensDiv.classList.add("displayNone");
   meatItensDiv.classList.remove("displayNone");
 });
 brownSandwichDiv.addEventListener("click", function () {
   baseType = "Sandwich";
-  removeBreadClickedClass();
-  this.classList.add("clicked");
+  removeOrderLineDiv();
+  createOrderTextDiv();
   breadItensDiv.classList.add("displayNone");
   meatItensDiv.classList.remove("displayNone");
 });
 italianBreadDiv.addEventListener("click", function () {
   baseType = "Italian Bread";
-  removeBreadClickedClass();
-  this.classList.add("clicked");
+  removeOrderLineDiv();
+  createOrderTextDiv();
   breadItensDiv.classList.add("displayNone");
   meatItensDiv.classList.remove("displayNone");
 });
 betrootBreadDiv.addEventListener("click", function () {
   baseType = "Betroot Bread";
-  removeBreadClickedClass();
-  this.classList.add("clicked");
+  removeOrderLineDiv();
+  createOrderTextDiv();
   breadItensDiv.classList.add("displayNone");
   meatItensDiv.classList.remove("displayNone");
 });
@@ -282,14 +260,6 @@ const plainHotDogDiv = document.getElementById("plainHotDog");
 const franchHotDogDiv = document.getElementById("franchHotDog");
  */
 
-function countSalads() {
-  return document.querySelectorAll("#saladsItensDiv .clicked").length;
-}
-
-function countMeats() {
-  return document.querySelectorAll("#meatItensDiv .clicked").length;
-}
-
 function removeOrderLineDiv() {
   // Obtendo a referência para o conjunto de elementos que você adicionou
   const orderLineDiv = document.querySelector(".OrderLine"); // Use o seletor correto para selecionar a div
@@ -302,7 +272,7 @@ function removeOrderLineDiv() {
 }
 
 function saladWordGrammarCorrection() {
-  if (countSalads() > 1) {
+  if (saladsNumber > 1) {
     return "Salads";
   } else {
     return "Salad";
@@ -310,7 +280,7 @@ function saladWordGrammarCorrection() {
 }
 
 function meatWordGrammarCorrection() {
-  if (countMeats() > 1) {
+  if (meatNumber > 1) {
     return "Meats";
   } else {
     return "Meat";
@@ -318,7 +288,7 @@ function meatWordGrammarCorrection() {
 }
 
 function extraSaladWordGrammarCorrection() {
-  if (countSalads() > 4) {
+  if (saladsNumber > 4) {
     return "Salads";
   } else {
     return "Salad";
@@ -326,7 +296,7 @@ function extraSaladWordGrammarCorrection() {
 }
 
 function extraMeatWordGrammarCorrection() {
-  if (countMeats() > 2) {
+  if (meatNumber > 2) {
     return "Meats";
   } else {
     return "Meat";
@@ -335,8 +305,8 @@ function extraMeatWordGrammarCorrection() {
 
 function extraSaladText() {
   let extraSaladNumber;
-  if (countSalads() > 3) {
-    extraSaladNumber = countSalads() - 3;
+  if (saladsNumber > 3) {
+    extraSaladNumber = saladsNumber - 3;
     return `(${extraSaladNumber} extra ${extraSaladWordGrammarCorrection()})`;
   } else {
     return ``;
@@ -345,16 +315,15 @@ function extraSaladText() {
 
 function extraMeatText() {
   let extraMeatNumber;
-  if (countMeats() > 1) {
-    extraMeatNumber = countMeats() - 1;
+  if (meatNumber > 1) {
+    extraMeatNumber = meatNumber - 1;
     return `(${extraMeatNumber} extra ${extraMeatWordGrammarCorrection()})`;
   } else {
     return ``;
   }
 }
 
-function createOrderText() {
-  removeOrderLineDiv();
+function createOrderTextDiv() {
   // Obtendo a referência para a div onde deseja adicionar o conjunto de elementos
   const orderDisplay = document.getElementById("orderDisplay");
 
@@ -365,7 +334,7 @@ function createOrderText() {
   // Criando a div com a classe "orderDisplayTitles" e definindo o conteúdo
   const orderDisplayTitlesDiv = document.createElement("div");
   orderDisplayTitlesDiv.classList.add("orderDisplayTitles");
-  orderDisplayTitlesDiv.textContent = `${baseType} ${countMeats()} ${meatWordGrammarCorrection()} ${extraMeatText()} ${countSalads()} ${saladWordGrammarCorrection()} ${extraSaladText()}`;
+  orderDisplayTitlesDiv.textContent = `${baseType} ${meatNumber} ${meatWordGrammarCorrection()} ${extraMeatText()} ${saladsNumber} ${saladWordGrammarCorrection()} ${extraSaladText()}`;
 
   //1 Meat (1 extra meat)
 
@@ -383,8 +352,36 @@ function createOrderText() {
 }
 
 function printerButtonFunction() {
-  // removeAllClickedClass();
+
 }
+
+// Adicionando a classe "clicked" a cada div clicada
+shopItenElements.forEach(function (shopItenParameter) {
+  shopItenParameter.addEventListener("click", function () {
+    if (!this.classList.contains("clicked")) {
+      this.classList.add("clicked");
+    }
+  });
+});
+
+// salads Counter
+shopItenSalads.forEach(function (shopItenParameter) {
+  shopItenParameter.addEventListener("click", function () {
+    saladsNumber += 1;
+    removeOrderLineDiv();
+    createOrderTextDiv();
+  });
+});
+
+// Meat Counter
+shopItenMeat.forEach(function (shopItenParameter) {
+  shopItenParameter.addEventListener("click", function () {
+    meatNumber += 1;
+    removeOrderLineDiv();
+    createOrderTextDiv();
+  });
+});
+
 
 /* brownBaguetteDiv.addEventListener("click", function (event) {
   if (!baseType.includes("Baguette")) {
